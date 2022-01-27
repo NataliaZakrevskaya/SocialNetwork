@@ -4,19 +4,20 @@ import Post from "./Post/Post";
 import {PostPropsType} from "../../../Redux/store";
 
 type MyPostsPropsType = {
-    newPostText: (text: string) => void
+    updateNewPostText: (text: string) => void
     addPost: () => void
     posts: Array<PostPropsType>
+    newPostText: string
 }
     const MyPosts = (props: MyPostsPropsType) => {
-    const postsElements =
-        props.posts.map(p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>);
-    const addPost = () => {
-        props.addPost();
-    }
+        const postsElements =
+            props.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likesCount={p.likesCount}/>);
+        const addPost = () => {
+            props.addPost();
+        }
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value;
-        props.newPostText(text);
+        props.updateNewPostText(text);
     }
 
     return (

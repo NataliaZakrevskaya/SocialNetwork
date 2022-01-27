@@ -1,37 +1,37 @@
 import React from 'react'
-import {StoreType} from "../../Redux/store";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
+import {InitialStateType, sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
-/*
-export type StateDialogsPropsType = {
-    store: StoreType
+
+type MapStateType = {
+    dialodsPage: InitialStateType
+    isAuth: boolean
 }
-*/
 
-const DialogsContainer = () => {
-
-
-
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                const state = store.getState().messagesPage;
-                const onSendMessageClick = () => {
-                    store.dispatch(sendMessageCreator())
-                }
-                const onNewMessageChange = (body: string) => {
-                    store.dispatch(updateNewMessageBodyCreator(body));
-                }
-                return <Dialogs
-                    sendMessage={onSendMessageClick}
-                    updateNewMessageBody={onNewMessageChange}
-                    dialodsPage={state}
-                />
-            }}
-        </StoreContext.Consumer>
-    )
+type MapDispatchType = {
+    updateNewMessageBody: (body: any) => void
+    sendMessage: () => void
 }
+
+const mapStateToProps = (state: MapStateType): MapStateType => {
+    return {
+        dialodsPage: state.messagesPage,
+        isAuth: state.auth.isAuth
+    };
+};
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchType => {
+    return {
+        updateNewMessageBody: (body: any) => {
+            dispatch(updateNewMessageBodyCreator(body));
+        },
+        sendMessage: () => {
+            dispatch(sendMessageCreator())
+        }
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

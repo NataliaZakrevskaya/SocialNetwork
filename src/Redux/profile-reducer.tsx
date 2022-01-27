@@ -1,32 +1,52 @@
+//import {ActionsTypes, PostPropsType} from "./store";
 
-//export type ProfileActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof onPostChangeActionCreator>
-import {ActionsTypes, PostPropsType} from "./store";
+import {profileAPI} from "../api/Api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
-let initialState = {
+type PostsType = {
+    id: number
+    message: string
+    likesCount: number
+}
+export type InitialStateType = {
+    posts: Array<PostsType>
+    newPostText: string
+    profile: null
+}
+
+let initialState: InitialStateType = {
     posts: [
         {id: 1, message: "Hello, how are you?", likesCount: 0},
         {id: 2, message: "It's my first post", likesCount: 23}
     ],
-    newPostText: "it-kamasutra.com"
+    newPostText: "it-kamasutra.com",
+    profile: null
 }
 
-const profileReducer = (state = initialState, action: ActionsTypes) => {
+const profileReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case ADD_POST:
-            let newPost: PostPropsType = {
+        case ADD_POST: {
+            let newPost: PostsType = {
                 id: new Date().getTime(),
                 message: state.newPostText,
                 likesCount: 0
             }
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            }
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {...state, newPostText: action.text}
+        }
+        case SET_USER_PROFILE: {
+            return {...state, profile: action.profile}
+        }
+
         default:
             return state;
 
@@ -38,11 +58,26 @@ export const addPostActionCreator = () => {
         type: ADD_POST
     } as const
 }
-export const onPostChangeActionCreator = (text: string) => {
+export const updateNewPostTextActionCreator = (text: string) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
-        newText: text
+        text: text
     } as const
+}
+export const setUserProfile = (profile: any) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile
+    } as const
+}
+
+export const getProfile = (userId: number) => {
+    return (dispatch: any) => {
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            })
+    }
 }
 
 export default profileReducer;

@@ -1,6 +1,6 @@
-import profileReducer, {addPostActionCreator, onPostChangeActionCreator} from "./profile-reducer";
+/*import profileReducer, {addPostActionCreator, setUserProfile, updateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
+import {setAuthUserData} from "./auth-reducer";
 
 export type DialogsPropsType = {
     dialogs: Array<DialogType>
@@ -23,14 +23,16 @@ export type PostPropsType = {
 export type ProfilePagePropsType = {
     posts: Array<PostPropsType>
     newPostText: string
+    profile: null
 }
 export type StatePropsType = {
     profilePage: ProfilePagePropsType
     messagesPage: DialogsPropsType
     sidebar: {}
 }
-export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof onPostChangeActionCreator>
-    | ReturnType<typeof sendMessageCreator> | ReturnType<typeof updateNewMessageBodyCreator>
+export type ActionsTypes = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator>
+    | ReturnType<typeof sendMessageCreator> | ReturnType<typeof updateNewMessageBodyCreator> | ReturnType<typeof setUserProfile>
+| ReturnType<typeof setAuthUserData>
 export type StoreType = {
     _state: StatePropsType
     _callSubscriber: () => void
@@ -47,7 +49,8 @@ let store: StoreType = {
                 {id: 1, message: "Hello, how are you?", likesCount: 0},
                 {id: 2, message: "It's my first post", likesCount: 23}
             ],
-            newPostText: "it-kamasutra.com"
+            newPostText: "it-kamasutra.com",
+            profile: null
         },
         messagesPage: {
             dialogs: [
@@ -82,10 +85,11 @@ let store: StoreType = {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+     //   this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
         this._callSubscriber();
     }
 }
 
-export default store;
+export default store;*/
+export default {};
