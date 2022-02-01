@@ -3,7 +3,11 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfile, setUserProfile} from "../../Redux/profile-reducer";
 import {useParams} from "react-router-dom";
+import {compose} from "redux";
 
+type mapStateToPropsForRedirect = {
+    isAuth: boolean
+}
 type ProfilePropsType = {
     userId: string
     lookingForAJob: boolean
@@ -26,7 +30,7 @@ type ProfilePropsType = {
 }
 type MapStatePropsType = {
     profile: ProfilePropsType
-    isAuth: boolean
+
     //match: any
 }
 type MapDispatchPropsType = {
@@ -55,20 +59,34 @@ function ProfileContainer(props: OwnPropsType) {
         props.getProfile(userId)
     }, [])
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>
+    /* let navigate = useNavigate();
+
+     if (!props.isAuth) {
+         navigate("/login")
+     }*/
+
     return (
         <Profile profile={props.profile}/>
     )
 }
 
 
-let mapStateToProps = (state: any): MapStatePropsType => ({
-    profile: state.profilePage.profile,
+/*let mapStateToPropsForRedirect = (state: any): mapStateToPropsForRedirect => ({
     isAuth: state.auth.isAuth
-})
+});
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer);
-export default connect(mapStateToProps, {setUserProfile, getProfile})(WithUrlDataContainerComponent);
+AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);*/
+/*let AuthRedirectComponent = WithAuthRedirect(Profile);*/
+//let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
+
+let mapStateToProps = (state: any): MapStatePropsType => ({
+    profile: state.profilePage.profile
+});
+export default compose(
+    connect(mapStateToProps, {setUserProfile, getProfile}),
+    withRouter,
+    // WithAuthRedirect
+)(Profile);
 
 
 // классовая компонента

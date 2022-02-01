@@ -11,6 +11,8 @@ import {
     unfollowSuccess
 } from "../../Redux/users-reducer";
 import {Preloader} from "../Common/Preloader/Preloader";
+import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
+import {compose} from "redux";
 
 export type UsersType = {
     id: number
@@ -85,10 +87,11 @@ const mapStateToProps = (state: AppStateType): mapStateType => {
     }
 }
 
-export default connect(mapStateToProps,
-    {
-        followSuccess, unfollowSuccess, setCurrentPage, toggleFollowingProgress, getUsers
-    })(UsersContainer);
+export default compose(
+    WithAuthRedirect,
+    connect(mapStateToProps,
+        {followSuccess, unfollowSuccess, setCurrentPage, toggleFollowingProgress, getUsers})
+)(UsersContainer);
 
 
 /*class UsersContainer extends React.Component {
