@@ -5,16 +5,38 @@ type ProfileStatusType = {
     status: string
 }
 
-export const ProfileStatus = (props: ProfileStatusType) => {
+export class ProfileStatus extends React.Component {
+    state = {
+        editMode: false,
+        title: 'Yo'
+    };
 
-    return (
-        <div>
+    activateEditMode() {
+        this.setState({
+            editMode: true
+        });
+    };
+
+    deactivateEditMode() {
+        this.setState({
+            editMode: false
+        });
+    };
+
+    render() {
+        return (
             <div>
-                <span>{props.status}</span>
+                {!this.state.editMode &&
+                    <div>
+                        <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+                    </div>
+                }
+                {this.state.editMode &&
+                    <div>
+                        <input onBlur={this.deactivateEditMode.bind(this)} autoFocus={true} value={this.props.status}/>
+                    </div>
+                }
             </div>
-            <div>
-                <input value={props.status}/>
-            </div>
-        </div>
-    )
+        )
+    }
 }
