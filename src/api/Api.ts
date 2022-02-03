@@ -14,10 +14,10 @@ export const usersAPI = {
                 return response.data;
             });
     },
-    follow(userId: number) {
+    follow(userId: string) {
         return instance.post(`follow/${userId}`)
     },
-    unfollow(userId: number) {
+    unfollow(userId: string) {
         return instance.delete(`follow/${userId}`)
     }
 }
@@ -28,7 +28,13 @@ export const authAPI = {
     }
 }
 export const profileAPI = {
-    getProfile(userId: number) {
+    getProfile(userId: string) {
         return instance.get(`profile/` + userId)
+    },
+    getStatus(userId: string) {
+        return instance.get(`profile/status/` + userId)
+    },
+    updateStatus(status: string) {
+        return instance.put(`profile/status`, {status})
     }
 }

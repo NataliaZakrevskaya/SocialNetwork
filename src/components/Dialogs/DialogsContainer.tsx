@@ -1,37 +1,41 @@
-import React from 'react'
+import React, {ComponentType} from 'react'
 import {InitialStateType, sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
-import WithAuthRedirect from "../../HOC/WithAuthRedirect";
+import {AppStateType} from "../../Redux/redux-store";
+import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 
-type MapStateType = {
-    dialodsPage: InitialStateType
+type MapStateTypeToProps = {
+    dialogsPage: InitialStateType
 }
-
-type MapDispatchType = {
-    updateNewMessageBody: (body: any) => void
+type MapDispatchToPropsType = {
+    updateNewMessageBody: (body: string) => void
     sendMessage: () => void
 }
+export type DialogsPropsType = MapStateTypeToProps & MapDispatchToPropsType
 
-const mapStateToProps = (state: MapStateType): MapStateType => {
+const mapStateToProps = (state: AppStateType): MapStateTypeToProps => {
     return {
-        dialodsPage: state.dialodsPage
+        dialogsPage: state.messagesPage
     };
 };
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchType => {
+
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
-        updateNewMessageBody: (body: any) => {
-            dispatch(updateNewMessageBodyCreator(body));
+        updateNewMessageBody: (body: string) => {
+            body
+                ? dispatch(updateNewMessageBodyCreator(body))
+                : dispatch(updateNewMessageBodyCreator(''));
         },
         sendMessage: () => {
-            dispatch(sendMessageCreator())
+            dispatch(sendMessageCreator());
         }
     }
 }
 
-export default compose(
+export default compose<ComponentType>(
     connect(mapStateToProps, mapDispatchToProps),
     WithAuthRedirect
 )

@@ -11,20 +11,24 @@ import {Login} from "./components/Login/Login";
 const App = () => {
 
     return (
-        <div className={"app-wrapper"}>
+        <main className={"app-wrapper"}>
             <HeaderContainer/>
             <Navbar/>
             <div className={"app-wrapper-content"}>
                 <Routes>
-                    <Route path='/dialogs' element={<DialogsContainer/>}/>
-                    <Route path='/profile:userId?' element={<ProfileContainer/>}/>
-                    <Route path=':userId' element={<ProfileContainer/>}/>
+                    <Route path='/dialogs' element={<DialogsContainer/>}>
+                        <Route path=":userId" element={<DialogsContainer/>}/>
+                    </Route>
+                    <Route path='/profile' element={<ProfileContainer/>}>
+
+                        <Route path=":userId" element={<ProfileContainer/>}/>
+                    </Route>
                     <Route path='/users' element={<UsersContainer/>}/>
                     <Route path='/login' element={<Login/>}/>
 
                 </Routes>
             </div>
-        </div>
+        </main>
     );
 
 }

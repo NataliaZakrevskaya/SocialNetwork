@@ -1,108 +1,65 @@
-import React, {useEffect} from 'react';
+import React, {ComponentType} from 'react';
 import Profile from "./Profile";
-import {connect} from "react-redux";
-import {getProfile, setUserProfile} from "../../Redux/profile-reducer";
-import {useParams} from "react-router-dom";
+import {getProfile, getStatus, ProfilePropsType, setUserProfile, updateStatus} from "../../Redux/profile-reducer";
+import {AppStateType} from "../../Redux/redux-store";
 import {compose} from "redux";
+import {connect} from "react-redux";
+import {InjectedProps, withRouter2} from "../../HOC/withRouter";
 
-type mapStateToPropsForRedirect = {
-    isAuth: boolean
-}
-type ProfilePropsType = {
-    userId: string
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    contacts: {
-        github: string
-        vk: string
-        facebook: string
-        instagram: string
-        twitter: string
-        website: string
-        youtube: string
-        mainLink: string
-    }
-    photos: {
-        small: string
-        large: string
-    }
-}
+
 type MapStatePropsType = {
     profile: ProfilePropsType
-
-    //match: any
+    isAuth: boolean
+    status: string
 }
 type MapDispatchPropsType = {
     setUserProfile: (profile: MapStatePropsType) => void
-    getProfile: (userId: number) => void
+    getProfile: (userId: string) => void
+    getStatus: (userId: string) => void
+    updateStatus: (status: string) => void
 }
 
-type OwnPropsType = MapStatePropsType & MapDispatchPropsType
-
-const withRouter = WrappedComponent => props => {
-    const params = useParams();
-    return (
-        <WrappedComponent
-            {...props}
-            params={params}
-        />
-    );
-};
-
-function ProfileContainer(props: OwnPropsType) {
-    useEffect(() => {
-        let userId = props.match.params.userId;
-        if (!userId) {
-            userId = 2;
-        }
-        props.getProfile(userId)
-    }, [])
-
-    /* let navigate = useNavigate();
-
-     if (!props.isAuth) {
-         navigate("/login")
-     }*/
-
-    return (
-        <Profile profile={props.profile}/>
-    )
-}
+type OwnPropsType = MapStatePropsType & MapDispatchPropsType & InjectedProps
 
 
-/*let mapStateToPropsForRedirect = (state: any): mapStateToPropsForRedirect => ({
-    isAuth: state.auth.isAuth
-});
+class ProfileAPIContainer extends React.Component<OwnPropsType> {
 
-AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);*/
-/*let AuthRedirectComponent = WithAuthRedirect(Profile);*/
-//let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-let mapStateToProps = (state: any): MapStatePropsType => ({
-    profile: state.profilePage.profile
-});
-export default compose(
-    connect(mapStateToProps, {setUserProfile, getProfile}),
-    withRouter,
-    // WithAuthRedirect
-)(Profile);
-
-
-// классовая компонента
-/*class ProfileContainer extends React.Component {
     componentDidMount() {
-        let userId = this.props.params.userId;
+        let userId: string = this.props.userId;
         if (!userId) {
-            userId = 2;
+            userId = '21569';
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                this.props.setUserProfile(response.data);
-            })
+        this.props.getProfile(userId);
+        this.props.getStatus(userId);
     }
 
     render() {
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return (
+            <Profile
+                profile={this.props.profile}
+                status={this.props.status}
+                updateStatus={this.props.updateStatus}
+            />
+        )
     }
-}*/
+}
+
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+    return {
+        profile: state.profilePage.profile,
+        status: state.profilePage.status,
+        isAuth: state.auth.isAuth
+    }
+};
+
+export default compose<ComponentType>(connect(mapStateToProps, {
+        setUserProfile,
+        getProfile,
+        getStatus,
+        updateStatus
+    }),
+    withRouter2,
+// WithAuthRedirect
+)
+(ProfileAPIContainer);
+

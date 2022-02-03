@@ -2,7 +2,8 @@ import React from 'react'
 import s from "./users.module.css";
 import userPhoto from "../../Images/flat-face-icon-23.png";
 import {NavLink} from "react-router-dom";
-import {UsersType} from "./UsersContainer";
+import {UsersType} from "../../Redux/users-reducer";
+
 
 type UsersPropsType = {
     totalUsersCount: number
@@ -10,10 +11,9 @@ type UsersPropsType = {
     currentPage: number
     onPageChanged: (pageNumber: number) => void
     users: Array<UsersType>
-    unfollow: (userID: number) => void
-    follow: (userID: number) => void
-    followingInProgress: Array<number>
-    // isFetching: boolean
+    unfollow: (userID: string) => void
+    follow: (userID: string) => void
+    followingInProgress: Array<any>
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -21,22 +21,27 @@ export const Users = (props: UsersPropsType) => {
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
-        return (
-            <div>
-                <div>
-                    {pages.map(p => {
-                        return <span className={props.currentPage === p && s.selectedPage}
-                                     onClick={(e) => {
-                                         props.onPageChanged(p)
-                                     }}>{p}</span>
-                    })}
+    }
+    return (
 
-                </div>
-                {props.users.map(u => <div key={u.id}>
+        <div>
+            <div>
+                {pages.map(p => {
+                    return <span key={p} className={(props.currentPage) === p ? s.selectedPage : ""}
+                                 onClick={(e) => {
+                                     props.onPageChanged(p)
+                                 }}>{p}</span>
+                })}
+
+            </div>
+
+            {props.users.map(u => <div key={u.id}>
+
                 <span>
                     <div>
-                        <NavLink to={'/profile' + u.id}>
-                        <img src={/*u.photos?.small !== null ? u.photos?.small : */ userPhoto} className={s.userPhoto}/>
+                        <NavLink to={'/profile/' + u.id}>
+                        <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.userPhoto}
+                             alt={"userPhoto"}/>
                             </NavLink>
                     </div>
                     <div>
@@ -53,14 +58,12 @@ export const Users = (props: UsersPropsType) => {
                                 : <button
                                     disabled={props.followingInProgress.some(id => id === u.id)}
                                     onClick={() => {
-
                                         props.follow(u.id)
-
                                     }}>Follow</button>
                         }
                     </div>
                 </span>
-                    <span>
+                <span>
                     <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
@@ -70,8 +73,8 @@ export const Users = (props: UsersPropsType) => {
                         <div>{"u.location.city"}</div>
                     </span>
                 </span>
-                </div>)}
-            </div>
-        )
-    }
+            </div>)
+            }
+        </div>
+    )
 }
