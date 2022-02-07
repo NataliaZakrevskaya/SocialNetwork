@@ -15,7 +15,6 @@ const mapStateToPropsForRedirect = (state: AppStateType): MapStateToPropsType =>
 
 
 export function WithAuthRedirect<T>(WrappedComponent: React.ComponentType<T>) {
-debugger;
     const RedirectComponent = (props: MapStateToPropsType) => {
 
         const {isAuth, ...restProps} = props;
