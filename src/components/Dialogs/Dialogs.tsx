@@ -1,8 +1,9 @@
-import React, {ChangeEvent} from 'react'
+import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
+import {AddMessageFormRedux} from "./AddMessageFormRedux";
 
 
 const Dialogs = (props: DialogsPropsType) => {
@@ -10,15 +11,10 @@ const Dialogs = (props: DialogsPropsType) => {
     const state = props.dialogsPage;
     const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     const messagesElements = state.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>)
-    const newMessageBody = state.newMessageBody;
 
-    const onSendMessageClick = () => {
-        props.sendMessage();
+    const addNewMessage = (values: any) => {
+        props.sendMessage(values.newMessageBody);
     };
-    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.currentTarget.value;
-        props.updateNewMessageBody(body);
-    }
 
     return (
         <div className={s.dialogs}>
@@ -28,23 +24,10 @@ const Dialogs = (props: DialogsPropsType) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <div className={s.textInput}>
-                <div>
-                    <textarea
-                        value={props.dialogsPage.newMessageBody}
-                        onChange={onNewMessageChange}
-                        placeholder={"Enter your message"}
-                    />
-                </div>
-                <div>
-                    <button
-                        disabled={props.dialogsPage.newMessageBody.trim() === ''}
-                        onClick={onSendMessageClick}>Send
-                    </button>
-                </div>
-            </div>
+            <AddMessageFormRedux onSubmit={addNewMessage}/>
         </div>
     )
 }
+
 
 export default Dialogs;
