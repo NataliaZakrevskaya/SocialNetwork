@@ -43,7 +43,7 @@ let initialState: InitialStateType = {
     followingInProgress: [] as string[]
 }
 
-const usersReducer = (state = initialState, action: UsersReducerActionType) => {
+const usersReducer = (state = initialState, action: UsersReducerActionType): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -57,7 +57,7 @@ const usersReducer = (state = initialState, action: UsersReducerActionType) => {
             }
         case SET_USERS:
             return {
-                ...state, users: action.users
+                ...state, users: [action.users]
             }
         case SET_CURRENT_PAGE:
             return {

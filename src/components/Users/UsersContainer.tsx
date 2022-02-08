@@ -40,12 +40,6 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
-
-    /*let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }*/
     render() {
         return (
             <>
