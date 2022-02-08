@@ -16,11 +16,11 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
     }
     return (
         <div>
-            {/* <div>
-                <img className={s.firstImg}
-                     src={"https://wallpaperaccess.com/full/144055.png"}
-                     alt={"img"}/>
-            </div>*/}
+             <div>
+                 <img className={s.firstImg}
+                      src={"https://wallpaperaccess.com/full/144055.png"}
+                      alt={"img"}/>
+             </div>
             <div>
                 <div className={s.descriptionBlock}>
                     <img
