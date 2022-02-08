@@ -1,10 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
+import profileReducer, {ProfileReducerActionType} from "./profile-reducer";
+import dialogsReducer, {DialogsReducerActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
-import usersReducer from "./users-reducer";
-import authReducer from "./auth-reducer";
-import thunkMiddleware from "redux-thunk";
+import usersReducer, {UsersReducerActionType} from "./users-reducer";
+import authReducer, {AuthReducerActionType} from "./auth-reducer";
+import thunkMiddleware, {ThunkAction} from "redux-thunk";
 import {reducer as formReducer} from 'redux-form';
 
 export const rootReducer = combineReducers({
@@ -17,9 +17,17 @@ export const rootReducer = combineReducers({
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>;
+export type AppActionType =
+    ProfileReducerActionType
+    | DialogsReducerActionType
+    | UsersReducerActionType
+    | AuthReducerActionType
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
+//<то, что возвращает санка (обычно void)>, <типизация стэйта всего приложения>,
+//<unknown>, <типизация экшенов всего приложения>
+export type AppThunk<ReturnType = void> = ThunkAction<void, AppStateType, unknown, AppActionType>
 
 export default store;
 
