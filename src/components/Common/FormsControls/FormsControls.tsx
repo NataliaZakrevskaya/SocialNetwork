@@ -18,7 +18,7 @@ const FormControl = ({input, meta, child, ...props}: any) => {
 }
 
 export const Textarea = (props: any) => {
-    debugger;
+    ;
     const {input, meta, ...restProps} = props;
     return <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
 }
