@@ -27,7 +27,7 @@ type mapDispatchToPropsType = {
     unfollow: (userID: string) => void
     setCurrentPage: (currentPage: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
-    toggleFollowingProgress: (isFetching: boolean, userID: number) => void
+    toggleFollowingProgress: (isFetching: boolean, userID: string) => void
 };
 type UsersPropsType = mapDispatchToPropsType & MapStateToPropsType
 
@@ -72,79 +72,14 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 };
 
+
 export default compose<ComponentType>(
-    connect(mapStateToProps,
+    //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
+    connect<MapStateToPropsType, mapDispatchToPropsType, UsersPropsType, AppStateType>(mapStateToProps,
         {
+            // @ts-ignore
             followSuccess, unfollowSuccess,
             setCurrentPage, toggleFollowingProgress, getUsers
         }),
     WithAuthRedirect
 )(UsersAPIComponent);
-
-
-/*class UsersContainer extends React.Component {
-
-    componentDidMount() {
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            })
-    }
-
-    onPageChanged = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-            })
-    }
-
-    render() {
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-
-        return <>
-            {this.props.isFetching ?
-                <Preloader/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   users={this.props.users}
-                   unfollow={this.props.unfollow}
-                   follow={this.props.follow}
-            />
-        </>
-    }
-}*/
-
-/*const mapDispatchToProps = (dispatch: Dispatch): mapDispatchType => {
-    return {
-        follow: (userID: number) => {
-            dispatch(follow(userID))
-        },
-        unfollow: (userID: number) => {
-            dispatch(unfollow(userID))
-        },
-        setUsers: (users: UsersType) => {
-            dispatch(setUsers(users))
-        },
-        setCurrentPage: (currentPage: number) => {
-            dispatch(setCurrentPage(currentPage))
-        },
-        setTotalUsersCount: (totalUsersCount: number) => {
-            dispatch(setTotalUsersCount(totalUsersCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleIsFetching(isFetching))
-        }
-    }
-}*/

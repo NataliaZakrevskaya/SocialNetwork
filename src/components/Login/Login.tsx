@@ -17,9 +17,11 @@ type LoginPropsType = {
     login: (email: string, password: string, rememberMe: boolean) => void
     isAuth: boolean
 }
-type mapStateToPropsType = {
+type MapStateToPropsType = {
     isAuth: boolean
 }
+type MapDispatchToPropsType = {}
+type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & LoginPropsType
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
@@ -65,8 +67,9 @@ const Login = (props: LoginPropsType) => {
     )
 }
 
-const mapStateToProps = (state: AppStateType): mapStateToPropsType => ({
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {login, logout})(Login)
+export default connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>
+(mapStateToProps, {login, logout})(Login)

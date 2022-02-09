@@ -8,20 +8,20 @@ import {InjectedProps, withRouter2} from "../../HOC/withRouter";
 import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 
-type MapStatePropsType = {
+type MapStateToPropsType = {
     profile: ProfilePropsType
     isAuth: boolean
     status: string
     authorizedUserId: string
 }
-type MapDispatchPropsType = {
-    setUserProfile: (profile: MapStatePropsType) => void
+type MapDispatchToPropsType = {
+    setUserProfile: (profile: MapStateToPropsType) => void
     getProfile: (userId: string) => void
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
 }
 
-type OwnPropsType = MapStatePropsType & MapDispatchPropsType & InjectedProps
+type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
 
 
 class ProfileAPIContainer extends React.Component<OwnPropsType> {
@@ -46,7 +46,7 @@ class ProfileAPIContainer extends React.Component<OwnPropsType> {
     }
 }
 
-let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
@@ -56,7 +56,8 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 };
 
 export default compose<ComponentType>
-(connect(mapStateToProps, {
+(connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>
+    (mapStateToProps, {
         setUserProfile,
         getProfile,
         getStatus,
