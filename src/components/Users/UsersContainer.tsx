@@ -23,8 +23,8 @@ type MapStateToPropsType = {
     followingInProgress: Array<any>
 }
 type mapDispatchToPropsType = {
-    follow: (userID: string) => void
-    unfollow: (userID: string) => void
+    follow: (userID: number) => void
+    unfollow: (userID: number) => void
     setCurrentPage: (currentPage: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
     toggleFollowingProgress: (isFetching: boolean, userID: string) => void
@@ -74,8 +74,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 
 
 export default compose<ComponentType>(
-    //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
-    connect<MapStateToPropsType, mapDispatchToPropsType, UsersPropsType, AppStateType>(mapStateToProps,
+    connect
+    (mapStateToProps,
         {
             // @ts-ignore
             followSuccess, unfollowSuccess,

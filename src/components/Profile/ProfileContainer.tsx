@@ -56,7 +56,7 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose<ComponentType>
-(connect<MapStateToPropsType, MapDispatchToPropsType, OwnPropsType, AppStateType>
+(connect
     (mapStateToProps, {
         setUserProfile,
         getProfile,

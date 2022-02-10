@@ -15,12 +15,12 @@ type MapDispatchToPropsType = {
 }
 export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType
 
+
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         dialogsPage: state.messagesPage
     };
 };
-
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
         sendMessage: (newMessageBody: string) => {
@@ -29,8 +29,9 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     }
 }
 
+
 export default compose<ComponentType>(
-    connect<MapStateToPropsType, MapDispatchToPropsType, DialogsPropsType, AppStateType>
+    connect
     (mapStateToProps, mapDispatchToProps),
     WithAuthRedirect
 )

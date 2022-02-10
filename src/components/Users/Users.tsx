@@ -11,9 +11,9 @@ type UsersPropsType = {
     currentPage: number
     onPageChanged: (pageNumber: number) => void
     users: Array<UsersType>
-    unfollow: (userID: string) => void
-    follow: (userID: string) => void
-    followingInProgress: Array<any>
+    unfollow: (userID: number) => void
+    follow: (userID: number) => void
+    followingInProgress: Array<number>
 }
 
 export const Users = (props: UsersPropsType) => {
