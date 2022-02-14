@@ -11,7 +11,6 @@ import {
     UsersType
 } from "../../Redux/users-reducer";
 import {Preloader} from "../Common/Preloader/Preloader";
-import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 import {compose} from "redux";
 
 type MapStateToPropsType = {
@@ -81,5 +80,5 @@ export default compose<ComponentType>(
             followSuccess, unfollowSuccess,
             setCurrentPage, toggleFollowingProgress, getUsers
         }),
-    WithAuthRedirect
+   // WithAuthRedirect
 )(UsersAPIComponent);
