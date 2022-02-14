@@ -4,7 +4,7 @@ import dialogsReducer, {DialogsReducerActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer, {UsersReducerActionType} from "./users-reducer";
 import authReducer, {AuthReducerActionType} from "./auth-reducer";
-import thunkMiddleware, {ThunkAction} from "redux-thunk";
+import thunk, {ThunkAction} from "redux-thunk";
 import {reducer as formReducer} from 'redux-form';
 import appReducer, {AppReducerActionType} from "./app-reducer";
 
@@ -26,7 +26,7 @@ export type AppActionType =
     | AuthReducerActionType
     | AppReducerActionType
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 //<то, что возвращает санка (обычно void)>, <типизация стэйта всего приложения>,
 //<unknown>, <типизация экшенов всего приложения>

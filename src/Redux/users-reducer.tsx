@@ -23,7 +23,7 @@ export type InitialStateType = {
     users: Array<UsersType>
     pageSize: number
     totalUsersCount: number
-    currentPage: number
+    page: number
     isFetching: boolean
     followingInProgress: Array<number>
 };
@@ -39,7 +39,7 @@ let initialState: InitialStateType = {
     users: [] as UsersType[],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1,
+    page: 1,
     isFetching: false,
     followingInProgress: [] as number[]
 }
@@ -52,6 +52,7 @@ const usersReducer = (state = initialState, action: UsersReducerActionType): Ini
                 users: state.users.map(u => u.id === action.userID ? {...u, followed: true} : u)
             }
         case UNFOLLOW:
+            debugger
             return {
                 ...state,
                 users: state.users.map(u => u.id === action.userID ? {...u, followed: false} : u)
@@ -62,7 +63,7 @@ const usersReducer = (state = initialState, action: UsersReducerActionType): Ini
             }
         case SET_CURRENT_PAGE:
             return {
-                ...state, currentPage: action.currentPage
+                ...state, page: action.currentPage
             }
         case SET_TOTAL_USERS_COUNT:
             return {
@@ -137,10 +138,12 @@ export const toggleFollowingProgress = (isFetching: boolean, userID: number) => 
     } as const
 }
 
+
 //Thunks
-export const getUsers = (currentPage: number, pageSize: number): AppThunk => (dispatch: Dispatch<AppActionType>) => {
+export const requestUsers = (page: number, pageSize: number): AppThunk => (dispatch: Dispatch<AppActionType>) => {
     dispatch(toggleIsFetching(true));
-    usersAPI.getUsers(currentPage, pageSize)
+    dispatch(setCurrentPage(page));
+    usersAPI.getUsers(page, pageSize)
         .then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
