@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../Common/Preloader/Preloader";
 import {ProfilePropsType} from "../../../Redux/profile-reducer";
-import ProfileStatus from "./ProfileStatus";
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: ProfilePropsType
@@ -29,7 +29,7 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
                 </div>
                 {/*<h2>{props.profile.fullName}</h2>
                     <h3>Обо мне: {props.profile.aboutMe}</h3>*/}
-                <ProfileStatus
+                <ProfileStatusWithHooks
                     status={props.status}
                     updateStatus={props.updateStatus}
                 />
