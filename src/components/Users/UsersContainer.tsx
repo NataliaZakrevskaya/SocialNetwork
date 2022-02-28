@@ -40,11 +40,13 @@ type UsersPropsType = mapDispatchToPropsType & MapStateToPropsType
 
 class UsersAPIComponent extends React.Component<UsersPropsType> {
     componentDidMount() {
-        this.props.requestUsers(this.props.page, this.props.pageSize)
+        const {requestUsers, page, pageSize} = this.props
+        requestUsers(page, pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize)
+        const {requestUsers, pageSize} = this.props
+        requestUsers(pageNumber, pageSize)
     }
 
     render() {
@@ -67,18 +69,6 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
     }
 }
 
-/*const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-
-    }
-};*/
-
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         users: getUsers(state),
@@ -95,7 +85,6 @@ export default compose<ComponentType>(
     connect
     (mapStateToProps,
         {
-            // @ts-ignore
             follow, unfollow,
             setCurrentPage, toggleFollowingProgress, requestUsers
         }),

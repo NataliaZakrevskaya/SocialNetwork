@@ -10,31 +10,30 @@ type ProfileInfoPropsType = {
     updateStatus: (status: string) => void
 }
 
-const ProfileInfo = (props: ProfileInfoPropsType) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}: ProfileInfoPropsType) => {
+
+    if (!profile) {
         return <Preloader/>
     }
+
     return (
         <div>
-             <div>
-                 <img className={s.firstImg}
-                      src={"https://wallpaperaccess.com/full/144055.png"}
-                      alt={"img"}/>
-             </div>
+            <div>
+                <img className={s.firstImg}
+                     src={"https://wallpaperaccess.com/full/144055.png"}
+                     alt={"img"}/>
+            </div>
             <div>
                 <div className={s.descriptionBlock}>
                     <img
-                        src={props.profile && props.profile.photos.large !== null ? props.profile.photos.large : "avatarDefault"}
+                        src={profile && profile.photos.large !== null ? profile.photos.large : "avatarDefault"}
                         alt={"avatar"}/>
                 </div>
-                {/*<h2>{props.profile.fullName}</h2>
-                    <h3>Обо мне: {props.profile.aboutMe}</h3>*/}
-                <ProfileStatusWithHooks
-                    status={props.status}
-                    updateStatus={props.updateStatus}
-                />
-                {/*<h4>Статус: {props.profile.lookingForAJob === true ? 'в поисках работы' : 'работаю'}</h4>*/}
 
+                <ProfileStatusWithHooks
+                    status={status}
+                    updateStatus={updateStatus}
+                />
 
             </div>
         </div>
