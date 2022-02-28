@@ -1,6 +1,7 @@
 import {usersAPI} from "../api/Api";
 import {Dispatch} from "redux";
 import {AppActionType, AppThunk} from "./redux-store";
+import {updateObjectInArray} from "../Utils/object-helpers";
 
 const FOLLOW = 'USERS/FOLLOW';
 const UNFOLLOW = 'USERS/UNFOLLOW';
@@ -49,13 +50,13 @@ export const usersReducer = (state = initialState, action: UsersReducerActionTyp
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => u.id === action.userID ? {...u, followed: true} : u)
+                users: updateObjectInArray(state.users, action.userID, 'id', {followed: true})
             }
         case UNFOLLOW:
             debugger
             return {
                 ...state,
-                users: state.users.map(u => u.id === action.userID ? {...u, followed: false} : u)
+                users: updateObjectInArray(state.users, action.userID, 'id', {followed: false})
             }
         case SET_USERS:
             return {
