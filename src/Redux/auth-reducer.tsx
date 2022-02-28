@@ -4,7 +4,7 @@ import {stopSubmit} from "redux-form";
 import {AppActionType, AppThunk} from "./redux-store";
 
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 type DataType = {
     id: string,
     email: string,

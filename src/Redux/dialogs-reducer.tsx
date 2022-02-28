@@ -1,4 +1,4 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const SEND_MESSAGE = 'DIALOGS/SEND-MESSAGE';
 
 //Types
 export type DialogType = {

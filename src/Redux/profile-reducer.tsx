@@ -2,9 +2,9 @@ import {profileAPI} from "../api/Api";
 import {Dispatch} from "redux";
 import {AppActionType, AppThunk} from "./redux-store";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
+const ADD_POST = 'PROFILE/ADD-POST';
+const SET_USER_PROFILE = 'PROFILE/SET-USER-PROFILE';
+const SET_STATUS = 'PROFILE/SET-STATUS';
 
 //types
 export type ProfilePropsType = {

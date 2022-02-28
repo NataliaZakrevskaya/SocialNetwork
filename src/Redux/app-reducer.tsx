@@ -1,7 +1,7 @@
 import {AppThunk} from "./redux-store";
 import {getAuthUserData} from "./auth-reducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'APP/INITIALIZED-SUCCESS';
 
 export type InitialStateType = {
     initialized: boolean
