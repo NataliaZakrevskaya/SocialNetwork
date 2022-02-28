@@ -80,7 +80,7 @@ export const addPost = (newPostText: string) => {
     } as const
 }
 export type setUserProfileType = ReturnType<typeof setUserProfile>
-export const setUserProfile = (profile: any) => {
+export const setUserProfile = (profile: ProfilePropsType) => {
     return {
         type: SET_USER_PROFILE,
         profile
