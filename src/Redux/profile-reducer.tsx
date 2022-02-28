@@ -95,25 +95,19 @@ export const setStatus = (status: string) => {
 }
 
 //Thunks
-export const getProfile = (userId: string): AppThunk => (dispatch: Dispatch<AppActionType>) => {
-    profileAPI.getProfile(userId)
-        .then(response => {
-            dispatch(setUserProfile(response.data));
-        })
+export const getProfile = (userId: string): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
+    let response = await profileAPI.getProfile(userId)
+    dispatch(setUserProfile(response.data));
 }
-export const getStatus = (userId: string): AppThunk => (dispatch: Dispatch<AppActionType>) => {
-    profileAPI.getStatus(userId)
-        .then(response => {
-            dispatch(setStatus(response.data));
-        })
+export const getStatus = (userId: string): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
+    let response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data));
 }
-export const updateStatus = (status: string): AppThunk => (dispatch: Dispatch<AppActionType>) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
+export const updateStatus = (status: string): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
+    let response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
 }
 
 export default profileReducer;

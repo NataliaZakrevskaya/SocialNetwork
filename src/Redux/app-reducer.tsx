@@ -30,7 +30,7 @@ export const initializedSuccess = () => {
 }
 
 //Thunks
-export const initializeApp = (): AppThunk => (dispatch: any) => {
+export const initializeApp = (): AppThunk => (dispatch) => {
     let promise = dispatch(getAuthUserData())
     Promise.all([promise])
         .then(() => {
