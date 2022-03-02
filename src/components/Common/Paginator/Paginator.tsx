@@ -10,6 +10,7 @@ export const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged
     }
     return (
 
+
         <div>
             {pages.map(p => {
                 return <span key={p} className={(currentPage) === p ? s.selectedPage : ""}
