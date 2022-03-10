@@ -1,18 +1,17 @@
-import React, {ComponentType} from 'react'
+import React from 'react'
 import './App.css'
 import Navbar from "./components/Navbar/Navbar";
-import {Route, Routes} from 'react-router-dom';
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {LoginContainer} from "./components/Login/LoginContainer";
-import {connect} from "react-redux";
-import {withRouter} from "./HOC/withRouter";
-import {compose} from "redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
-import {AppStateType} from "./Redux/redux-store";
+import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 type MapStateToPropsType = {
     initialized: boolean
@@ -43,7 +42,6 @@ class App extends React.Component<AppPropsType> {
                             <Route path=":userId" element={<DialogsContainer/>}/>
                         </Route>
                         <Route path='/profile' element={<ProfileContainer/>}>
-
                             <Route path=":userId" element={<ProfileContainer/>}/>
                         </Route>
                         <Route path='/users' element={<UsersContainer/>}/>
@@ -60,8 +58,16 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
     initialized: state.app.initialized
 });
 
-export default compose<ComponentType>(
-    withRouter,
-    connect(mapStateToProps, {initializeApp}))
-(App);
+const AppContainer = connect(mapStateToProps, {initializeApp})(App);
 
+export const MainApp = () => {
+    return (
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <BrowserRouter>
+                <Provider store={store}>
+                    <AppContainer/>
+                </Provider>
+            </BrowserRouter>
+        </React.Suspense>
+    )
+}
