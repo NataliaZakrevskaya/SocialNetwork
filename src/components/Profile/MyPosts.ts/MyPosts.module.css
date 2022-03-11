@@ -1,7 +1,27 @@
 .postsBlock {
-    padding: 10px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 10px;
 }
 
-.posts{
+.postsTitle {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+
+.hr {
+    height: 1px;
+    margin: 1.7rem 0;
+    color: #42a790;
+    background-color: currentColor;
+    border: 0;
+    opacity: .25;
+
+}
+
+
+.posts {
     margin-top: 10px;
 }

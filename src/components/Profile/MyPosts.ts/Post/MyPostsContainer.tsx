@@ -17,9 +17,6 @@ export type MyPostsPropsType = MapStateToPropsType & MapDispatchToPropsType
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profilePage: state.profilePage
-        /*posts: state.profilePage.posts,
-        profile: null,
-        status: state.profilePage.status*/
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
