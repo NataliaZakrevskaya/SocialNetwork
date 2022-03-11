@@ -12,7 +12,7 @@ type HeaderPropsType = {
 const Header = ({login, logout, isAuth}: HeaderPropsType) => {
     return <header className={s.header}>
         <img
-            src={logo} alt={"img"}/>
+            src={logo} alt={"logo"}/>
         <div className={s.loginBlock}>
             {
                 isAuth
