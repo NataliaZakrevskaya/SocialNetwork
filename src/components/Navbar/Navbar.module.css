@@ -1,15 +1,22 @@
 .nav {
     grid-area: n;
-    background-color: #254E58;
+    background-color: #f8f7fa;
     padding: 20px;
-    font-size: xx-large;
+    font-family: 'Montserrat', sans-serif;
+    font-size: x-large;
 }
 
 .item a {
-    color: white;
+    color: #79787b;
     text-decoration: none;
 }
 
+.item a:hover {
+    color: #272729;
+}
+
 .item a.activeLink {
-    color: gold;
+    color: #42a790;
+    font-size: xx-large;
+    margin: 5px;
 }
