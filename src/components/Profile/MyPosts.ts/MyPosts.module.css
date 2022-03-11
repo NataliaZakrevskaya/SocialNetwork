@@ -1,4 +1,6 @@
 .postsBlock {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     background-color: white;
     border-radius: 10px;
@@ -12,6 +14,7 @@
 }
 
 .hr {
+    display: block;
     height: 1px;
     margin: 1.7rem 0;
     color: #42a790;
@@ -21,6 +24,44 @@
 
 }
 
+.addPostFormBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.textField {
+    width: 97%;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    color: #272729;
+    padding-left: 10px;
+}
+
+.addPostFormBlock button {
+    margin-left: 20px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #42a790;
+    border: 2px solid #42a790;
+    border-radius: 0.6em;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: .4em 1.2em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+}
 
 .posts {
     margin-top: 10px;
