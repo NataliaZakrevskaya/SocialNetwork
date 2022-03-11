@@ -1,7 +1,39 @@
-.descriptionBlock {
-    padding: 10px;
+.profileInfoBlock {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-.firstImg {
-    width: 1300px;
-    height: 300px
+
+.imagesBlock {
+    width: 100%;
+}
+
+
+.backgroundImg {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.avatarBlock image {
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    width: 200px;
+    border-radius: 50%;
+    right: 10%;
+    top: 180px;
+}
+
+.statusBlock {
+    width: 45%;
+    margin-left: 10%;
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }

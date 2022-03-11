@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Header.module.css"
-import logo from './headerLogo.png'
+import logo from './../../Images/Social network.png'
 import {NavLink} from "react-router-dom";
 
 type HeaderPropsType = {
@@ -8,6 +8,7 @@ type HeaderPropsType = {
     login: string | null
     logout: () => void
 }
+
 
 const Header = ({login, logout, isAuth}: HeaderPropsType) => {
     return <header className={s.header}>

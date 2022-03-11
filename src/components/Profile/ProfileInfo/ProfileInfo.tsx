@@ -10,6 +10,7 @@ type ProfileInfoPropsType = {
     updateStatus: (status: string) => void
 }
 
+
 const ProfileInfo = ({profile, status, updateStatus}: ProfileInfoPropsType) => {
 
     if (!profile) {
@@ -17,17 +18,17 @@ const ProfileInfo = ({profile, status, updateStatus}: ProfileInfoPropsType) => {
     }
 
     return (
-        <div>
-            <div>
-                <img className={s.firstImg}
+        <div className={s.profileInfoBlock}>
+            <div className={s.imagesBlock}>
+                <img className={s.backgroundImg}
                      src={"https://wallpaperaccess.com/full/144055.png"}
                      alt={"img"}/>
             </div>
             <div>
-                <div className={s.descriptionBlock}>
-                    <img
-                        src={profile && profile.photos.large !== null ? profile.photos.large : "avatarDefault"}
-                        alt={"avatar"}/>
+                <div className={s.avatarBlock}>
+                    <img className={s.avatar}
+                         src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
+                         alt={"avatar"}/>
                 </div>
 
                 <ProfileStatusWithHooks
