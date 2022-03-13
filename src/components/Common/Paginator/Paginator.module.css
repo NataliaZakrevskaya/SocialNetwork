@@ -1,3 +1,54 @@
+.paginator {
+    width: 450px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginator button {
+    margin-right: 10px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #42a790;
+    border: 2px solid #42a790;
+    border-radius: 0.6em;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: .3em .3em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.paginator span {
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 1px solid;
+    padding: .1em .3em;
+}
+
+.paginator span:hover {
+    background-color: #549cc1;
+    color: white;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
 .selectedPage {
+    background-color: #4a797e;
+    color: white;
     font-weight: bold;
+    font-size: large;
+    margin: 5px;
 }
