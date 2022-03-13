@@ -79,4 +79,37 @@
     border-top: 1px solid #79787b;
     height: 110px;
     background-color: #fff;
+    padding: 10px;
+}
+
+.textField {
+    margin-left: 10px;
+    width: 90%;
+    min-height: 50px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
+
+.addMessageForm button {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #42a790;
+    border: 2px solid #42a790;
+    border-radius: 0.6em;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: .4em 1.2em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }

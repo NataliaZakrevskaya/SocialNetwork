@@ -20,6 +20,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (
                     name={"newMessageBody"}
                     placeholder={"Enter your message"}
                     validate={[required, maxLength50]}
+                    className={s.textField}
                 />
             </div>
             <div>
