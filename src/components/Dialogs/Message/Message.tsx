@@ -11,7 +11,7 @@ const Message = (props: MessageType) => {
     return (
         <div>
             <div>
-                <div className={s.dialog}>{props.message}</div>
+                <div className={s.message}>{props.message}</div>
             </div>
 
         </div>

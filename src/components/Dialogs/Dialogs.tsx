@@ -17,12 +17,14 @@ const Dialogs = (props: DialogsPropsType) => {
     };
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
-                {dialogsElements}
-            </div>
-            <div className={s.messages}>
-                {messagesElements}
+        <div className={s.dialogsPage}>
+            <div className={s.dialogs}>
+                <div className={s.dialogsItems}>
+                    {dialogsElements}
+                </div>
+                <div className={s.messages}>
+                    {messagesElements}
+                </div>
             </div>
             <AddMessageFormRedux onSubmit={addNewMessage}/>
         </div>
