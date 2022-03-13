@@ -1,4 +1,82 @@
+.user {
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.user span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: large;
+}
+
 .userPhoto {
-    width: 30px;
-    height: 40px;
+    width: 80px;
+}
+
+.unFollowBtn {
+    margin-top: 10px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid darkred;
+    border-radius: 0.6em;
+    color: darkred;
+    cursor: pointer;
+    line-height: 1;
+    margin-left: 10px;
+    padding: .2em .8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.unFollowBtn:hover {
+    color: #fff;
+    outline: 0;
+    box-shadow: 0 0 40px 40px darkred inset;
+}
+
+.followBtn {
+    margin-top: 10px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #42a790;
+    border-radius: 0.6em;
+    color: #42a790;
+    cursor: pointer;
+    line-height: 1;
+    margin-left: 10px;
+    padding: .2em .8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.followBtn:hover {
+    color: #fff;
+    outline: 0;
+    box-shadow: 0 0 40px 40px #42a790 inset;
 }

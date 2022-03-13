@@ -26,13 +26,15 @@ export const Users = ({
                 onPageChanged={onPageChanged}
                 portionSize={10}
             />
-            <div>
-                {users.map(u => <User user={u}
-                                      unfollow={unfollow}
-                                      follow={follow}
-                                      followingInProgress={followingInProgress}
-                                      key={u.id}/>
-                )}
+            <div className={s.usersContainer}>
+                <div className={s.users}>
+                    {users.map(u => <User user={u}
+                                          unfollow={unfollow}
+                                          follow={follow}
+                                          followingInProgress={followingInProgress}
+                                          key={u.id}/>
+                    )}
+                </div>
             </div>
         </div>
     )

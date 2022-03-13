@@ -8,50 +8,37 @@ export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsTy
 
     return (
 
-        <div>
-                <span>
-                    <div>
-                        <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto}
-                             alt={"userPhoto"}/>
-                            </NavLink>
-                    </div>
+        <div className={s.user}>
 
-                    <div>
-                        {
-                            user.followed
-                                ? <button
-                                    disabled={followingInProgress.some(id => id === user.id)}
-                                    onClick={() => {
-                                        unfollow(user.id)
-                                    }}>unFollow</button>
+            <div>
+                <NavLink to={'/profile/' + user.id}>
+                    <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto}
+                         alt={"userPhoto"}/>
+                </NavLink>
+            </div>
 
-                                : <button
-                                    disabled={followingInProgress.some(id => id === user.id)}
-                                    onClick={() => {
-                                        follow(user.id)
-                                    }}>Follow</button>
-                        }
-                    </div>
+            <span>{user.name}</span>
+            <span>{user.status}</span>
 
-                </span>
-            <span>
+            <div>
+                {
+                    user.followed
+                        ? <button
+                            className={s.unFollowBtn}
+                            disabled={followingInProgress.some(id => id === user.id)}
+                            onClick={() => {
+                                unfollow(user.id)
+                            }}>unFollow</button>
 
-                    <span>
+                        : <button
+                            className={s.followBtn}
+                            disabled={followingInProgress.some(id => id === user.id)}
+                            onClick={() => {
+                                follow(user.id)
+                            }}>Follow</button>
+                }
+            </div>
 
-                        <div>{user.name}</div>
-                        <div>{user.status}</div>
-
-                    </span>
-
-                    <span>
-
-                        <div>{"user.location.country"}</div>
-                        <div>{"user.location.city"}</div>
-
-                    </span>
-
-                </span>
 
         </div>
     )
