@@ -63,7 +63,7 @@ const AppContainer = connect(mapStateToProps, {initializeApp})(App);
 export const MainApp = () => {
     return (
         <React.Suspense fallback={<div>Loading...</div>}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>

@@ -1,6 +1,6 @@
 import React, {ComponentType} from 'react';
 import Profile from "./Profile";
-import {getProfile, getStatus, ProfilePropsType, setUserProfile, updateStatus} from "../../Redux/profile-reducer";
+import {getProfile, getStatus, ProfileType, savePhoto, setUserProfile, updateStatus} from "../../Redux/profile-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -9,7 +9,7 @@ import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 
 type MapStateToPropsType = {
-    profile: ProfilePropsType
+    profile: ProfileType
     isAuth: boolean
     status: string
     authorizedUserId: string
@@ -19,6 +19,7 @@ type MapDispatchToPropsType = {
     getProfile: (userId: string) => void
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
+    savePhoto: (newPhoto: File) => void
 }
 
 type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
@@ -26,7 +27,7 @@ type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
 
 class ProfileAPIContainer extends React.Component<OwnPropsType> {
 
-    componentDidMount() {
+    updateProfile(){
         let userId: string = this.props.userId;
         if (!userId) {
             userId = this.props.authorizedUserId;
@@ -35,12 +36,24 @@ class ProfileAPIContainer extends React.Component<OwnPropsType> {
         this.props.getStatus(userId);
     }
 
+    componentDidMount() {
+        this.updateProfile()
+    }
+
+    componentDidUpdate(prevProps: Readonly<OwnPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.userId !== prevProps.userId) {
+            this.updateProfile()
+        }
+    }
+
     render() {
         return (
             <Profile
+                isOwner={!this.props.userId}
                 profile={this.props.profile}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}
+                savePhoto={this.props.savePhoto}
             />
         )
     }
@@ -61,7 +74,8 @@ export default compose<ComponentType>
         setUserProfile,
         getProfile,
         getStatus,
-        updateStatus
+        updateStatus,
+        savePhoto
     }),
     withRouter2,
     WithAuthRedirect

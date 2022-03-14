@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../Common/Preloader/Preloader";
-import {ProfilePropsType} from "../../../Redux/profile-reducer";
+import {ProfileType} from "../../../Redux/profile-reducer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
-    profile: ProfilePropsType
+    isOwner: boolean
+    profile: ProfileType
     status: string
     updateStatus: (status: string) => void
+    savePhoto: (newPhoto: File) => void
 }
 
 
-const ProfileInfo = ({profile, status, updateStatus}: ProfileInfoPropsType) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: ProfileInfoPropsType) => {
 
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files && e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
@@ -23,7 +31,9 @@ const ProfileInfo = ({profile, status, updateStatus}: ProfileInfoPropsType) => {
                 <img className={s.backgroundImg}
                      src={"https://wallpaperaccess.com/full/144055.png"}
                      alt={"img"}/>
+                {isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
             </div>
+
             <div>
                 <div className={s.avatarBlock}>
                     <img className={s.avatar}

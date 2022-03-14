@@ -5,9 +5,10 @@ import {AppActionType, AppThunk} from "./redux-store";
 const ADD_POST = 'PROFILE/ADD-POST';
 const SET_USER_PROFILE = 'PROFILE/SET-USER-PROFILE';
 const SET_STATUS = 'PROFILE/SET-STATUS';
+const UPDATE_PHOTO = 'PROFILE/UPDATE-PHOTO';
 
 //types
-export type ProfilePropsType = {
+export type ProfileType = {
     "aboutMe": string,
     "contacts": {
         "facebook": string,
@@ -33,21 +34,26 @@ export type PostsType = {
     message: string
     likesCount: number
 }
+type PhotosType = {
+    small: string
+    large: string
+}
 export type InitialStateType = typeof initialState;
 export type ProfileReducerActionType = AddPostType
     | setUserProfileType
     | setStatusType
+    | updatePhotoType
 
 const initialState = {
     posts: [
         {id: 1, message: "Hello, how are you?", likesCount: 0},
         {id: 2, message: "It's my first post", likesCount: 23}
     ] as Array<PostsType>,
-    profile: null as ProfilePropsType,
+    profile: null as ProfileType,
     status: 'hello'
 }
 
-const profileReducer = (state = initialState, action: ProfileReducerActionType): InitialStateType => {
+const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerActionType): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostsType = {
@@ -66,6 +72,9 @@ const profileReducer = (state = initialState, action: ProfileReducerActionType):
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case UPDATE_PHOTO: {
+            return {...state, profile: {...state.profile, photos: action.payload.photos} as ProfileType}
+        }
         default:
             return state;
     }
@@ -80,7 +89,7 @@ export const addPost = (newPostText: string) => {
     } as const
 }
 export type setUserProfileType = ReturnType<typeof setUserProfile>
-export const setUserProfile = (profile: ProfilePropsType) => {
+export const setUserProfile = (profile: ProfileType) => {
     return {
         type: SET_USER_PROFILE,
         profile
@@ -91,6 +100,13 @@ export const setStatus = (status: string) => {
     return {
         type: SET_STATUS,
         status
+    } as const
+}
+export type updatePhotoType = ReturnType<typeof updatePhoto>
+export const updatePhoto = (photos: PhotosType) => {
+    return {
+        type: UPDATE_PHOTO,
+        payload: {photos}
     } as const
 }
 
@@ -107,6 +123,12 @@ export const updateStatus = (status: string): AppThunk => async (dispatch: Dispa
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
+    }
+}
+export const savePhoto = (newPhoto: File): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
+    let response = await profileAPI.savePhoto(newPhoto)
+    if (response.data.resultCode === 0) {
+        dispatch(updatePhoto(response.data.data.photos));
     }
 }
 

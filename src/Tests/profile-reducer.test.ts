@@ -1,11 +1,11 @@
-import profileReducer, {addPost, PostsType, ProfilePropsType, setStatus} from "../Redux/profile-reducer";
+import profileReducer, {addPost, PostsType, ProfileType, setStatus} from "../Redux/profile-reducer";
 
 const startState = {
     posts: [
         {id: 1, message: "Hello, how are you?", likesCount: 0},
         {id: 2, message: "It's my first post", likesCount: 23}
     ] as Array<PostsType>,
-    profile: null as ProfilePropsType,
+    profile: null as ProfileType,
     status: 'hello'
 };
 
