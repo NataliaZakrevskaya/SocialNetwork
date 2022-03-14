@@ -111,6 +111,7 @@ export const updatePhoto = (photos: PhotosType) => {
 }
 
 //Thunks
+
 export const getProfile = (userId: string): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
     let response = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));

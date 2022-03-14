@@ -15,6 +15,8 @@ type ProfileInfoPropsType = {
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: ProfileInfoPropsType) => {
 
+
+
     if (!profile) {
         return <Preloader/>
     }
@@ -40,6 +42,21 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: Profil
                          src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
                          alt={"avatar"}/>
                 </div>
+                <div>
+                    <b>Full name: </b> {profile.fullName}
+                </div>
+                <div>
+                    <b>Looking for a job: </b> {profile.lookingForAJob ? "Yes" : "No"}
+                </div>
+                {profile.lookingForAJob &&
+                <div>
+                    <b>My professional skills: </b> {profile.lookingForAJobDescription}
+                </div>
+                }
+                <div>
+                    <b>About me: </b> {profile.aboutMe}
+                </div>
+
 
                 <ProfileStatusWithHooks
                     status={status}
