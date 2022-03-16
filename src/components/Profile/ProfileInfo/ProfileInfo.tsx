@@ -53,8 +53,8 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
                 {editMode
                     ? <ProfileDataForm
+                        initialValues={profile}
                         onSubmit={onSubmit}
-                        //@ts-ignore
                         profile={profile}
                     />
                     : <ProfileData

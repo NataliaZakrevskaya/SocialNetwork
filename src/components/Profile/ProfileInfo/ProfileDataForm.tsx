@@ -10,10 +10,8 @@ type ProfileDataFormPropsType = {
 }
 
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile}) => {
-    if (!profile) {
-        return <Preloader/>
-    }
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit}) => {
+
     return (
         <form onSubmit={handleSubmit}>
             <div><button>save</button></div>
@@ -31,7 +29,7 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPr
                 </div>
 
             <div>
-                <b>About me: </b> {profile.aboutMe}
+                <b>About me: </b>
                 {createField("About me", "aboutMe", [], Textarea)}
             </div>
             {/*<div>
