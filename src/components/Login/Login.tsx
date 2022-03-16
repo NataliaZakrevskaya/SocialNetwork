@@ -9,17 +9,23 @@ type FormDataType = {
     email: string
     password: string
     rememberMe: boolean
+    captcha: string
+}
+
+type LoginFormPropsType = {
+    captchaUrl: string | null
 }
 
 type LoginPropsType = {
     isAuth?: boolean
-    login: (email: string, password: string, rememberMe: boolean) => void
+    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
+    captchaUrl: string | null
 }
 
-export const Login = ({isAuth, login, ...restProps}: LoginPropsType) => {
+export const Login = ({isAuth, login, captchaUrl, ...restProps}: LoginPropsType) => {
 
     const onSubmit = (formData: FormDataType) => {
-        login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (isAuth) {
@@ -29,18 +35,24 @@ export const Login = ({isAuth, login, ...restProps}: LoginPropsType) => {
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm
+                onSubmit={onSubmit}
+                captchaUrl={captchaUrl}
+            />
         </div>
     );
 };
 
-const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
+const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsType> & LoginFormPropsType> = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
 
             {createField("Email", "email", [required], Input, {type: "text"}, "")}
             {createField("Password", "password", [required], Input, {type: "password"}, "")}
             {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me")}
+
+            {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'}/>}
+            {captchaUrl && createField("Symbols from image", "captcha", [required], Input)}
 
             {
                 error &&
@@ -53,4 +65,4 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, err
     );
 }
 
-const LoginReduxForm = reduxForm<FormDataType>({form: "Login"})(LoginForm)
+const LoginReduxForm = reduxForm<FormDataType, LoginFormPropsType>({form: "Login"})(LoginForm)
