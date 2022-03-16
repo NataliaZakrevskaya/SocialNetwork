@@ -1,6 +1,14 @@
 import React, {ComponentType} from 'react';
 import Profile from "./Profile";
-import {getProfile, getStatus, ProfileType, savePhoto, setUserProfile, updateStatus} from "../../Redux/profile-reducer";
+import {
+    getProfile,
+    getStatus,
+    ProfileType,
+    savePhoto,
+    saveProfile,
+    setUserProfile,
+    updateStatus
+} from "../../Redux/profile-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -20,6 +28,7 @@ type MapDispatchToPropsType = {
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
     savePhoto: (newPhoto: File) => void
+    saveProfile: (profileData: ProfileType) => void
 }
 
 type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
@@ -54,6 +63,7 @@ class ProfileAPIContainer extends React.Component<OwnPropsType> {
                 status={this.props.status}
                 updateStatus={this.props.updateStatus}
                 savePhoto={this.props.savePhoto}
+                saveProfile={this.props.saveProfile}
             />
         )
     }
@@ -75,7 +85,8 @@ export default compose<ComponentType>
         getProfile,
         getStatus,
         updateStatus,
-        savePhoto
+        savePhoto,
+        saveProfile,
     }),
     withRouter2,
     WithAuthRedirect

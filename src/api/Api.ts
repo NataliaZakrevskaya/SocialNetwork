@@ -1,5 +1,6 @@
 import axios from "axios";
 import {UsersType} from "../Redux/users-reducer";
+import {ProfileType} from "../Redux/profile-reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -19,6 +20,7 @@ type FollowingResponseType = {
     messages: Array<string | null>
     data: {}
 }
+
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 10) {
@@ -65,5 +67,8 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-Data'
             }
         })
+    },
+    saveProfile(ProfileData: ProfileType) {
+        return instance.put(`profile/`, ProfileData)
     }
 }

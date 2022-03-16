@@ -1,8 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../Common/Preloader/Preloader";
-import {ProfileType} from "../../../Redux/profile-reducer";
+import {ContactsType, ProfileType} from "../../../Redux/profile-reducer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import ProfileDataForm from './ProfileDataForm';
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -10,23 +11,29 @@ type ProfileInfoPropsType = {
     status: string
     updateStatus: (status: string) => void
     savePhoto: (newPhoto: File) => void
+    saveProfile: (profileData: ProfileType) => void
 }
 
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: ProfileInfoPropsType) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}: ProfileInfoPropsType) => {
 
-
+    const [editMode, setEditMode] = useState<boolean>(false)
 
     if (!profile) {
         return <Preloader/>
     }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
-        if(e.target.files && e.target.files.length) {
+        if (e.target.files && e.target.files.length) {
             savePhoto(e.target.files[0])
         }
     }
 
+    const onSubmit = (formData: any) => {
+        saveProfile(formData)
+    }
+
+    // @ts-ignore
     return (
         <div className={s.profileInfoBlock}>
             <div className={s.imagesBlock}>
@@ -42,21 +49,20 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: Profil
                          src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
                          alt={"avatar"}/>
                 </div>
-                <div>
-                    <b>Full name: </b> {profile.fullName}
-                </div>
-                <div>
-                    <b>Looking for a job: </b> {profile.lookingForAJob ? "Yes" : "No"}
-                </div>
-                {profile.lookingForAJob &&
-                <div>
-                    <b>My professional skills: </b> {profile.lookingForAJobDescription}
-                </div>
-                }
-                <div>
-                    <b>About me: </b> {profile.aboutMe}
-                </div>
 
+
+                {editMode
+                    ? <ProfileDataForm
+                        onSubmit={onSubmit}
+                        //@ts-ignore
+                        profile={profile}
+                    />
+                    : <ProfileData
+                        profile={profile}
+                        isOwner={isOwner}
+                        goToEditMode={() => {setEditMode(true)}}
+                    />
+                }
 
                 <ProfileStatusWithHooks
                     status={status}
@@ -66,6 +72,66 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: Profil
             </div>
         </div>
     )
+}
+
+const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => {
+
+    if (!profile) {
+        return <Preloader/>
+    }
+
+    return (
+        <div>
+            {isOwner
+                && <div><button onClick={goToEditMode}>edit</button></div>}
+
+            <div>
+                <b>Full name: </b> {profile.fullName}
+            </div>
+            <div>
+                <b>Looking for a job: </b> {profile.lookingForAJob ? "Yes" : "No"}
+            </div>
+            {profile.lookingForAJob &&
+                <div>
+                    <b>My professional skills: </b> {profile.lookingForAJobDescription}
+                </div>
+            }
+            <div>
+                <b>About me: </b> {profile.aboutMe}
+            </div>
+            <div>
+                <b>Contacts: </b> {Object.keys(profile.contacts)
+                .map(key => {
+                    return <Contact
+                        key={key}
+                        contactTitle={key}
+                        contactValue={profile.contacts[key as keyof ContactsType]}/>
+                })}
+            </div>
+
+        </div>
+    )
+}
+
+type ProfileDataPropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    goToEditMode: () => void
+
+}
+
+
+const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
+    return (
+        <div className={s.contact}>
+            <b>{contactTitle}</b>: {contactValue}
+        </div>
+    )
+}
+
+type ContactPropsType = {
+    contactTitle: string
+    contactValue: string
 }
 
 export default ProfileInfo;

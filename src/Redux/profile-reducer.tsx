@@ -8,22 +8,15 @@ const SET_STATUS = 'PROFILE/SET-STATUS';
 const UPDATE_PHOTO = 'PROFILE/UPDATE-PHOTO';
 
 //types
+
+
 export type ProfileType = {
-    "aboutMe": string,
-    "contacts": {
-        "facebook": string,
-        "website": string,
-        "vk": string,
-        "twitter": string,
-        "instagram": string,
-        "youtube": string,
-        "github": string,
-        "mainLink": string
-    },
-    "lookingForAJob": string,
-    "lookingForAJobDescription": string,
-    "fullName": string,
-    "userId": number,
+    "aboutMe": string
+    "contacts": ContactsType
+    "lookingForAJob": string
+    "lookingForAJobDescription": string
+    "fullName": string
+    "userId": number
     "photos": {
         "small": string,
         "large": string
@@ -33,6 +26,16 @@ export type PostsType = {
     id: number
     message: string
     likesCount: number
+}
+export type ContactsType = {
+    facebook: string,
+    website: string,
+    vk: string,
+    twitter: string,
+    instagram: string,
+    youtube: string,
+    github: string,
+    mainLink: string
 }
 type PhotosType = {
     small: string
@@ -49,8 +52,8 @@ const initialState = {
         {id: 1, message: "Hello, how are you?", likesCount: 0},
         {id: 2, message: "It's my first post", likesCount: 23}
     ] as Array<PostsType>,
-    profile: null as ProfileType,
-    status: 'hello'
+    profile: null as ProfileType | null,
+    status: ''
 }
 
 const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerActionType): InitialStateType => {
@@ -130,6 +133,13 @@ export const savePhoto = (newPhoto: File): AppThunk => async (dispatch: Dispatch
     let response = await profileAPI.savePhoto(newPhoto)
     if (response.data.resultCode === 0) {
         dispatch(updatePhoto(response.data.data.photos));
+    }
+}
+export const saveProfile = (profileData: ProfileType): AppThunk => async (dispatch: Dispatch<AppActionType>) => {
+    let response = await profileAPI.saveProfile(profileData)
+    if (response.data.resultCode === 0) {
+        debugger
+        //dispatch(updatePhoto(response.data.data.photos));
     }
 }
 
