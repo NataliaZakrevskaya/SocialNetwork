@@ -30,9 +30,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         }
     }
 
-    const onSubmit = (formData: any) => {
-        saveProfile(formData)
-        setEditMode(false)
+    const onSubmit = async (formData: ProfileType): Promise<any> => {
+       await saveProfile(formData)
+            setEditMode(false)
     }
 
     // @ts-ignore

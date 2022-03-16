@@ -28,7 +28,7 @@ type MapDispatchToPropsType = {
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
     savePhoto: (newPhoto: File) => void
-    saveProfile: (profileData: ProfileType) => void
+    saveProfile: (profileData: ProfileType) => Promise<any>
 }
 
 type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
