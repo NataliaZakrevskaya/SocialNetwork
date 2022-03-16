@@ -1,8 +1,10 @@
-import {Preloader} from "../../Common/Preloader/Preloader";
-import {ContactsType, ProfileType} from "../../../Redux/profile-reducer";
+import {Preloader} from "../../../Common/Preloader/Preloader";
+import {ContactsType, ProfileType} from "../../../../Redux/profile-reducer";
 import React from "react";
-import {createField, Input, Textarea} from "../../Common/FormsControls/FormsControls";
+import {createField, Input, Textarea} from "../../../Common/FormsControls/FormsControls";
 import {InjectedFormProps, reduxForm} from "redux-form";
+import {Contact} from "./Contact/Contact";
+import s from "./../ProfileInfo.module.css"
 
 // TYPES
 type ProfileDataFormPropsType = {
@@ -10,7 +12,11 @@ type ProfileDataFormPropsType = {
 }
 
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit}) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile}) => {
+
+    if(!profile) {
+        return <Preloader/>
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -32,15 +38,19 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPr
                 <b>About me: </b>
                 {createField("About me", "aboutMe", [], Textarea)}
             </div>
-            {/*<div>
+            <div>
                 <b>Contacts: </b> {Object.keys(profile.contacts)
                 .map(key => {
-                    return <Contact
-                        key={key}
-                        contactTitle={key}
-                        contactValue={profile.contacts[key as keyof ContactsType]}/>
+                    return(
+                        <div className={s.contact}>
+                           <b>{key}</b>:
+                            {createField(key, "contacts." + key, [], Input)}
+                        </div>
+
+                    )
+
                 })}
-            </div>*/}
+            </div>
 
         </form>
     )

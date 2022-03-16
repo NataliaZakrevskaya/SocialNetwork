@@ -3,7 +3,8 @@ import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../Common/Preloader/Preloader";
 import {ContactsType, ProfileType} from "../../../Redux/profile-reducer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
-import ProfileDataForm from './ProfileDataForm';
+import ProfileDataForm from './ProfileFormData/ProfileDataForm';
+import {Contact} from "./ProfileFormData/Contact/Contact";
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -31,6 +32,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
     const onSubmit = (formData: any) => {
         saveProfile(formData)
+        setEditMode(false)
     }
 
     // @ts-ignore
@@ -60,7 +62,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     : <ProfileData
                         profile={profile}
                         isOwner={isOwner}
-                        goToEditMode={() => {setEditMode(true)}}
+                        goToEditMode={() => {
+                            setEditMode(true)
+                        }}
                     />
                 }
 
@@ -83,7 +87,9 @@ const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => 
     return (
         <div>
             {isOwner
-                && <div><button onClick={goToEditMode}>edit</button></div>}
+                && <div>
+                    <button onClick={goToEditMode}>edit</button>
+                </div>}
 
             <div>
                 <b>Full name: </b> {profile.fullName}
@@ -120,18 +126,5 @@ type ProfileDataPropsType = {
 
 }
 
-
-const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
-    return (
-        <div className={s.contact}>
-            <b>{contactTitle}</b>: {contactValue}
-        </div>
-    )
-}
-
-type ContactPropsType = {
-    contactTitle: string
-    contactValue: string
-}
 
 export default ProfileInfo;
