@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {LoginContainer} from "./components/Login/LoginContainer";
 import {connect, Provider} from "react-redux";
@@ -23,9 +23,15 @@ type AppPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 
 class App extends React.Component<AppPropsType> {
-
+    catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
+        alert(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    }
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -38,6 +44,8 @@ class App extends React.Component<AppPropsType> {
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
                     <Routes>
+                        <Route path='/' element={<Navigate to={'/profile'}/>}/>
+
                         <Route path='/dialogs' element={<DialogsContainer/>}>
                             <Route path=":userId" element={<DialogsContainer/>}/>
                         </Route>
@@ -46,6 +54,7 @@ class App extends React.Component<AppPropsType> {
                         </Route>
                         <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/login' element={<LoginContainer/>}/>
+                        <Route path='*' element={<div>404 NOT FOUND</div>}/>
 
                     </Routes>
                 </div>
