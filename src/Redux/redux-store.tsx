@@ -21,23 +21,11 @@ export const rootReducer = combineReducers({
 export type AppStateType = ReturnType<typeof rootReducer>;
 
 
-/*export type AppActionType =
-    ProfileReducerActionType
-    | DialogsReducerActionType
-    | UsersReducerActionType
-    | AuthReducerActionType
-    | AppReducerActionType*/
-
 //@ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 
-//<то, что возвращает санка (обычно void)>, <типизация стэйта всего приложения>,
-//<unknown>, <типизация экшенов всего приложения>
-
-
-/*export type AppThunk<ReturnType = void> = ThunkAction<void, AppStateType, unknown, AppActionType>*/
 export type AppThunkType<A extends Action, RT = Promise<void>> = ThunkAction<RT, AppStateType, unknown, A>
 
 type PropertiesTypes<T> = T extends {[key: string]: infer U} ? U: never
