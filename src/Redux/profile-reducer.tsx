@@ -111,7 +111,7 @@ export const saveProfile = (profileData: ProfileType): ThunkType => async (dispa
 }
 
 //TYPES
-type PhotosType = {
+export type PhotosType = {
     small: string
     large: string
 }
