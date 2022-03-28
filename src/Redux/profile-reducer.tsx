@@ -1,6 +1,7 @@
 import {stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
 import {profileAPI} from "../api/profile-api";
+import {ResultCodesEnum} from "../api/Api";
 
 //CONSTANTS
 export enum profileReducerEnum {
@@ -89,20 +90,20 @@ export const getStatus = (userId: string): ThunkType => async (dispatch: any) =>
 }
 export const updateStatus = (status: string): ThunkType => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(profileReducerActions.setStatus(status));
     }
 }
 export const savePhoto = (newPhoto: File): ThunkType => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(newPhoto)
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(profileReducerActions.updatePhoto(response.data.data.photos));
     }
 }
 export const saveProfile = (profileData: ProfileType): ThunkType => async (dispatch: any, getState: any) => {
     const userId = getState().auth.data.id
     const response = await profileAPI.saveProfile(profileData)
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(getProfile(userId));
     } else {
         dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));

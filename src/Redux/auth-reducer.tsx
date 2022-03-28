@@ -2,6 +2,7 @@ import {stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
 import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
+import {ResultCodesEnum} from "../api/Api";
 
 // CONSTANTS
 export enum AuthReducerEnum {
@@ -50,17 +51,17 @@ export const authReducerActions = {
             type: AuthReducerEnum.GET_CAPTCHA_URL_SUCCESS,
             payload: {captchaUrl}
         } as const
-    }
+    },
 }
 
 
 //THUNKS
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): ThunkType => async (dispatch: any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if(response.data.resultCode === 10) {
+        if(response.data.resultCode === ResultCodesEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrl())
         }
         const message = response.data.messages.length > 0
@@ -71,13 +72,13 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 }
 export const logout = (): ThunkType => async (dispatch: any) => {
     let response = await authAPI.logout()
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(authReducerActions.setAuthUserData('', '', '', false));
     }
 }
 export const getAuthUserData = (): ThunkType => async (dispatch: any) => {
     const response = await authAPI.me()
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         let {id, email, login} = response.data.data;
         dispatch(authReducerActions.setAuthUserData(id, email, login, true));
 
