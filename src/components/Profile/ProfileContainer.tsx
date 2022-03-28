@@ -2,11 +2,10 @@ import React, {ComponentType} from 'react';
 import Profile from "./Profile";
 import {
     getProfile,
-    getStatus,
+    getStatus, profileReducerActions,
     ProfileType,
     savePhoto,
     saveProfile,
-    setUserProfile,
     updateStatus
 } from "../../Redux/profile-reducer";
 import {AppStateType} from "../../Redux/redux-store";
@@ -81,7 +80,6 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export default compose<ComponentType>
 (connect
     (mapStateToProps, {
-        setUserProfile,
         getProfile,
         getStatus,
         updateStatus,

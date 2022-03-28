@@ -5,8 +5,6 @@ import {AppStateType} from '../../Redux/redux-store';
 import {
     follow,
     requestUsers,
-    setCurrentPage,
-    toggleFollowingProgress,
     unfollow,
     UsersType
 } from "../../Redux/users-reducer";
@@ -85,8 +83,7 @@ export default compose<ComponentType>(
     connect
     (mapStateToProps,
         {
-            follow, unfollow,
-            setCurrentPage, toggleFollowingProgress, requestUsers
+            follow, unfollow, requestUsers
         }),
    // WithAuthRedirect
 )(UsersAPIComponent);
