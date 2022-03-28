@@ -1,6 +1,6 @@
-import {usersAPI} from "../api/Api";
 import {updateObjectInArray} from "../Utils/object-helpers";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
+import {usersAPI} from "../api/users-api";
 
 //CONSTANTS
 export enum UserReducerEnum {

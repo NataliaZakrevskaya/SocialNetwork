@@ -1,6 +1,7 @@
-import {authAPI, securityAPI} from "../api/Api";
+import {securityAPI} from "../api/Api";
 import {stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
+import {authAPI} from "../api/auth-api";
 
 // CONSTANTS
 export enum AuthReducerEnum {
