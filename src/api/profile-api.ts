@@ -22,6 +22,8 @@ export const profileAPI = {
         return instance.put<ProfileAPIResponseType<{}>>(`profile/`, ProfileData)},
 }
 
+
+//TYPES
 type GetProfileResponseType = {
     userId: number
     lookingForAJob: boolean
