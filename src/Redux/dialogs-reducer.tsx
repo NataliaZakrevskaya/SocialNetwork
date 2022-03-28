@@ -1,19 +1,10 @@
-const SEND_MESSAGE = 'DIALOGS/SEND-MESSAGE';
+import {InferActionsTypes} from "./redux-store";
 
-//Types
-export type DialogType = {
-    id: number
-    name: string
-};
-export type MessageType = {
-    id: number
-    message: string
-};
-export type InitialStateType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-};
-export type DialogsReducerActionType = sendMessageType;
+//CONSTANTS
+export enum DialogReducerEnum {
+    SEND_MESSAGE = 'DIALOGS/SEND-MESSAGE'
+}
+
 
 let initialState: InitialStateType = {
     dialogs: [
@@ -33,9 +24,11 @@ let initialState: InitialStateType = {
     ]
 }
 
+
+
 const dialogsReducer = (state = initialState, action: DialogsReducerActionType) => {
     switch (action.type) {
-        case SEND_MESSAGE:
+        case DialogReducerEnum.SEND_MESSAGE:
             let body = action.newMessageBody;
             return {
                 ...state,
@@ -46,13 +39,33 @@ const dialogsReducer = (state = initialState, action: DialogsReducerActionType) 
     }
 }
 
-//ActionCreators
-export type sendMessageType = ReturnType<typeof sendMessage>
-export const sendMessage = (newMessageBody: string) => {
-    return {
-        type: SEND_MESSAGE,
-        newMessageBody
-    } as const
+
+
+//ACTIONS
+export const dialogsReducerActions = {
+    sendMessage: (newMessageBody: string) => {
+        return {
+            type: DialogReducerEnum.SEND_MESSAGE,
+            newMessageBody
+        } as const
+    }
 }
+
+
+
+//TYPES
+export type DialogType = {
+    id: number
+    name: string
+};
+export type MessageType = {
+    id: number
+    message: string
+};
+export type InitialStateType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+};
+type DialogsReducerActionType = InferActionsTypes<typeof dialogsReducerActions>
 
 export default dialogsReducer;

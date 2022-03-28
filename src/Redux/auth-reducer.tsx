@@ -9,6 +9,12 @@ export enum AuthReducerEnum {
 }
 
 
+const initialState: InitialStateType = {
+    data: {} as DataType,
+    isAuth: false,
+    captchaUrl: null // if null, then captcha isn't required
+}
+
 const authReducer = (state: InitialStateType = initialState, action: AuthReducerActionType) => {
     switch (action.type) {
         case AuthReducerEnum.SET_USER_DATA:
@@ -94,11 +100,6 @@ type InitialStateType = {
     data: DataType
     isAuth: boolean
     captchaUrl: string | null
-}
-const initialState: InitialStateType = {
-    data: {} as DataType,
-    isAuth: false,
-    captchaUrl: null // if null, then captcha isn't required
 }
 type AuthReducerActionType = InferActionsTypes<typeof authReducerActions>
 type ThunkType = AppThunkType<AuthReducerActionType>
