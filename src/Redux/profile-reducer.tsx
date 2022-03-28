@@ -1,4 +1,4 @@
-import {stopSubmit} from "redux-form";
+import {FormAction, stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
 import {profileAPI} from "../api/profile-api";
 import {ResultCodesEnum} from "../api/Api";
@@ -80,31 +80,31 @@ export const profileReducerActions = {
 
 
 //THUNKS
-export const getProfile = (userId: string): ThunkType => async (dispatch: any) => {
+export const getProfile = (userId: string): ThunkType => async (dispatch) => {
     let response = await profileAPI.getProfile(userId)
     dispatch(profileReducerActions.setUserProfile(response.data));
 }
-export const getStatus = (userId: string): ThunkType => async (dispatch: any) => {
+export const getStatus = (userId: string): ThunkType => async (dispatch) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(profileReducerActions.setStatus(response.data));
 }
-export const updateStatus = (status: string): ThunkType => async (dispatch: any) => {
+export const updateStatus = (status: string): ThunkType => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(profileReducerActions.setStatus(status));
     }
 }
-export const savePhoto = (newPhoto: File): ThunkType => async (dispatch: any) => {
+export const savePhoto = (newPhoto: File): ThunkType => async (dispatch) => {
     let response = await profileAPI.savePhoto(newPhoto)
     if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(profileReducerActions.updatePhoto(response.data.data.photos));
     }
 }
-export const saveProfile = (profileData: ProfileType): ThunkType => async (dispatch: any, getState: any) => {
+export const saveProfile = (profileData: ProfileType): ThunkType => async (dispatch, getState: any) => {
     const userId = getState().auth.data.id
     const response = await profileAPI.saveProfile(profileData)
     if (response.data.resultCode === ResultCodesEnum.Success) {
-        dispatch(getProfile(userId));
+        await dispatch(getProfile(userId));
     } else {
         dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));
         return Promise.reject(response.data.messages[0])
@@ -141,6 +141,6 @@ export type ContactsType = {
 }
 export type InitialStateType = typeof initialState;
 type ProfileReducerActionType = InferActionsTypes<typeof profileReducerActions>
-type ThunkType = AppThunkType<ProfileReducerActionType>
+type ThunkType = AppThunkType<ProfileReducerActionType | FormAction>
 
 export default profileReducer;

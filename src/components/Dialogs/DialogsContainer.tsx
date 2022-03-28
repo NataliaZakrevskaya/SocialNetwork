@@ -7,6 +7,14 @@ import {AppStateType} from "../../Redux/redux-store";
 import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+    return {
+        dialogsPage: state.messagesPage
+    };
+};
+
+//TYPES
 type MapStateToPropsType = {
     dialogsPage: InitialStateType
 }
@@ -16,23 +24,10 @@ type MapDispatchToPropsType = {
 export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-    return {
-        dialogsPage: state.messagesPage
-    };
-};
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-    return {
-        sendMessage: (newMessageBody: string) => {
-            dispatch(dialogsReducerActions.sendMessage(newMessageBody));
-        }
-    }
-}
-
 
 export default compose<ComponentType>(
     connect
-    (mapStateToProps, mapDispatchToProps),
+    (mapStateToProps, {sendMessage:dialogsReducerActions.sendMessage }),
     WithAuthRedirect
 )
 (Dialogs);

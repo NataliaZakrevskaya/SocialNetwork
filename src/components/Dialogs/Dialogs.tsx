@@ -6,13 +6,13 @@ import {DialogsPropsType} from "./DialogsContainer";
 import {AddMessageFormRedux} from "./AddMessageFormRedux";
 
 
-const Dialogs = (props: DialogsPropsType) => {
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     const state = props.dialogsPage;
     const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
     const messagesElements = state.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>)
 
-    const addNewMessage = (values: any) => {
+    const addNewMessage = (values: NewMessageFormType) => {
         props.sendMessage(values.newMessageBody);
     };
 
@@ -29,6 +29,11 @@ const Dialogs = (props: DialogsPropsType) => {
             <AddMessageFormRedux onSubmit={addNewMessage}/>
         </div>
     )
+}
+
+//TYPES
+export type NewMessageFormType = {
+    newMessageBody: string
 }
 
 

@@ -84,7 +84,7 @@ export const usersReducerActions = {
 
 
 //THUNKS
-export const requestUsers = (page: number, pageSize: number): ThunkType => async (dispatch: any) => {
+export const requestUsers = (page: number, pageSize: number): ThunkType => async (dispatch) => {
     dispatch(usersReducerActions.toggleIsFetching(true));
     dispatch(usersReducerActions.setCurrentPage(page));
     let data = await usersAPI.getUsers(page, pageSize)
@@ -100,10 +100,10 @@ const followUnfollowFlow = async (dispatch: any, apiMethod: any, userId: number,
     }
     dispatch(usersReducerActions.toggleFollowingProgress(false, userId))
 }
-export const follow = (userId: number): ThunkType => async (dispatch: any) => {
+export const follow = (userId: number): ThunkType => async (dispatch) => {
     await followUnfollowFlow(dispatch, usersAPI.follow.bind(usersAPI), userId, usersReducerActions.followSuccess)
 }
-export const unfollow = (userId: number): ThunkType => async (dispatch: any) => {
+export const unfollow = (userId: number): ThunkType => async (dispatch) => {
     await followUnfollowFlow(dispatch, usersAPI.unfollow.bind(usersAPI), userId, usersReducerActions.unfollowSuccess)
 }
 

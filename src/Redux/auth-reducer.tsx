@@ -1,4 +1,4 @@
-import {stopSubmit} from "redux-form";
+import {FormAction, stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
 import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
@@ -56,7 +56,7 @@ export const authReducerActions = {
 
 
 //THUNKS
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): ThunkType => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): ThunkType => async (dispatch) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
     if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
@@ -70,13 +70,13 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
         dispatch(stopSubmit("login", {_error: message}));
     }
 }
-export const logout = (): ThunkType => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     let response = await authAPI.logout()
     if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(authReducerActions.setAuthUserData('', '', '', false));
     }
 }
-export const getAuthUserData = (): ThunkType => async (dispatch: any) => {
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const response = await authAPI.me()
     if (response.data.resultCode === ResultCodesEnum.Success) {
         let {id, email, login} = response.data.data;
@@ -84,7 +84,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch: any) => {
 
     }
 }
-export const getCaptchaUrl = (): ThunkType => async (dispatch: any) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const captchaData  = await securityAPI.getCaptchaUrl()
     const captchaUrl = captchaData.url
     dispatch(authReducerActions.getCaptchaUrlSuccess(captchaUrl));
@@ -104,7 +104,7 @@ type InitialStateType = {
     captchaUrl: string | null
 }
 type AuthReducerActionType = InferActionsTypes<typeof authReducerActions>
-type ThunkType = AppThunkType<AuthReducerActionType>
+type ThunkType = AppThunkType<AuthReducerActionType | FormAction>
 
 
 
