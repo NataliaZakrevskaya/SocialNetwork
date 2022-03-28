@@ -103,9 +103,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => 
                 </div>
             }
             <div>
-                <b>About me: </b> {profile.aboutMe}
-            </div>
-            <div>
                 <b>Contacts: </b> {Object.keys(profile.contacts)
                 .map(key => {
                     return <Contact

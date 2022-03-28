@@ -111,17 +111,17 @@ export const saveProfile = (profileData: ProfileType): ThunkType => async (dispa
 }
 
 //TYPES
+type PhotosType = {
+    small: string
+    large: string
+}
 export type ProfileType = {
-    "aboutMe": string
-    "contacts": ContactsType
-    "lookingForAJob": string
-    "lookingForAJobDescription": string
-    "fullName": string
-    "userId": number
-    "photos": {
-        "small": string,
-        "large": string
-    }
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
 } | null
 export type PostsType = {
     id: number
@@ -137,10 +137,6 @@ export type ContactsType = {
     youtube: string,
     github: string,
     mainLink: string
-}
-type PhotosType = {
-    small: string
-    large: string
 }
 export type InitialStateType = typeof initialState;
 type ProfileReducerActionType = InferActionsTypes<typeof profileReducerActions>
