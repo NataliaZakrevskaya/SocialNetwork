@@ -1,7 +1,8 @@
 import {updateObjectInArray} from "../Utils/object-helpers";
 import {AppThunkType, InferActionsTypes} from "./redux-store";
-import {usersAPI} from "../api/users-api";
+import {FollowingResponseType, usersAPI} from "../api/users-api";
 import {ResultCodesEnum} from "../api/Api";
+import {Dispatch} from "redux";
 
 //CONSTANTS
 export enum UserReducerEnum {
@@ -92,7 +93,7 @@ export const requestUsers = (page: number, pageSize: number): ThunkType => async
     dispatch(usersReducerActions.setUsers(data.items));
     dispatch(usersReducerActions.setTotalUsersCount(data.totalCount));
 }
-const followUnfollowFlow = async (dispatch: any, apiMethod: any, userId: number, actionCreator: any) => {
+const followUnfollowFlow = async (dispatch: Dispatch<UsersReducerActionType>, apiMethod: (userId: number) => Promise<FollowingResponseType>, userId: number, actionCreator: (userId: number) => UsersReducerActionType) => {
     dispatch(usersReducerActions.toggleFollowingProgress(true, userId))
     let response = await apiMethod(userId);
     if (response.resultCode === ResultCodesEnum.Success) {

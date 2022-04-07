@@ -12,7 +12,7 @@ export const usersAPI = {
         return instance.post<FollowingResponseType>(`follow/${userId}`).then(response => response.data)
     },
     unfollow(userId: number) {
-        return instance.delete<FollowingResponseType>(`follow/${userId}`).then(response => response.data)
+        return instance.delete(`follow/${userId}`).then(response => response.data) as Promise<FollowingResponseType>
     }
 }
 
@@ -22,7 +22,7 @@ type GetUsersResponseType = {
     error: null | string
     totalCount: number
 }
-type FollowingResponseType = {
+export type FollowingResponseType = {
     resultCode: number
     messages: Array<string | null>
     data: {}
