@@ -9,6 +9,7 @@ export enum UserReducerEnum {
     FOLLOW = 'USERS/FOLLOW',
     UNFOLLOW = 'USERS/UNFOLLOW',
     SET_USERS = 'USERS/SET-USERS',
+    SET_FILTER = 'USERS/SET-FILTER',
     SET_CURRENT_PAGE = 'USERS/SET-CURRENT-PAGE',
     SET_TOTAL_USERS_COUNT = 'USERS/SET-TOTAL-USERS-COUNT',
     TOGGLE_IS_FETCHING = 'USERS/TOGGLE-IS-FETCHING',
@@ -16,13 +17,17 @@ export enum UserReducerEnum {
 }
 
 
-let initialState: InitialStateType = {
+let initialState = {
     users: [] as UsersType[],
     pageSize: 10,
     totalUsersCount: 0,
     page: 1,
     isFetching: false,
-    followingInProgress: [] as number[]
+    followingInProgress: [] as number[],
+    filter: {
+        term: '',
+        friend: null as null | boolean
+    },
 }
 
 const usersReducer = (state = initialState, action: UsersReducerActionType): InitialStateType => {
@@ -38,6 +43,8 @@ const usersReducer = (state = initialState, action: UsersReducerActionType): Ini
             }
         case UserReducerEnum.SET_USERS:
             return {...state, users: [...action.users]}
+        case UserReducerEnum.SET_FILTER:
+            return {...state, filter: action.payload.filter}
         case UserReducerEnum.SET_CURRENT_PAGE:
             return {...state, page: action.currentPage}
         case UserReducerEnum.SET_TOTAL_USERS_COUNT:
@@ -69,6 +76,10 @@ export const usersReducerActions = {
         return {type: UserReducerEnum.SET_USERS, users
         } as const
     },
+    setFilter: (filter: FilterType) => {
+        return {type: UserReducerEnum.SET_FILTER, payload: {filter}
+        } as const
+    },
     setCurrentPage: (currentPage: number) => {
         return {type: UserReducerEnum.SET_CURRENT_PAGE, currentPage} as const
     },
@@ -85,10 +96,11 @@ export const usersReducerActions = {
 
 
 //THUNKS
-export const requestUsers = (page: number, pageSize: number): ThunkType => async (dispatch) => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => async (dispatch) => {
     dispatch(usersReducerActions.toggleIsFetching(true));
     dispatch(usersReducerActions.setCurrentPage(page));
-    let data = await usersAPI.getUsers(page, pageSize)
+    dispatch(usersReducerActions.setFilter(filter));
+    let data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend)
     dispatch(usersReducerActions.toggleIsFetching(false));
     dispatch(usersReducerActions.setUsers(data.items));
     dispatch(usersReducerActions.setTotalUsersCount(data.totalCount));
@@ -117,15 +129,9 @@ export type UsersType = {
     name: string
     status: string | null
     uniqueUrlName: null
-};
-export type InitialStateType = {
-    users: Array<UsersType>
-    pageSize: number
-    totalUsersCount: number
-    page: number
-    isFetching: boolean
-    followingInProgress: Array<number>
 }
+export type InitialStateType = typeof initialState
+export type FilterType = typeof initialState.filter
 type UsersReducerActionType = InferActionsTypes<typeof usersReducerActions>
 type ThunkType = AppThunkType<UsersReducerActionType>
 
