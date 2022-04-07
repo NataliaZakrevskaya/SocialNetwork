@@ -3,15 +3,15 @@ import './App.css'
 import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {LoginContainer} from "./components/Login/LoginContainer";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
+import {UsersPage} from "./components/Users/UsersPage";
+import {LoginPage} from "./components/Login/LoginPage";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 type MapStateToPropsType = {
     initialized: boolean
@@ -52,8 +52,8 @@ class App extends React.Component<AppPropsType> {
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path=":userId" element={<ProfileContainer/>}/>
                         </Route>
-                        <Route path='/users' element={<UsersContainer/>}/>
-                        <Route path='/login' element={<LoginContainer/>}/>
+                        <Route path='/users' element={<UsersPage/>}/>
+                        <Route path='/login' element={<LoginPage/>}/>
                         <Route path='*' element={<div>404 NOT FOUND</div>}/>
 
                     </Routes>

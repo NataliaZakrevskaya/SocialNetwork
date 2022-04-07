@@ -1,22 +1,50 @@
-import React, {FC} from 'react'
-import {FilterType, UsersType} from "../../Redux/users-reducer";
+import React, {FC, useEffect} from 'react'
+import {FilterType, requestUsers, UsersType} from "../../Redux/users-reducer";
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User";
 import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    getFollowingInProgress,
+    getPage,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers,
+    getUsersFilter
+} from "../../Redux/Selectors/users-selectors";
 
-export const Users: FC<UsersPropsType> = React.memo(({
-                                              totalUsersCount,
-                                              pageSize,
-                                              currentPage,
-                                              onPageChanged,
-                                              unfollow,
-                                              follow,
-                                              followingInProgress,
-                                              users,
-                                              onFilterChanged,
-                                              ...props
-                                          }: UsersPropsType) => {
+export const Users: FC<UsersPropsType> = React.memo((props) => {
+
+
+    const pageSize = useSelector(getPageSize)
+    const users = useSelector(getUsers)
+    const totalUsersCount = useSelector(getTotalUsersCount)
+    const currentPage = useSelector(getPage)
+    const filter = useSelector(getUsersFilter)
+    const followingInProgress = useSelector(getFollowingInProgress)
+
+    const dispatch = useDispatch()
+
+
+
+    const onPageChanged = (pageNumber: number) => {
+        dispatch(requestUsers(pageNumber, pageSize, filter))
+    }
+    const onFilterChanged = (filter: FilterType) => {
+        dispatch(requestUsers(1, pageSize, filter))
+    }
+    const follow = (userID: number) => {
+        dispatch(follow(userID))
+    }
+    const unfollow = (userID: number) => {
+        dispatch(unfollow(userID))
+    }
+
+    useEffect(() => {
+        dispatch(requestUsers(currentPage, pageSize, filter))
+    }, [])
+
 
     return (
 
@@ -48,13 +76,4 @@ export const Users: FC<UsersPropsType> = React.memo(({
 
 //Types
 type UsersPropsType = {
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    onPageChanged: (pageNumber: number) => void
-    users: Array<UsersType>
-    unfollow: (userID: number) => void
-    follow: (userID: number) => void
-    followingInProgress: Array<number>
-    onFilterChanged: (filter: FilterType) => void
 }
