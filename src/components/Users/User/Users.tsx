@@ -1,9 +1,9 @@
 import React, {FC, useEffect} from 'react'
-import {FilterType, requestUsers, UsersType} from "../../Redux/users-reducer";
-import {Paginator} from "../Common/Paginator/Paginator";
+import {FilterType, requestUsers, UsersType} from "../../../Redux/users-reducer";
+import {Paginator} from "../../Common/Paginator/Paginator";
 import {User} from "./User";
-import s from "./Users.module.css"
-import {UsersSearchForm} from "./UsersSearchForm";
+import s from "../Users.module.css"
+import {UsersSearchForm} from "../UsersSearchForm";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getFollowingInProgress,
@@ -12,7 +12,7 @@ import {
     getTotalUsersCount,
     getUsers,
     getUsersFilter
-} from "../../Redux/Selectors/users-selectors";
+} from "../../../Redux/Selectors/users-selectors";
 
 export const Users: FC<UsersPropsType> = React.memo((props) => {
 
