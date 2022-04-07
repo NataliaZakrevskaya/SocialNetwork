@@ -3,6 +3,7 @@ import {UsersType} from "../../Redux/users-reducer";
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User";
 import s from "./Users.module.css"
+import {UsersSearchForm} from "./UsersSearchForm";
 
 export const Users = ({
                           totalUsersCount,
@@ -19,6 +20,9 @@ export const Users = ({
     return (
 
         <div className={s.usersPage}>
+
+            <UsersSearchForm/>
+
             <Paginator
                 totalItemsCount={totalUsersCount}
                 pageSize={pageSize}
@@ -39,6 +43,8 @@ export const Users = ({
         </div>
     )
 }
+
+
 
 //Types
 type UsersPropsType = {
