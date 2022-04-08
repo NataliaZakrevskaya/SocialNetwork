@@ -7,11 +7,11 @@ import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
 const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
-const ProfilePage = React.lazy(() => import('./components/Profile/Profile'));
 const ChatPage = React.lazy(() => import('./Pages/Chat/ChatPage'));
 
 type MapStateToPropsType = {
@@ -50,8 +50,8 @@ class App extends React.Component<AppPropsType> {
                         <Route path='/dialogs' element={<DialogsContainer/>}>
                             <Route path=":userId" element={<DialogsContainer/>}/>
                         </Route>
-                        <Route path='/profile' element={<ProfilePage/>}>
-                            <Route path=":userId" element={<ProfilePage/>}/>
+                        <Route path='/profile' element={<ProfileContainer/>}>
+                            <Route path=":userId" element={<ProfileContainer/>}/>
                         </Route>
                         <Route path='/users' element={<UsersPage/>}/>
                         <Route path='/login' element={<LoginPage/>}/>
