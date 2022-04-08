@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from 'react'
 import {FilterType, requestUsers, UsersType} from "../../Redux/users-reducer";
 import {Paginator} from "../Common/Paginator/Paginator";
-import {User} from "./User";
+import {User} from "./User/User";
 import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm";
 import {useDispatch, useSelector} from "react-redux";
@@ -21,6 +21,11 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams()
+
+    const parsedPage = searchParams.get('page')
+    const parsedTerm = searchParams.get('term')
+    const parsedFriend = searchParams.get('friend')
+
 
     const pageSize = useSelector(getPageSize)
     const users = useSelector(getUsers)
