@@ -8,7 +8,7 @@ const ChatPage: React.FC = () => {
     )
 }
 
-export const Chat: React.FC = (props) => {
+export const Chat: React.FC = () => {
 
     const [wsChannel, setWsChannel] = useState<WebSocket | null>(null)
 
@@ -60,7 +60,6 @@ export const Messages: React.FC<{ wsChannel: WebSocket | null }> = ({wsChannel})
             let newMessages = JSON.parse(e.data)
             setMessages((prevMessages) => [...prevMessages, ...newMessages])
         }
-
         wsChannel?.addEventListener('message', messageHandler)
 
         return () => {
@@ -91,13 +90,13 @@ export const AddChatMessageForm: React.FC<{ wsChannel: WebSocket | null }> = ({w
     const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending')
 
     useEffect(() => {
-        let openedHandler = () => {
+        let openHandler = () => {
             setReadyStatus('ready')
         }
-        wsChannel?.addEventListener('open', openedHandler)
+        wsChannel?.addEventListener('open', openHandler)
 
         return () => {
-            wsChannel?.removeEventListener('open', openedHandler)
+            wsChannel?.removeEventListener('open', openHandler)
         }
     }, [wsChannel])
 
@@ -115,7 +114,7 @@ export const AddChatMessageForm: React.FC<{ wsChannel: WebSocket | null }> = ({w
             <div>
                 <button
                     onClick={sendMessage}
-                    disabled={readyStatus !== 'ready'}
+                    disabled={wsChannel === null || readyStatus !== 'ready'}
                 >Send
                 </button>
             </div>
