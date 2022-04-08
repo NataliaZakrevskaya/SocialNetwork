@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {ChatMessageType} from "../../api/chat-api";
 
 const ChatPage: React.FC = () => {
     return (
@@ -43,12 +44,6 @@ export const Chat: React.FC = () => {
     )
 }
 
-export type ChatMessageType = {
-    message: string
-    photo: string
-    userId: number
-    userName: string
-}
 
 
 export const Messages: React.FC<{ wsChannel: WebSocket | null }> = ({wsChannel}) => {
