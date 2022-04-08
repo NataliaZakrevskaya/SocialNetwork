@@ -13,9 +13,14 @@ import {
     getUsers,
     getUsersFilter
 } from "../../Redux/Selectors/users-selectors";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import * as queryString from "querystring";
 
 export const Users: FC<UsersPropsType> = React.memo((props) => {
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const pageSize = useSelector(getPageSize)
     const users = useSelector(getUsers)
@@ -24,8 +29,9 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     const filter = useSelector(getUsersFilter)
     const followingInProgress = useSelector(getFollowingInProgress)
 
-    const dispatch = useDispatch()
-
+    const parsedPage = searchParams.get('page')
+    const parsedTerm = searchParams.get('term')
+    const parsedFriend = searchParams.get('friend')
 
 
     const onPageChanged = (pageNumber: number) => {
@@ -38,12 +44,41 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
         dispatch(follow(userID))
     }
     const unfollow = (userID: number) => {
+        debugger
         dispatch(unfollow(userID))
     }
 
     useEffect(() => {
-        dispatch(requestUsers(currentPage, pageSize, filter))
+        let actualPage = currentPage
+        let actualFilter = filter
+
+        if (!!parsedPage) actualPage = Number(parsedPage)
+        if (!!parsedTerm) actualFilter = {...actualFilter, term: parsedTerm as string}
+        switch (parsedFriend) {
+            case "null" :
+                actualFilter = {...actualFilter, friend: null}
+                break
+            case "true" :
+                actualFilter = {...actualFilter, friend: true}
+                break
+            case "false" :
+                actualFilter = {...actualFilter, friend: false}
+                break
+        }
+
+        dispatch(requestUsers(actualPage, pageSize, actualFilter))
     }, [])
+
+    useEffect(() => {
+debugger
+        const query = {} as queryParamsType
+
+        if(!!parsedTerm) query.term = parsedTerm
+        if(currentPage !== 1) query.page = String(currentPage)
+        if(parsedFriend !== null) query.friend = String(parsedFriend)
+
+        navigate(`?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`)
+    }, [filter, currentPage])
 
 
     return (
@@ -76,4 +111,9 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
 
 //Types
 type UsersPropsType = {
+}
+type queryParamsType = {
+    term: string
+    page: string
+    friend: string
 }
