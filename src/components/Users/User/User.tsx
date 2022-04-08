@@ -1,8 +1,8 @@
 import React from 'react'
 import s from "./User.module.css";
-import userPhoto from "../../Images/flat-face-icon-23.png";
+import userPhoto from "../../../Images/flat-face-icon-23.png";
 import {NavLink} from "react-router-dom";
-import {UsersType} from "../../Redux/users-reducer";
+import {UsersType} from "../../../Redux/users-reducer";
 
 export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsType) => {
 

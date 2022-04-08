@@ -9,9 +9,9 @@ import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
 import {UsersPage} from "./components/Users/UsersPage";
 import {LoginPage} from "./components/Login/LoginPage";
+import ProfilePage from "./components/Profile/Profile";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 type MapStateToPropsType = {
     initialized: boolean
@@ -49,8 +49,8 @@ class App extends React.Component<AppPropsType> {
                         <Route path='/dialogs' element={<DialogsContainer/>}>
                             <Route path=":userId" element={<DialogsContainer/>}/>
                         </Route>
-                        <Route path='/profile' element={<ProfileContainer/>}>
-                            <Route path=":userId" element={<ProfileContainer/>}/>
+                        <Route path='/profile' element={<ProfilePage/>}>
+                            <Route path=":userId" element={<ProfilePage/>}/>
                         </Route>
                         <Route path='/users' element={<UsersPage/>}/>
                         <Route path='/login' element={<LoginPage/>}/>

@@ -14,7 +14,7 @@ import {
     getUsersFilter
 } from "../../Redux/Selectors/users-selectors";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import * as queryString from "querystring";
+
 
 export const Users: FC<UsersPropsType> = React.memo((props) => {
 
@@ -29,10 +29,6 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     const filter = useSelector(getUsersFilter)
     const followingInProgress = useSelector(getFollowingInProgress)
 
-    const parsedPage = searchParams.get('page')
-    const parsedTerm = searchParams.get('term')
-    const parsedFriend = searchParams.get('friend')
-
 
     const onPageChanged = (pageNumber: number) => {
         dispatch(requestUsers(pageNumber, pageSize, filter))
@@ -44,7 +40,6 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
         dispatch(follow(userID))
     }
     const unfollow = (userID: number) => {
-        debugger
         dispatch(unfollow(userID))
     }
 

@@ -1,4 +1,4 @@
-import React, {ComponentType} from 'react';
+/*import React, {ComponentType} from 'react';*/
 import Profile from "./Profile";
 import {
     getProfile,
@@ -15,60 +15,37 @@ import {InjectedProps, withRouter2} from "../../HOC/withRouter";
 import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
 
 
-type MapStateToPropsType = {
-    profile: ProfileType
-    isAuth: boolean
-    status: string
-    authorizedUserId: string
-}
-type MapDispatchToPropsType = {
-    setUserProfile: (profile: MapStateToPropsType) => void
-    getProfile: (userId: string) => void
-    getStatus: (userId: string) => void
-    updateStatus: (status: string) => void
-    savePhoto: (newPhoto: File) => void
-    saveProfile: (profileData: ProfileType) => Promise<any>
-}
-
-type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType & InjectedProps
 
 
-class ProfileAPIContainer extends React.Component<OwnPropsType> {
+/*class ProfileAPIContainer extends React.Component<> {*/
 
-    updateProfile(){
+    /*updateProfile(){
         let userId: string = this.props.userId;
         if (!userId) {
             userId = this.props.authorizedUserId;
         }
         this.props.getProfile(userId);
         this.props.getStatus(userId);
-    }
+    }*/
 
-    componentDidMount() {
+   /* componentDidMount() {
         this.updateProfile()
-    }
+    }*/
 
-    componentDidUpdate(prevProps: Readonly<OwnPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+    /*componentDidUpdate(prevProps: Readonly<OwnPropsType>, prevState: Readonly<{}>, snapshot?: any) {
         if (this.props.userId !== prevProps.userId) {
             this.updateProfile()
         }
-    }
+    }*/
 
-    render() {
+/*    render() {
         return (
-            <Profile
-                isOwner={!this.props.userId}
-                profile={this.props.profile}
-                status={this.props.status}
-                updateStatus={this.props.updateStatus}
-                savePhoto={this.props.savePhoto}
-                saveProfile={this.props.saveProfile}
-            />
+            <Profile/>
         )
     }
-}
+}*/
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+/*let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
@@ -89,5 +66,5 @@ export default compose<ComponentType>
     withRouter2,
     WithAuthRedirect
 )
-(ProfileAPIContainer);
+(ProfileAPIContainer);*/
 
