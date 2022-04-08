@@ -7,11 +7,12 @@ import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
-import {UsersPage} from "./components/Users/UsersPage";
-import {LoginPage} from "./components/Login/LoginPage";
-import ProfilePage from "./components/Profile/Profile";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
+const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
+const ProfilePage = React.lazy(() => import('./components/Profile/Profile'));
+const ChatPage = React.lazy(() => import('./Pages/Chat/ChatPage'));
 
 type MapStateToPropsType = {
     initialized: boolean
@@ -54,6 +55,7 @@ class App extends React.Component<AppPropsType> {
                         </Route>
                         <Route path='/users' element={<UsersPage/>}/>
                         <Route path='/login' element={<LoginPage/>}/>
+                        <Route path='/chat' element={<ChatPage/>}/>
                         <Route path='*' element={<div>404 NOT FOUND</div>}/>
 
                     </Routes>

@@ -7,7 +7,7 @@ import {login} from "../../Redux/auth-reducer";
 import {LoginForm, LoginFormPropsType} from "./LoginForm";
 
 
-export const LoginPage: React.FC<LoginPropsType> = (props) => {
+const LoginPage: React.FC<LoginPropsType> = (props) => {
 
     const captchaUrl = useSelector<AppStateType, string | null>(state => state.auth.captchaUrl)
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
@@ -34,6 +34,8 @@ export const LoginPage: React.FC<LoginPropsType> = (props) => {
 };
 
 const LoginReduxForm = reduxForm<FormDataType, LoginFormPropsType>({form: "Login"})(LoginForm)
+
+export default LoginPage
 
 // TYPES
 type LoginPropsType = {}
