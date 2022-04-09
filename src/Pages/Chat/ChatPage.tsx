@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {ChatMessageType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
-import {sendMessage, startMessagesListening, stopMessagesListening} from "../../Redux/chat-reducer";
+import {sendMessage, startMessagesListening, StatusType, stopMessagesListening} from "../../Redux/chat-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 
 const ChatPage: React.FC = () => {
@@ -57,6 +57,7 @@ const ChatMessage: React.FC<{ message: ChatMessageType }> = ({message}) => {
 export const AddChatMessageForm: React.FC = () => {
     const [message, setMessage] = useState('')
     const dispatch = useDispatch()
+    const status = useSelector<AppStateType, StatusType>(state => state.chat.status)
 
 
 
@@ -73,7 +74,7 @@ export const AddChatMessageForm: React.FC = () => {
             </div>
             <div>
                 <button
-                    disabled={false}
+                    disabled={status !== 'ready'}
                     onClick={sendMessageHandler}
                 >Send
                 </button>
