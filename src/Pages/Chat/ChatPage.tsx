@@ -43,20 +43,32 @@ export const Messages: React.FC = () => {
 
     const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages)
     const messagesAnchorRef = useRef<HTMLDivElement>(null)
+    const [isAutoScroll, setIsAutoScroll] = useState<boolean>(false)
+    const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+        const element = e.currentTarget
+        if( Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300){
+            !isAutoScroll && setIsAutoScroll(true)
+        } else {
+            isAutoScroll && setIsAutoScroll(false)
+        }
+    }
 
     useEffect(() => {
-        messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth'})
+        if(isAutoScroll) {
+            messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth'})
+        }
     }, [messages])
 
     return (
-        <div style={{height: '400px', overflowY: 'auto'}}>
+        <div style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
             {messages.map((m, index) => <ChatMessage key={index} message={m}/>)}
             <div ref={messagesAnchorRef}></div>
         </div>
     )
 }
 
-const ChatMessage: React.FC<{ message: ChatMessageType }> = ({message}) => {
+const ChatMessage: React.FC<{ message: ChatMessageType }> = React.memo(({message}) => {
+    console.log('message')
     return (
         <div>
             <img src={message.photo} width={'30px'} alt={'user image'}/> <b>{message.userName}</b>
@@ -65,7 +77,7 @@ const ChatMessage: React.FC<{ message: ChatMessageType }> = ({message}) => {
             <hr/>
         </div>
     )
-}
+})
 
 export const AddChatMessageForm: React.FC = () => {
     const [message, setMessage] = useState('')
