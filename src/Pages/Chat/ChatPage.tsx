@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
-import {ChatMessageType, StatusType} from "../../api/chat-api";
+import {ChatMessageApiType, StatusType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
-import {sendMessage, startMessagesListening, stopMessagesListening} from "../../Redux/chat-reducer";
+import {ChatMessageType, sendMessage, startMessagesListening, stopMessagesListening} from "../../Redux/chat-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 
 const ChatPage: React.FC = () => {
@@ -28,7 +28,7 @@ export const Chat: React.FC = () => {
 
     return (
         <div>
-            {status === 'error' && <div>Some error occured. Please, refresh the page</div>}
+            {status === 'error' && <div>Some error occurred. Please, refresh the page</div>}
             <>
                 <Messages/>
                 <AddChatMessageForm/>
@@ -61,14 +61,13 @@ export const Messages: React.FC = () => {
 
     return (
         <div style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
-            {messages.map((m, index) => <ChatMessage key={index} message={m}/>)}
+            {messages.map((m, index) => <ChatMessage key={m.id} message={m}/>)}
             <div ref={messagesAnchorRef}></div>
         </div>
     )
 }
 
 const ChatMessage: React.FC<{ message: ChatMessageType }> = React.memo(({message}) => {
-    console.log('message')
     return (
         <div>
             <img src={message.photo} width={'30px'} alt={'user image'}/> <b>{message.userName}</b>
