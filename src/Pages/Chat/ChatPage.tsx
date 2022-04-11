@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {ChatMessageType} from "../../api/chat-api";
+import React, {useEffect, useRef, useState} from "react";
+import {ChatMessageType, StatusType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
-import {sendMessage, startMessagesListening, StatusType, stopMessagesListening} from "../../Redux/chat-reducer";
+import {sendMessage, startMessagesListening, stopMessagesListening} from "../../Redux/chat-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 
 const ChatPage: React.FC = () => {
@@ -15,18 +15,25 @@ const ChatPage: React.FC = () => {
 export const Chat: React.FC = () => {
 
     const dispatch = useDispatch()
+    const status = useSelector<AppStateType, StatusType>(state => state.chat.status)
 
     useEffect(() => {
 
         dispatch(startMessagesListening())
-        return () => {dispatch(stopMessagesListening())}
+        return () => {
+            dispatch(stopMessagesListening())
+        }
 
     }, [])
 
     return (
         <div>
-            <Messages />
-            <AddChatMessageForm/>
+            {status === 'error' && <div>Some error occured. Please, refresh the page</div>}
+            <>
+                <Messages/>
+                <AddChatMessageForm/>
+            </>
+
         </div>
     )
 }
@@ -35,10 +42,16 @@ export const Chat: React.FC = () => {
 export const Messages: React.FC = () => {
 
     const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages)
+    const messagesAnchorRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth'})
+    }, [messages])
 
     return (
         <div style={{height: '400px', overflowY: 'auto'}}>
             {messages.map((m, index) => <ChatMessage key={index} message={m}/>)}
+            <div ref={messagesAnchorRef}></div>
         </div>
     )
 }
@@ -60,10 +73,9 @@ export const AddChatMessageForm: React.FC = () => {
     const status = useSelector<AppStateType, StatusType>(state => state.chat.status)
 
 
-
     const sendMessageHandler = () => {
         if (!message) return
-       dispatch(sendMessage(message))
+        dispatch(sendMessage(message))
         setMessage('')
     }
 
