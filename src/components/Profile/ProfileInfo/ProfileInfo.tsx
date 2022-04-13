@@ -112,14 +112,15 @@ const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => 
             </button>
             {showContacts &&
                 <div className={s.contacts}>
-                    <h3>Contacts: </h3>
                     <div className={s.contactLinks}>
                     {Object.keys(profile.contacts)
                     .map(key => {
-                        return <Contact
-                            key={key}
-                            contactTitle={key}
-                            contactValue={profile.contacts[key as keyof ContactsType]}/>
+                        if(profile.contacts[key as keyof ContactsType]){
+                            return <Contact
+                                key={key}
+                                contactTitle={key}
+                                contactValue={profile.contacts[key as keyof ContactsType]}/>
+                        }
                     })}
                     </div>
                 </div>}

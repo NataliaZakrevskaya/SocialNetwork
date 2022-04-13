@@ -5,6 +5,7 @@ import {createField, Input, Textarea} from "../../../Common/FormsControls/FormsC
 import {InjectedFormProps, reduxForm} from "redux-form";
 import s from "./../ProfileInfo.module.css";
 import style from "./../../../Common/FormsControls/FormsControls.module.css"
+import commonStyle from "./../../MyPosts.ts/MyPosts.module.css"
 
 // TYPES
 type ProfileDataFormPropsType = {
@@ -12,11 +13,7 @@ type ProfileDataFormPropsType = {
 }
 
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({
-                                                                                                                            handleSubmit,
-                                                                                                                            profile,
-                                                                                                                            error
-                                                                                                                        }) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile, error}) => {
 
     if (!profile) {
         return <Preloader/>
@@ -39,7 +36,6 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPr
                 <b>My professional skills </b>
                 {createField("My professional skills", "lookingForAJobDescription", [], Textarea)}
             </div>
-
             <div>
                 <h3>Contacts </h3> {Object.keys(profile.contacts)
                 .map(key => {
