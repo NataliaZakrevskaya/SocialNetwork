@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import {FilterType, requestUsers, UsersType} from "../../Redux/users-reducer";
+import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux/users-reducer";
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User/User";
 import s from "./Users.module.css"
@@ -41,10 +41,11 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     const onFilterChanged = (filter: FilterType) => {
         dispatch(requestUsers(1, pageSize, filter))
     }
-    const follow = (userID: number) => {
+    const onFollow = (userID: number) => {
+        debugger
         dispatch(follow(userID))
     }
-    const unfollow = (userID: number) => {
+    const onUnfollow = (userID: number) => {
         dispatch(unfollow(userID))
     }
 
@@ -70,7 +71,6 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     }, [])
 
     useEffect(() => {
-debugger
         const query = {} as queryParamsType
 
         if(!!parsedTerm) query.term = parsedTerm
@@ -97,8 +97,8 @@ debugger
             <div className={s.usersContainer}>
                 <div className={s.users}>
                     {users.map(u => <User user={u}
-                                          unfollow={unfollow}
-                                          follow={follow}
+                                          unfollow={onUnfollow}
+                                          follow={onFollow}
                                           followingInProgress={followingInProgress}
                                           key={u.id}/>
                     )}

@@ -15,8 +15,20 @@
 .loginBlock {
     float: right;
     margin-right: 3%;
-    margin-top: 20px;
     font-family: 'Montserrat', sans-serif;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profileImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
 

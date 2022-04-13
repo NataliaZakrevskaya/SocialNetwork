@@ -40,7 +40,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         <div className={s.profileInfoBlock}>
             <div className={s.imagesBlock}>
                 <img className={s.backgroundImg}
-                     src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnN4Zq6ChvgJDJX-kN4ga0lrTX8689HKtYw&usqp=CAU"}
+                     src={"https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}
                      alt={"img"}/>
                 <div className={s.avatar}>
                     <img
