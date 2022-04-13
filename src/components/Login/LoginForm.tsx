@@ -3,6 +3,7 @@ import {InjectedFormProps} from "redux-form";
 import {createField, Input} from "../Common/FormsControls/FormsControls";
 import {required} from "../../Utils/Validators/Validators";
 import s from "../Common/FormsControls/FormsControls.module.css";
+import style from "./loginPage.module.css";
 import {FormDataType} from "./LoginPage";
 
 export type LoginFormPropsType = {
@@ -14,7 +15,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsT
                                                                                                                   captchaUrl
                                                                                                               }) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style.loginBlock}>
 
             {createField("Email", "email", [required], Input, {type: "text"}, "")}
             {createField("Password", "password", [required], Input, {type: "password"}, "")}

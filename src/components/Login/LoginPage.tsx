@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {login} from "../../Redux/auth-reducer";
 import {LoginForm, LoginFormPropsType} from "./LoginForm";
+import s from "./loginPage.module.css"
 
 
 const LoginPage: React.FC<LoginPropsType> = (props) => {
@@ -23,7 +24,7 @@ const LoginPage: React.FC<LoginPropsType> = (props) => {
     }
 
     return (
-        <div>
+        <div className={s.loginPage}>
             <h1>LOGIN</h1>
             <LoginReduxForm
                 onSubmit={onSubmit}
