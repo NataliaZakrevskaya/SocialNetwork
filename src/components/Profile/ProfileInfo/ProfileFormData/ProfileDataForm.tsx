@@ -12,41 +12,40 @@ type ProfileDataFormPropsType = {
 }
 
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile, error}) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({
+                                                                                                                            handleSubmit,
+                                                                                                                            profile,
+                                                                                                                            error
+                                                                                                                        }) => {
 
-    if(!profile) {
+    if (!profile) {
         return <Preloader/>
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div><button>save</button></div>
+        <form onSubmit={handleSubmit} className={s.editInfoModule}>
+
             {
                 error &&
                 <div className={style.formSummaryError}>{error}</div>
             }
             <div>
-                <b>Full name: </b> {createField("Full name", "fullName", [], Input)}
+                <b>Full name </b> {createField("Full name", "fullName", [], Input)}
             </div>
             <div>
-                <b>Looking for a job: </b>               {createField("", "lookingForAJob", [], Input, {type: "checkbox"})}
+                <b>Looking for a job </b> {createField("", "lookingForAJob", [], Input, {type: "checkbox"})}
+            </div>
+            <div>
+                <b>My professional skills </b>
+                {createField("My professional skills", "lookingForAJobDescription", [], Textarea)}
             </div>
 
-                <div>
-                    <b>My professional skills: </b>
-                    {createField("My professional skills", "lookingForAJobDescription", [], Textarea)}
-                </div>
-
             <div>
-                <b>About me: </b>
-                {createField("About me", "aboutMe", [], Textarea)}
-            </div>
-            <div>
-                <b>Contacts: </b> {Object.keys(profile.contacts)
+                <h3>Contacts </h3> {Object.keys(profile.contacts)
                 .map(key => {
-                    return(
+                    return (
                         <div key={key} className={s.contact}>
-                           <b>{key}</b>:
+                            <b>{key}</b>
                             {createField(key, "contacts." + key, [], Input)}
                         </div>
 
@@ -54,14 +53,14 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPr
 
                 })}
             </div>
-
+            <div>
+                <button>save</button>
+            </div>
         </form>
     )
 }
 
 const ProfileDataReduxForm = reduxForm<ProfileType, ProfileDataFormPropsType>({form: 'edit-profile'})(ProfileDataForm)
-
-
 
 
 export default ProfileDataReduxForm;
