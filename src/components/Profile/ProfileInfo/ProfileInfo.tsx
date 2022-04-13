@@ -5,6 +5,7 @@ import {ContactsType, ProfileType} from "../../../Redux/profile-reducer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
 import {Contact} from "./ProfileFormData/Contact/Contact";
+import style from "./../MyPosts.ts/MyPosts.module.css"
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -31,28 +32,34 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     }
 
     const onSubmit = async (formData: ProfileType): Promise<any> => {
-       await saveProfile(formData)
-            setEditMode(false)
+        await saveProfile(formData)
+        setEditMode(false)
     }
 
-    // @ts-ignore
     return (
         <div className={s.profileInfoBlock}>
             <div className={s.imagesBlock}>
                 <img className={s.backgroundImg}
-                     src={"https://wallpaperaccess.com/full/144055.png"}
+                     src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVnN4Zq6ChvgJDJX-kN4ga0lrTX8689HKtYw&usqp=CAU"}
                      alt={"img"}/>
-                {isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
-            </div>
-
-            <div>
-                <div className={s.avatarBlock}>
-                    <img className={s.avatar}
-                         src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
-                         alt={"avatar"}/>
+                <div className={s.avatar}>
+                    <img
+                        src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
+                        alt={"avatar"}/>
+                    {isOwner && <div className={s.avatarEdit}>
+                        <input type={"file"} onChange={onMainPhotoSelected} id="imageUpload"
+                               accept=".png, .jpg, .jpeg"/>
+                        <label htmlFor="imageUpload"></label>
+                    </div>}
                 </div>
+            </div>
+            <div className={s.profileInfo}>
 
-
+                <ProfileStatusWithHooks
+                    status={status}
+                    updateStatus={updateStatus}
+                />
+                {profile.lookingForAJob ? <span className={s.lookingJob}>Looking for a job!</span> : ''}
                 {editMode
                     ? <ProfileDataForm
                         initialValues={profile}
@@ -67,12 +74,6 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                         }}
                     />
                 }
-
-                <ProfileStatusWithHooks
-                    status={status}
-                    updateStatus={updateStatus}
-                />
-
             </div>
         </div>
     )
@@ -80,37 +81,49 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
 const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => {
 
+    const [showContacts, setShowContacts] = useState<boolean>(false)
+
     if (!profile) {
         return <Preloader/>
     }
 
     return (
-        <div>
+        <div className={s.profileInfo}>
+
+            <hr className={style.hr}/>
             {isOwner
                 && <div>
-                    <button onClick={goToEditMode}>edit</button>
+                    <button className={s.editButton} onClick={goToEditMode}>✎</button>
+                </div>}
+            <div className={s.majorInfo}>
+                <div className={s.fullName}>
+                    {profile.fullName}
+                </div>
+                {profile.lookingForAJob &&
+                    <div className={s.skills}>
+                        ({profile.lookingForAJobDescription})
+                    </div>
+                }
+            </div>
+            <button
+                className={s.showContactsButton}
+                onClick={() => {setShowContacts(!showContacts)}}
+            >{showContacts ? 'Hide contacts' : 'Show contacts'}
+            </button>
+            {showContacts &&
+                <div className={s.contacts}>
+                    <h3>Contacts: </h3>
+                    <div className={s.contactLinks}>
+                    {Object.keys(profile.contacts)
+                    .map(key => {
+                        return <Contact
+                            key={key}
+                            contactTitle={key}
+                            contactValue={profile.contacts[key as keyof ContactsType]}/>
+                    })}
+                    </div>
                 </div>}
 
-            <div>
-                <b>Full name: </b> {profile.fullName}
-            </div>
-            <div>
-                <b>Looking for a job: </b> {profile.lookingForAJob ? "Yes" : "No"}
-            </div>
-            {profile.lookingForAJob &&
-                <div>
-                    <b>My professional skills: </b> {profile.lookingForAJobDescription}
-                </div>
-            }
-            <div>
-                <b>Contacts: </b> {Object.keys(profile.contacts)
-                .map(key => {
-                    return <Contact
-                        key={key}
-                        contactTitle={key}
-                        contactValue={profile.contacts[key as keyof ContactsType]}/>
-                })}
-            </div>
 
         </div>
     )

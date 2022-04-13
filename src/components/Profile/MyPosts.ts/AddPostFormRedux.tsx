@@ -18,7 +18,7 @@ export const AddPostForm: React.FC<InjectedFormProps<AddPostFormType>> = (props)
                 <Field
                     component={Textarea}
                     name={"newPostText"}
-                    placeholder={"Write your message"}
+                    placeholder={"Write your message..."}
                     validate={[required, maxLength10]}
                     className={s.textField}
                 />

@@ -10,6 +10,7 @@
 
 .imagesBlock {
     width: 100%;
+    position: relative;
 }
 
 
@@ -20,24 +21,87 @@
     border-radius: 10px;
 }
 
-.avatarBlock image {
-    position: relative;
-}
-
 .avatar {
     position: absolute;
+    right: 35%;
+    top: 100px;
+}
+
+.avatar img {
+    border: 5px solid white;
     width: 200px;
     border-radius: 50%;
-    right: 10%;
-    top: 180px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.avatarEdit {
+    position: absolute;
+    right: 15%;
+    z-index: 1;
+    top: 165px;
+}
+
+.avatarEdit input{
+    display: none;
+}
+
+.avatarEdit label{
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all .2s ease-in-out;
+}
+
+.avatarEdit label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+
+.avatarEdit label:after {
+    content: "✎";
+    font-size: 20px;
+    color: #757575;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.profileInfo {
+    position: relative;
+    width: 95%;
+    margin-left: 20px;
 }
 
 .statusBlock {
-    width: 45%;
-    margin-left: 10%;
-    margin-top: 30px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+    width: 35%;
+}
+
+.status{
+    width: 200px;
+    min-height: 70px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.status span {
+    word-wrap: break-word;
+}
+
+.lookingJob {
+    position: absolute;
+    right: 10px;
+    color: #42a790;
 }
 
 .statusBlock input {
@@ -49,6 +113,99 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.editButton {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    height: 34px;
+    width: 34px;
+    font-size: 20px;
+    color: #757575;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all .2s ease-in-out;
+}
+.editButton:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+
+.editButton:after {
+    font-size: 20px;
+    color: #757575;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.majorInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.fullName {
+    font-size: xx-large;
+    margin-bottom: 10px;
+}
+
+.skills {
+    margin-bottom: 10px;
+}
+
+.showContactsButton {
+    margin-left: 1%;
+    margin-bottom: 20px;
+    width: 98%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #42a790;
+    border-radius: 0.6em;
+    color: #42a790;
+    cursor: pointer;
+    line-height: 1;
+    padding: .4em 1.2em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.showContactsButton:hover {
+    color: #fff;
+    outline: 0;
+    box-shadow: 0 0 40px 40px #42a790 inset;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contact {
     padding-left: 10px;
 }
+
+.withLinks {
+    opacity: 1;
+}
+.withoutLinks {
+    opacity: 0.6;
+}
+
