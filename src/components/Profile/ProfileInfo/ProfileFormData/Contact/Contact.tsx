@@ -6,7 +6,7 @@ export const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
     return (
         <div className={s.contact}>
             <b>{contactTitle}: </b>
-            <Link to={contactValue} className={s.link}>{contactValue}</Link>
+            <a href={contactValue} className={s.link} target="_blank">{contactValue}</a>
         </div>
     )
 }
