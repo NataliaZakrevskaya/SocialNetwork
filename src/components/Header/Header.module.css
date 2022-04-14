@@ -12,27 +12,16 @@
     margin-top: 5px;
 }
 
-.loginBlock {
+.login {
+    margin-top: 20px;
     float: right;
     margin-right: 3%;
     font-family: 'Montserrat', sans-serif;
 }
 
-.login {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.profileImg {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
 
 
-.loginBlock button {
+.login button {
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -55,7 +44,7 @@
 
 }
 
-.loginBlock button:hover {
+.login button:hover {
     color: #fff;
     outline: 0;
     box-shadow: 0 0 40px 40px #42a790 inset;
