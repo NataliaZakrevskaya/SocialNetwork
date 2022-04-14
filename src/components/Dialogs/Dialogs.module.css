@@ -75,25 +75,32 @@
 }
 
 .addMessageForm {
-    border: none;
-    border-top: 1px solid #79787b;
+    border-top: 1px solid #c7d2cf;
+    /*background-color: #c7d2cf;*/
     height: 110px;
-    background-color: #fff;
+    background-color:#f1fcf9;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .textField {
-    margin-left: 10px;
-    width: 90%;
+    padding: 10px;
+    width: 700px;
     min-height: 50px;
-    border: none;
+    margin-right: 20px;
+    border: 1px solid #d4d6d3 ;
     font-family: 'Montserrat', sans-serif;
+    resize: none;
     outline: none;
+    border-radius: 5px;
 }
 
 .addMessageForm button {
     margin-top: 10px;
-    margin-left: 10px;
+    margin-right: 10px;
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;

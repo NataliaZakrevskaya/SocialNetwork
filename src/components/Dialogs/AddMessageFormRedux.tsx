@@ -9,17 +9,22 @@ type DialogFormDataType = {
     newMessageBody: string
 }
 
-const maxLength50 = maxLengthCreator(50);
+//const maxLength50 = maxLengthCreator(50);
 
 export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (props) => {
+    const onSubmit = (values: any) => {
+        // @ts-ignore
+        props.handleSubmit(values)
+        props.reset()
+    }
     return (
-        <form onSubmit={props.handleSubmit} className={s.addMessageForm}>
+        <form onSubmit={onSubmit} className={s.addMessageForm}>
             <div>
                 <Field
                     component={Textarea}
                     name={"newMessageBody"}
                     placeholder={"Enter your message"}
-                    validate={[required, maxLength50]}
+                   // validate={[required, maxLength50]}
                     className={s.textField}
                 />
             </div>
