@@ -6,6 +6,7 @@ import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
 import {Contact} from "./ProfileFormData/Contact/Contact";
 import style from "./../MyPosts.ts/MyPosts.module.css"
+import profileImage from "./../../../Images/flat-face-icon-23.png"
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -44,7 +45,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                      alt={"img"}/>
                 <div className={s.avatar}>
                     <img
-                        src={profile && profile.photos.large !== null ? profile.photos.large : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC8kiSH5ZSAcVoj3tAQQDoP_ux0sSricMyUg&usqp=CAU'}
+                        src={profile && profile.photos.large !== null ? profile.photos.large : profileImage}
                         alt={"avatar"}/>
                     {isOwner && <div className={s.avatarEdit}>
                         <input type={"file"} onChange={onMainPhotoSelected} id="imageUpload"

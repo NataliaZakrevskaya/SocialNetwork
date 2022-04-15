@@ -13,19 +13,6 @@ export type WrappedComponentWithRouterPropsType = {
     location: LocationType
 }
 
-export const withRouter = (WrappedComponent: typeof React.Component) => (props: object) => {
-    const params = useParams<'userId'>();
-    const location = useLocation()
-
-
-    return (
-        <WrappedComponent
-            {...props}
-            userId={params.userId}
-            location={location}
-        />
-    );
-};
 
 export type InjectedProps = {
     userId: string

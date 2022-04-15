@@ -99,6 +99,10 @@
 .status span {
     word-wrap: break-word;
 }
+.status span:hover {
+    background-color: #f1f3ef;
+
+}
 
 .lookingJob {
     position: absolute;
