@@ -1,9 +1,10 @@
 import {Field, Form, Formik} from "formik";
 import React from "react";
-import {FilterType} from "../../Redux/users-reducer";
+import {FilterType} from "../../../Redux/users-reducer";
 import {useSelector} from "react-redux";
-import {AppStateType} from "../../Redux/redux-store";
-import {getUsersFilter} from "../../Redux/Selectors/users-selectors";
+import {AppStateType} from "../../../Redux/redux-store";
+import {getUsersFilter} from "../../../Redux/Selectors/users-selectors";
+import s from "./UsersSearchForm.module.css"
 
 const usersSearchFormValidate = (values: FormType) => {
     const errors = {};
@@ -32,12 +33,12 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
                 onSubmit={submit}
             >
                 {({isSubmitting}) => (
-                    <Form>
-                        <Field type="text" name="term"/>
-                        <Field name="friend" as="select">
+                    <Form className={s.formContainer}>
+                        <Field type="text" name="term" placeholder={"Search 🔎"} className={s.searchInput}/>
+                        <Field name="friend" as="select" className={s.select}>
                             <option value="null">All</option>
-                            <option value="true">Only followed</option>
-                            <option value="false">Only unfollowed</option>
+                            <option value="true">Followed</option>
+                            <option value="false">Unfollowed</option>
                         </Field>
                         <button type="submit" disabled={isSubmitting}>
                             Search

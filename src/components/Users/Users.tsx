@@ -3,7 +3,7 @@ import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User/User";
 import s from "./Users.module.css"
-import {UsersSearchForm} from "./UsersSearchForm";
+import {UsersSearchForm} from "./UsersSearchForm/UsersSearchForm";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getFollowingInProgress,
@@ -73,9 +73,9 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     useEffect(() => {
         const query = {} as queryParamsType
 
-        if(!!parsedTerm) query.term = parsedTerm
-        if(currentPage !== 1) query.page = String(currentPage)
-        if(parsedFriend !== null) query.friend = String(parsedFriend)
+        if (!!parsedTerm) query.term = parsedTerm
+        if (currentPage !== 1) query.page = String(currentPage)
+        if (parsedFriend !== null) query.friend = String(parsedFriend)
 
         navigate(`?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`)
     }, [filter, currentPage])
@@ -87,13 +87,7 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
 
             <UsersSearchForm onFilterChanged={onFilterChanged}/>
 
-            <Paginator
-                totalItemsCount={totalUsersCount}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onPageChanged={onPageChanged}
-                portionSize={10}
-            />
+
             <div className={s.usersContainer}>
                 <div className={s.users}>
                     {users.map(u => <User user={u}
@@ -104,14 +98,20 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
                     )}
                 </div>
             </div>
+            <Paginator
+                totalItemsCount={totalUsersCount}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChanged={onPageChanged}
+                portionSize={10}
+            />
         </div>
     )
 })
 
 
 //Types
-type UsersPropsType = {
-}
+type UsersPropsType = {}
 type queryParamsType = {
     term: string
     page: string

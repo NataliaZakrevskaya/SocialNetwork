@@ -25,7 +25,7 @@ export const Paginator = ({
             {portionNumber > 1 &&
                 <button onClick={() => {
                     setPortionNumber(portionNumber - 1)
-                }}>PREW</button>
+                }}>◀</button>
             }
 
             {pages
@@ -42,7 +42,7 @@ export const Paginator = ({
             {portionCount > portionNumber &&
                 <button onClick={() => {
                     setPortionNumber(portionNumber + 1)
-                }}>NEXT</button>
+                }}>▶</button>
             }
         </div>
     )
