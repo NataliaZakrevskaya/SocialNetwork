@@ -17,11 +17,19 @@
     float: right;
     margin-right: 3%;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-
+.login span {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: large;
+}
 
 .login button {
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -37,7 +45,6 @@
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
