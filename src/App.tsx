@@ -12,7 +12,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
 const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
-const ChatPage = React.lazy(() => import('./Pages/Chat/ChatPage'));
+const ChatPage = React.lazy(() => import('./Pages/ChatPage/ChatPage'));
 
 type MapStateToPropsType = {
     initialized: boolean
