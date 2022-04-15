@@ -10,15 +10,14 @@ export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsTy
 
         <div className={s.user}>
 
-            <div>
+            <div className={s.userInfo}>
                 <NavLink to={'/profile/' + user.id}>
                     <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto}
                          alt={"userPhoto"}/>
                 </NavLink>
-            </div>
-
-            <span className={s.userName}>{user.name}</span>
+                <span className={s.userName}>{user.name}</span>
             <span className={s.userStatus}>{user.status}</span>
+            </div>
 
             <div>
                 {

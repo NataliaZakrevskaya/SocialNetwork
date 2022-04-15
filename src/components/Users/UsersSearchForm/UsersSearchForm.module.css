@@ -5,7 +5,7 @@
 .searchInput {
     width: 200px;
     height: 35px;
-    background-color: #e7eaea;
+    background-color: #eff1ee;
     border: none;
     border-radius: 7px;
     padding-left: 10px;
@@ -40,5 +40,5 @@
 }
 
 .formContainer button:hover {
-background-color: #3a816e;
+    background-color: #3a816e;
 }

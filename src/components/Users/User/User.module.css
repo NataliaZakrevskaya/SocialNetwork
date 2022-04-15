@@ -1,7 +1,7 @@
 .user {
     background-color: #fff;
     width: 250px;
-    height: 250px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +12,13 @@
 
 .user:hover {
     background-color: #eff1ee;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
 }
 
 .userName {
@@ -25,6 +32,7 @@
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: normal;
+    margin-bottom: 10px;
 }
 
 .userPhoto {
@@ -34,59 +42,34 @@
 }
 
 .unFollowBtn {
-    margin-top: 10px;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid darkred;
-    border-radius: 0.6em;
-    color: darkred;
-    cursor: pointer;
-    line-height: 1;
-    margin-left: 10px;
-    padding: .2em .8em;
-    text-decoration: none;
-    text-align: center;
+    width: 100px;
+    height: 35px;
+    background-color: darkred;
+    color: white;
     text-transform: uppercase;
+    font-weight: bold;
+    border: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    border-radius: 7px;
+    margin-bottom: 20px;
 }
 
 .unFollowBtn:hover {
-    color: #fff;
-    outline: 0;
-    box-shadow: 0 0 40px 40px darkred inset;
+    background-color: #681014;
 }
 
 .followBtn {
-    margin-top: 10px;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #42a790;
-    border-radius: 0.6em;
-    color: #42a790;
-    cursor: pointer;
-    line-height: 1;
-    margin-left: 10px;
-    padding: .2em .8em;
-    text-decoration: none;
-    text-align: center;
+    width: 100px;
+    height: 35px;
+    background-color: #42a790;
+    color: white;
     text-transform: uppercase;
+    font-weight: bold;
+    border: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    border-radius: 7px;
 }
 
 .followBtn:hover {
-    color: #fff;
-    outline: 0;
-    box-shadow: 0 0 40px 40px #42a790 inset;
+    background-color: #3a816e;
 }

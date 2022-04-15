@@ -126,8 +126,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => 
                     })}
                     </div>
                 </div>}
-
-
         </div>
     )
 }

@@ -8,13 +8,13 @@ const Navbar = () => {
             <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/profile">Profile</NavLink>
         </div>
         <div className={`${s.item} ${s.active} `}>
+            <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/users">Users</NavLink>
+        </div>
+        <div className={`${s.item} ${s.active} `}>
             <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/dialogs">Messages</NavLink>
         </div>
         <div className={`${s.item} ${s.active} `}>
             <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/chat">Chat</NavLink>
-        </div>
-        <div className={`${s.item} ${s.active} `}>
-            <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/users">Users</NavLink>
         </div>
     </nav>
 }
