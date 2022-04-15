@@ -1,5 +1,6 @@
-.dialogsPage {
-    background-image: url("https://fullhdoboi.ru/wp-content/uploads/_ph/22/41664680.jpg");
+.chatPage{
+    background-color: white;
+    min-height: 80vh;
     margin: 20px;
     width: 95%;
     display: flex;
@@ -9,64 +10,25 @@
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.dialogs {
-    display: flex;
-    flex-direction: row;
-}
-
-
-.dialog {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-}
-
-.dialog:hover {
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-}
-
-.dialog a {
-    margin-left: 20px;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    color: #42a790;
-}
-
-.dialog a:hover {
-    color: #65636a
-}
-
-.dialogImg {
-    width: 60px;
-}
-
-.dialogsItems {
-    background-color: #fff;
-    width: 200px;
-    padding: 10px;
-}
-
-.messages {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 60%;
-    padding: 10px;
+.messagesPart {
+    background-color: #B4EDF8;
+    height: 65vh;
+    padding: 20px;
 }
 
 .message {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 500px;
     background-color: #fff;
     border-radius: 5px;
-    padding: 5px 20px 5px 20px;
-    margin-top: 10px;
+    padding: 15px;
+    margin-top: 15px;
     font-family: 'Montserrat', sans-serif;
     font-size: small;
 }
+
 
 .message:hover {
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -74,32 +36,50 @@
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.addMessageForm {
-    border-top: 1px solid #c7d2cf;
-    height: 110px;
-    background-color:#f1fcf9;
-    padding: 10px;
+.userInfoContainer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.userInfoContainer img{
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.userInfoContainer span{
+    font-weight: bolder;
+}
+
+.messageText {
+    margin-left: 50px;
+}
+
+.addChatMessageForm {
+    border-top: 1px solid #c7d2cf;
+    height: 110px;
+    background-color: #fbf7fb;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .textField {
     padding: 10px;
-    width: 700px;
+    width: 98%;
     min-height: 50px;
-    margin-right: 20px;
     border: 1px solid #d4d6d3 ;
     font-family: 'Montserrat', sans-serif;
     resize: none;
     outline: none;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.addMessageForm button {
-    margin-top: 10px;
-    margin-right: 10px;
+.addChatMessageForm button {
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;

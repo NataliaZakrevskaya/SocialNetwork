@@ -18,7 +18,6 @@ export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (
     }
     return (
         <form onSubmit={onSubmit} className={s.addMessageForm}>
-            <div>
                 <Field
                     component={Textarea}
                     name={"newMessageBody"}
@@ -26,10 +25,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (
                    // validate={[required, maxLength50]}
                     className={s.textField}
                 />
-            </div>
-            <div>
                 <button>Send</button>
-            </div>
         </form>
     )
 }

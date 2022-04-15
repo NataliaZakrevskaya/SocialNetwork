@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../../Redux/redux-store";
 import {StatusType} from "../../../../api/chat-api";
 import {sendMessage} from "../../../../Redux/chat-reducer";
+import s from "../../ChatPage.module.css";
 
 export const AddChatMessageForm: React.FC = () => {
     const [message, setMessage] = useState('')
@@ -17,17 +18,18 @@ export const AddChatMessageForm: React.FC = () => {
     }
 
     return (
-        <div>
-            <div>
-                <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
-            </div>
-            <div>
+        <div className={s.addChatMessageForm}>
+
+                <textarea onChange={(e) => setMessage(e.currentTarget.value)}
+                          value={message}
+                          className={s.textField}
+                          placeholder={'Write your message...'}
+                ></textarea>
                 <button
                     disabled={status !== 'ready'}
                     onClick={sendMessageHandler}
-                >Send
-                </button>
-            </div>
+                >Send</button>
+
         </div>
     )
 }
