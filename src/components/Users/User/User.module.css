@@ -4,7 +4,6 @@
     height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -15,14 +14,23 @@
     background-color: #eff1ee;
 }
 
-.user span {
+.userName {
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
     font-size: large;
+    margin-bottom: 10px;
+}
+
+.userStatus{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: normal;
 }
 
 .userPhoto {
     width: 80px;
+    border-radius: 50%;
+    margin-top: 30px;
 }
 
 .unFollowBtn {

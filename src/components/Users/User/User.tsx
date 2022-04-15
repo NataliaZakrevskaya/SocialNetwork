@@ -17,8 +17,8 @@ export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsTy
                 </NavLink>
             </div>
 
-            <span>{user.name}</span>
-            <span>{user.status}</span>
+            <span className={s.userName}>{user.name}</span>
+            <span className={s.userStatus}>{user.status}</span>
 
             <div>
                 {
