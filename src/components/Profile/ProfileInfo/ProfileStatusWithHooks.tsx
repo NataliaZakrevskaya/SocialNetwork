@@ -1,12 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import s from "./ProfileInfo.module.css"
 
-type ProfileStatusType = {
-    status: string
-    updateStatus: (status: string) => void
-}
-
-
 export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
@@ -17,7 +11,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
     }, [props.status])
 
     const activateEditMode = () => {
-        setEditMode(true)
+        props.isOwner && setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)
@@ -31,7 +25,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
         <div className={s.statusBlock}>
             {!editMode &&
                 <div className={s.status}><b>Status: </b>
-                        <span
+                        <span className={props.isOwner ? s.ownerStatus : ''}
                             onDoubleClick={activateEditMode}
                         >{props.status || "No status"}</span>
                 </div>
@@ -47,4 +41,11 @@ export const ProfileStatusWithHooks = (props: ProfileStatusType) => {
             }
         </div>
     )
+}
+
+// TYPES
+type ProfileStatusType = {
+    status: string
+    isOwner : boolean
+    updateStatus: (status: string) => void
 }

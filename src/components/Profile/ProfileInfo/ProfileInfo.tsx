@@ -58,6 +58,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
                 <ProfileStatusWithHooks
                     status={status}
+                    isOwner={isOwner}
                     updateStatus={updateStatus}
                 />
                 {profile.lookingForAJob ? <span className={s.lookingJob}>Looking for a job!</span> : ''}

@@ -98,10 +98,12 @@
 
 .status span {
     word-wrap: break-word;
+    cursor: default;
 }
-.status span:hover {
-    background-color: #f1f3ef;
 
+.ownerStatus:hover {
+    background-color: #f1f3ef;
+    cursor: pointer;
 }
 
 .lookingJob {
