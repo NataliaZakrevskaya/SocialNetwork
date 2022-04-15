@@ -8,8 +8,19 @@
 
 .item {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 94%;
+    padding: 10px;
+    border-radius: 2%;
+    border-top: 1px solid #42a790;
+    border-bottom: 1px solid #42a790;
+    margin-bottom: 15px;
+}
+
+.userInfoContainer {
+    display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
 }
 
@@ -21,6 +32,34 @@
     margin-bottom: 10px;
 }
 
-.itemBlock span {
-    color: #549cc1;
+.userInfoContainer span {
+    font-weight: bolder;
+    color: #272729;
+}
+
+.messageContainer {
+    min-height: 20px;
+    padding: 5px;
+    border-left: 3px solid #549cc1;
+    margin: 15px;
+}
+
+.likesContainer {
+    background-color: #f6f4f4;
+    padding: 7px;
+    min-width: 50px;
+    text-align: center;
+    border-radius: 40%;
+}
+
+.likesContainer:hover {
+    background-color: #e6edf6;
+}
+
+.likeIsActive {
+    background-color: #f6dce0;
+}
+
+.likesContainer span{
+    font-weight: bolder;
 }

@@ -13,7 +13,6 @@ type DialogFormDataType = {
 
 export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (props) => {
     const onSubmit = (values: any) => {
-        // @ts-ignore
         props.handleSubmit(values)
         props.reset()
     }
