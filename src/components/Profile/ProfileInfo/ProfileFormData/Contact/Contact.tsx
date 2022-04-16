@@ -1,5 +1,6 @@
-import s from "../../ProfileInfo.module.css";
 import React from "react";
+import s from "../../ProfileInfo.module.css";
+
 
 export const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
     return (
@@ -10,6 +11,7 @@ export const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
     )
 }
 
+// TYPES
 type ContactPropsType = {
     contactTitle: string
     contactValue: string

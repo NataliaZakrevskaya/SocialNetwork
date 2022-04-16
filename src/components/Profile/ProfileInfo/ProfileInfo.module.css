@@ -1,6 +1,7 @@
 .profileInfoBlock {
     width: 100%;
     background-color: white;
+    padding-bottom: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif;
@@ -204,7 +205,7 @@
     color: #42a790;
 }
 
-.editInfoModule {
+.editInfo {
     padding: 20px;
     margin-top: 20px;
     display: flex;
@@ -213,62 +214,6 @@
     margin-bottom: 30px;
 }
 
-.editInfoModule div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    margin-bottom: 3px;
-}
 
-.editInfoModule div b {
-    margin-bottom: 5px;
-    font-size: larger;
-}
-
-.editInfoModule div h3 {
-    font-size: x-large;
-}
-
-.editInfoModule div input {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #42a790;
-    outline: none;
-}
-
-.editInfoModule div textarea {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid #42a790;
-    outline: none;
-    color: #272729;
-    resize: none;
-}
-
-.editInfoModule button {
-    margin-top: 10px;
-    margin-left: 20px;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #42a790;
-    border: 2px solid #42a790;
-    border-radius: 0.6em;
-    color: #fff;
-    cursor: pointer;
-    line-height: 1;
-    padding: .4em 1.2em;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-}
 
 

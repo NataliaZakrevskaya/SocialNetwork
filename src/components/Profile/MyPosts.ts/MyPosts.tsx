@@ -1,8 +1,8 @@
 import React from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {AddPostFormRedux, AddPostFormType} from "./AddPostFormRedux";
-import {useDispatch, useSelector} from "react-redux";
+import {AddPostFormRedux, AddPostFormType} from "./Post/AddPostFormRedux/AddPostFormRedux";
 import {AppStateType} from "../../../Redux/redux-store";
 import {ProfileInitialStateType, profileReducerActions} from "../../../Redux/profile-reducer";
 

@@ -38,6 +38,7 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
                 }}
             >{showContacts ? 'Hide contacts' : 'Show contacts'}
             </button>
+
             {showContacts &&
                 <div className={s.contacts}>
                     <div className={s.contactLinks}>
@@ -55,9 +56,10 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
         </div>
     )
 }
+
+// TYPES
 type ProfileDataPropsType = {
     profile: ProfileType
     isOwner: boolean
     goToEditMode: () => void
-
 }
