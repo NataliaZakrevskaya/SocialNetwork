@@ -60,7 +60,7 @@
 .addChatMessageForm {
     border-top: 1px solid #c7d2cf;
     height: 110px;
-    background-color: #fbf7fb;
+    background-color: rgba(250, 250, 250, 1);
     padding: 10px;
     display: flex;
     flex-direction: column;
