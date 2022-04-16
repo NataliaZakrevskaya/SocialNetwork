@@ -17,9 +17,13 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsT
     return (
         <form onSubmit={handleSubmit} className={style.loginBlock}>
 
+            <h1>Social Network</h1>
+
             {createField("Email", "email", [required], Input, {type: "text"}, "")}
             {createField("Password", "password", [required], Input, {type: "password"}, "")}
-            {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me")}
+            <div className={style.checkbox}>
+                {createField (null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me")}
+            </div>
 
             {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'}/>}
             {captchaUrl && createField("Symbols from image", "captcha", [required], Input)}

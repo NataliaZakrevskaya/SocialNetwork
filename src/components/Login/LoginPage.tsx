@@ -25,7 +25,6 @@ const LoginPage: React.FC<LoginPropsType> = (props) => {
 
     return (
         <div className={s.loginPage}>
-            <h1>LOGIN</h1>
             <LoginReduxForm
                 onSubmit={onSubmit}
                 captchaUrl={captchaUrl}
