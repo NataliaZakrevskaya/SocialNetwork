@@ -1,9 +1,11 @@
 .formControl.error input,
 .formControl.error textarea {
-    border: 2px solid red;
+    border: 1px solid #f96560;
 }
 
 .formControl.error span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
     color: red;
 }
 
