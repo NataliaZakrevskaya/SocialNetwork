@@ -1,5 +1,4 @@
 .user {
-    background-color: #fff;
     width: 250px;
     height: 300px;
     display: flex;
@@ -11,7 +10,7 @@
 }
 
 .user:hover {
-    background-color: #eff1ee;
+    background-color: white;
 }
 
 .userInfo{

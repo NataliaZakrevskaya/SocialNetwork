@@ -16,14 +16,14 @@ const Header = ({login, logout, isAuth}: HeaderPropsType) => {
     return <header className={s.header}>
         <img
             src={logo} alt={"logo"}/>
-            {
-                isAuth
-                    ? <div className={s.login}>
-                            <span>{login}</span>
-                        <button onClick={logout}>Log out</button>
-                    </div>
-                    : <NavLink to={'/login'}>Login</NavLink>
-            }
+        {
+            isAuth
+                ? (<div className={s.logoutBlock}>
+                    <span>{login}</span>
+                    <button onClick={logout}>Log out</button>
+                </div>)
+                : (<NavLink to={'/login'} className={s.login}>Login</NavLink>)
+        }
     </header>
 }
 
