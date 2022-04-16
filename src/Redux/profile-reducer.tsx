@@ -22,7 +22,7 @@ const initialState = {
     status: ''
 }
 
-const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerActionType): InitialStateType => {
+const profileReducer = (state: ProfileInitialStateType = initialState, action: ProfileReducerActionType): ProfileInitialStateType => {
     switch (action.type) {
         case profileReducerEnum.ADD_POST: {
             let newPost: PostsType = {
@@ -139,7 +139,7 @@ export type ContactsType = {
     github: string,
     mainLink: string
 }
-export type InitialStateType = typeof initialState;
+export type ProfileInitialStateType = typeof initialState;
 type ProfileReducerActionType = InferActionsTypes<typeof profileReducerActions>
 type ThunkType = AppThunkType<ProfileReducerActionType | FormAction>
 

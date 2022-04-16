@@ -1,12 +1,11 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from "./ProfileInfo.module.css";
 import {Preloader} from "../../Common/Preloader/Preloader";
-import {ContactsType, ProfileType} from "../../../Redux/profile-reducer";
-import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import {ProfileType} from "../../../Redux/profile-reducer";
+import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
-import {Contact} from "./ProfileFormData/Contact/Contact";
-import style from "./../MyPosts.ts/MyPosts.module.css"
 import profileImage from "./../../../Images/flat-face-icon-23.png"
+import {ProfileData} from "./ProfileData/ProfileData";
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -56,7 +55,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             </div>
             <div className={s.profileInfo}>
 
-                <ProfileStatusWithHooks
+                <ProfileStatus
                     status={status}
                     isOwner={isOwner}
                     updateStatus={updateStatus}
@@ -79,62 +78,6 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             </div>
         </div>
     )
-}
-
-const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => {
-
-    const [showContacts, setShowContacts] = useState<boolean>(false)
-
-    if (!profile) {
-        return <Preloader/>
-    }
-
-    return (
-        <div className={s.profileInfo}>
-
-            <hr className={style.hr}/>
-            {isOwner
-                && <div>
-                    <button className={s.editButton} onClick={goToEditMode}>✎</button>
-                </div>}
-            <div className={s.majorInfo}>
-                <div className={s.fullName}>
-                    {profile.fullName}
-                </div>
-                {profile.lookingForAJob &&
-                    <div className={s.skills}>
-                        ({profile.lookingForAJobDescription})
-                    </div>
-                }
-            </div>
-            <button
-                className={s.showContactsButton}
-                onClick={() => {setShowContacts(!showContacts)}}
-            >{showContacts ? 'Hide contacts' : 'Show contacts'}
-            </button>
-            {showContacts &&
-                <div className={s.contacts}>
-                    <div className={s.contactLinks}>
-                    {Object.keys(profile.contacts)
-                    .map(key => {
-                        if(profile.contacts[key as keyof ContactsType]){
-                            return <Contact
-                                key={key}
-                                contactTitle={key}
-                                contactValue={profile.contacts[key as keyof ContactsType]}/>
-                        }
-                    })}
-                    </div>
-                </div>}
-        </div>
-    )
-}
-
-type ProfileDataPropsType = {
-    profile: ProfileType
-    isOwner: boolean
-    goToEditMode: () => void
-
 }
 
 

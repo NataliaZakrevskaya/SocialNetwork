@@ -2,14 +2,21 @@ import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {AddPostFormRedux, AddPostFormType} from "./AddPostFormRedux";
-import {MyPostsPropsType} from "./Post/MyPostsContainer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../../Redux/redux-store";
+import {ProfileInitialStateType, profileReducerActions} from "../../../Redux/profile-reducer";
 
-const MyPosts = React.memo((props: MyPostsPropsType) => {
+const MyPosts = React.memo(() => {
+
+    const dispatch = useDispatch()
+    const profilePage = useSelector<AppStateType, ProfileInitialStateType>(state => state.profilePage)
+
+
     const postsElements =
-        props.profilePage.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likesCount={p.likesCount}/>);
+        profilePage.posts.map(p => <Post key={p.id} id={p.id} message={p.message} likesCount={p.likesCount}/>);
 
     const addNewPost = (values: AddPostFormType) => {
-        props.addPost(values.newPostText)
+        dispatch(profileReducerActions.addPost(values.newPostText))
     }
 
     return (

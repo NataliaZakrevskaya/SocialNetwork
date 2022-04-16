@@ -1,8 +1,8 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfileType} from "../../Redux/profile-reducer";
-import {MyPostsContainer} from "./MyPosts.ts/Post/MyPostsContainer";
 import s from "./Profile.module.css"
+import MyPosts from "./MyPosts.ts/MyPosts";
 
 type ProfileComponentPropsType = {
     isOwner: boolean
@@ -24,7 +24,7 @@ const Profile = (props: ProfileComponentPropsType) => {
                 savePhoto={props.savePhoto}
                 saveProfile={props.saveProfile}
             />
-            {props.isOwner && <MyPostsContainer/>}
+            {props.isOwner && <MyPosts/>}
         </div>
     )
 }
