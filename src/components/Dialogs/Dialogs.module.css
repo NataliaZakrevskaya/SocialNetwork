@@ -24,7 +24,10 @@
     border: 1px solid #42a790;
     border-radius: 5px;
     padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: #42a790;
 }
+
 
 .dialog:hover {
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -32,25 +35,41 @@
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.dialog a {
+.dialog span{
     margin-left: 20px;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    color: #42a790;
 }
 
 .dialog a:hover {
     color: #65636a
 }
 
+
+.activeDialog{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(11, 163, 138, 1);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.activeDialog span{
+    margin-left: 20px;
+}
+
 .dialogImg {
     width: 70px;
+    height: 45px;
     border-radius: 50%;
     image-orientation: unset;
 }
 
 .dialogsItems {
-    background-color: #fff;
+    background-color: rgba(250, 250, 250, 1);
     width: 200px;
     padding: 10px;
 }

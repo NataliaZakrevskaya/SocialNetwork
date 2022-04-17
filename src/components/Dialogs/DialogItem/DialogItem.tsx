@@ -6,18 +6,17 @@ import dialogProfileImg from './dilaogProfileImg.png'
 
 
 const DialogItem = (props: DialogsType) => {
-    let path = "/dialogs/" + props.id;
 
     const showMessages = () => {
         props.showMessages(props.id)
     }
 
     return (
-        <div className={s.dialog + ' ' + s.active} onClick={showMessages}>
+        <div className={props.id !== props.activeUserID ? s.dialog : s.activeDialog} onClick={showMessages}>
             <img className={s.dialogImg}
                  src={props.avatar}
                  alt={"dialogProfilePhoto"}/>
-            <NavLink to={path}>{props.name}</NavLink>
+            <span>{props.name}</span>
         </div>
     )
 }
@@ -29,5 +28,6 @@ type DialogsType = {
     name: string
     id: number
     avatar: string
+    activeUserID: number | null
     showMessages: (userID: number) => void
 }

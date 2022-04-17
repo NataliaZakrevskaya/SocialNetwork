@@ -8,21 +8,21 @@ import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    const [userID, setUserID] = useState<number | null>(null)
+    const [activeUserID, setActiveUserID] = useState<number | null>(null)
 
     const state = props.dialogsPage;
-    console.log(userID)
+    console.log(activeUserID)
     let messagesElements;
     const showMessages = (userId: number) => {
-        setUserID(userId)
+        setActiveUserID(userId)
     }
 
     const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} avatar={d.avatar}
-                                                               showMessages={showMessages}/>);
+                                                               showMessages={showMessages} activeUserID={activeUserID}/>);
 
 
-    if (userID !== null) {
-        messagesElements = state.messages[userID].map(m => <Message key={m.id} id={m.id} message={m.message}/>)
+    if (activeUserID !== null) {
+        messagesElements = state.messages[activeUserID].map(m => <Message key={m.id} id={m.id} message={m.message}/>)
     }
 
 
@@ -36,11 +36,11 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <div className={s.dialogsItems}>
                     {dialogsElements}
                 </div>
-                <div className={userID ? s.messagesField : s.fieldWithoutMessages}>
-                    {userID ? messagesElements : <span>Select a chat to start messaging</span>}
+                <div className={activeUserID ? s.messagesField : s.fieldWithoutMessages}>
+                    {activeUserID ? messagesElements : <span>Select a chat to start messaging</span>}
                 </div>
             </div>
-            <AddMessageForm addNewMessage={addNewMessage} userID={userID}/>
+            <AddMessageForm addNewMessage={addNewMessage} userID={activeUserID}/>
         </div>
     )
 }
