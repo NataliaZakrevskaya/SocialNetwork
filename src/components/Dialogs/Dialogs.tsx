@@ -22,7 +22,7 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
 
     if (activeUserID !== null) {
-        messagesElements = state.messages[activeUserID].map(m => <Message key={m.id} id={m.id} message={m.message}/>)
+        messagesElements = state.messages[activeUserID].map(m => <Message key={m.id} id={m.id} message={m.message} isAuth={m.isAuth}/>)
     }
 
 
@@ -36,7 +36,7 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <div className={s.dialogsItems}>
                     {dialogsElements}
                 </div>
-                <div className={activeUserID ? s.messagesField : s.fieldWithoutMessages}>
+                <div className={`${activeUserID ? s.messagesField : s.fieldWithoutMessages}`}>
                     {activeUserID ? messagesElements : <span>Select a chat to start messaging</span>}
                 </div>
             </div>

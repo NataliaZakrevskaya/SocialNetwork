@@ -34,31 +34,39 @@ let initialState: InitialStateType = {
     ],
     messages: {
         [1]: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "How is your it-kamasutra?"},
+            {id: v1(), message: "Hello", isAuth: false},
+            {id: v1(), message: "Have you seen my new video?", isAuth: false},
+            {id: v1(), message: "If not, I can send you a link", isAuth: false},
+            {id: v1(), message: "So you wouldn’t look", isAuth: false},
+            {id: v1(), message: "Let me know", isAuth: false},
         ],
         [2]: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "How how are you?"},
+            {id: v1(), message: "Hi", isAuth: false},
+            {id: v1(), message: "I’ve made changes to our project", isAuth: false},
+            {id: v1(), message: "And broke something", isAuth: false},
+            {id: v1(), message: "Can you take a look?", isAuth: false},
+            {id: v1(), message: "I don’t understand what’s wrong", isAuth: false},
         ],
         [3]: [
-            {id: 1, message: "Hello"},
-            {id: 2, message: "How it's going?"},
-            {id: 3, message: "Maybe yoy need some help?"},
+            {id: v1(), message: "Hello", isAuth: false},
+            {id: v1(), message: "I have a few questions for you", isAuth: false},
+            {id: v1(), message: "Let me know when you’re free", isAuth: false},
         ],
         [4]: [
-            {id: 1, message: "What's up "},
-            {id: 2, message: "I've watched your SN"},
-            {id: 3, message: "It's cool!)"},
+            {id: v1(), message: "What's up ", isAuth: false},
+            {id: v1(), message: "We decided to meet the guys on Friday", isAuth: false},
+            {id: v1(), message: "Are you with us?", isAuth: false},
         ],
         [5]: [
-            {id: 1, message: "Hello"},
-            {id: 2, message: "I need some help"},
-            {id: 3, message: "Could you help me?)"},
+            {id: v1(), message: "Hello", isAuth: false},
+            {id: v1(), message: "I need some help", isAuth: false},
+            {id: v1(), message: "Could you help me, pleeeease?)", isAuth: false},
         ],
         [6]: [
-            {id: 1, message: "Hi"},
-            {id: 2, message: "We want hire you"},
+            {id: v1(), message: "Good afternoon", isAuth: false},
+            {id: v1(), message: "We’ve considered your candidacy", isAuth: false},
+            {id: v1(), message: "And wanted to make you an offer", isAuth: false},
+            {id: v1(), message: "When it’s convenient for you to call and discuss all the details", isAuth: false},
         ],
     },
 }
@@ -70,7 +78,7 @@ const dialogsReducer = (state = initialState, action: DialogsReducerActionType) 
         case DialogReducerEnum.SEND_MESSAGE:
             const stateCopy = {...state}
             const messages = stateCopy.messages[action.userID]
-            const newMessage = {id: 5, message: action.newMessageBody}
+            const newMessage = {id: v1(), message: action.newMessageBody, isAuth: true}
             const newMessages = [...messages, newMessage]
             stateCopy.messages[action.userID] = newMessages
             return stateCopy
@@ -101,8 +109,9 @@ export type DialogType = {
     avatar: string
 };
 export type MessageType = {
-    id: number
+    id: string
     message: string
+    isAuth: boolean
 };
 export type MessagesType = {
     [key: number]: Array<MessageType>

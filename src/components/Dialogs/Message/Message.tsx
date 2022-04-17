@@ -2,18 +2,16 @@ import React from 'react'
 import s from './../Dialogs.module.css'
 
 type MessageType = {
-    id: number
+    id: string
     message: string
+    isAuth: boolean
 }
 
 const Message = (props: MessageType) => {
 
     return (
         <div>
-            <div>
-                <div className={s.message}>{props.message}</div>
-            </div>
-
+                <span className={props.isAuth ? s.isAuthMessages : s.message}>{props.message}</span>
         </div>
     )
 }

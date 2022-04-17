@@ -2,8 +2,6 @@ import React, {ChangeEvent, useState} from "react";
 import s from "../Dialogs.module.css";
 
 
-
-
 export const AddMessageForm = (props: AddMessageFormPropsType) => {
 
     const [messageText, setMessageText] = useState<string>('')
@@ -24,16 +22,16 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
     }
 
     return (
-        <div className={s.addMessageForm}>
-            <div className={s.addMessageContainer}>
+        <div className={s.addMessageFormContainer}>
+            <div className={s.addMessageForm}>
                 <textarea
                     value={messageText}
                     placeholder={"Enter your message..."}
                     className={!error ? s.textField : s.errorField}
                     onChange={onChangeHandler}
                 />
-            {error && <span className={s.errorSpan}>Min length is 1 symbol</span>}
-            </div>
+                    {error && <span className={s.errorSpan}>Min length is 1 symbol</span>}
+                </div>
                 <button disabled={!props.userID} onClick={validate}>Send</button>
         </div>
     )
