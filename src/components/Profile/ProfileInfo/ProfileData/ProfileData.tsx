@@ -45,15 +45,14 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
                 <div className={s.contacts}>
                     <div className={s.contactLinks}>
                         {contacts = Object.keys(profile.contacts)
+                            .filter(key => profile.contacts[key as keyof ContactsType] )
                             .map(key => {
-                                if (profile.contacts[key as keyof ContactsType]) {
                                     return <Contact
                                         key={key}
                                         contactTitle={key}
                                         contactValue={profile.contacts[key as keyof ContactsType]}/>
-                                }
                             })}
-                        {contacts.length && <span>This User didn't specify any info  😩</span>}
+                        {contacts.length < 1 && <span>This User didn't specify any info  😩</span>}
                     </div>
                 </div>}
         </div>
