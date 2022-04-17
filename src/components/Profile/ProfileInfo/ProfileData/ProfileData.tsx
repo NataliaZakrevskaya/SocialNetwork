@@ -13,6 +13,8 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
         return <Preloader/>
     }
 
+    let contacts = []
+
     return (
         <div className={s.profileInfo}>
 
@@ -42,7 +44,7 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
             {showContacts &&
                 <div className={s.contacts}>
                     <div className={s.contactLinks}>
-                        {Object.keys(profile.contacts)
+                        {contacts = Object.keys(profile.contacts)
                             .map(key => {
                                 if (profile.contacts[key as keyof ContactsType]) {
                                     return <Contact
@@ -51,6 +53,7 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
                                         contactValue={profile.contacts[key as keyof ContactsType]}/>
                                 }
                             })}
+                        {contacts.length && <span>This User didn't specify any info  😩</span>}
                     </div>
                 </div>}
         </div>
