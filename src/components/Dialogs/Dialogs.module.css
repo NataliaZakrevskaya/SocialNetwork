@@ -85,6 +85,11 @@
     align-items: flex-end;
 }
 
+.addMessageContainer{
+    display: flex;
+    flex-direction: column;
+}
+
 .textField {
     padding: 10px;
     width: 700px;
@@ -96,6 +101,25 @@
     outline: none;
     border-radius: 5px;
 }
+
+.errorField {
+    padding: 10px;
+    width: 700px;
+    min-height: 50px;
+    margin-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #f96560;
+}
+
+.errorSpan {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: red;
+}
+
 
 .addMessageForm button {
     width: 100px;
