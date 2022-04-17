@@ -1,16 +1,20 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {InjectedFormProps} from "redux-form/lib/reduxForm";
-import {required} from "../../../../../Utils/Validators/Validators";
-import {Textarea} from "../../../../Common/FormsControls/FormsControls";
-import s from "../../MyPosts.module.css"
+import {minLengthCreator, required} from "../../../../Utils/Validators/Validators";
+import {Textarea} from "../../../Common/FormsControls/FormsControls";
+import s from "../MyPosts.module.css"
 
+const minLength5 = minLengthCreator(5);
 
 export const AddPostForm: React.FC<InjectedFormProps<AddPostFormType>> = (props) => {
     const onSubmit = (values: any) => {
         props.handleSubmit(values)
         props.reset()
     }
+
+
+
     return (
         <form onSubmit={onSubmit} className={s.addPostFormBlock}>
             <div className={s.fieldContainer}>
@@ -18,7 +22,7 @@ export const AddPostForm: React.FC<InjectedFormProps<AddPostFormType>> = (props)
                     component={Textarea}
                     name={"newPostText"}
                     placeholder={"Write your message..."}
-                    validate={[required]}
+                    validate={[required, minLength5]}
                     className={s.textField}
                 />
             </div>

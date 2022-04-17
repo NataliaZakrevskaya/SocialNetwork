@@ -1,4 +1,4 @@
-export const required = (value: any) => {
+export const required = (value: string | number) => {
     if (value) {
         return undefined;
     }
@@ -7,6 +7,12 @@ export const required = (value: any) => {
 export const maxLengthCreator = (maxLength: number) => (value: any) => {
     if (value.length > maxLength) {
         return `Max length is ${maxLength} symbols`;
+    }
+    return undefined;
+}
+export const minLengthCreator = (minLength: number) => (value: any) => {
+    if (value.length < minLength) {
+        return `Min length is ${minLength} symbols`;
     }
     return undefined;
 }

@@ -32,7 +32,7 @@ const profileReducer = (state: ProfileInitialStateType = initialState, action: P
             }
             return {
                 ...state,
-                posts: [...state.posts, newPost],
+                posts: [newPost, ...state.posts],
             }
         }
         case profileReducerEnum.SET_STATUS: {
