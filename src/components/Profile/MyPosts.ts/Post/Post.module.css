@@ -32,10 +32,21 @@
     margin-right: 10px;
     margin-bottom: 10px;
 }
+@media screen and (max-width: 900px){
+    .item img  {
+        width: 40px;
+        height: 40px;
+    }
+}
 
 .userInfoContainer span {
     font-weight: bolder;
     color: #272729;
+}
+@media screen and (max-width: 900px){
+    .userInfoContainer span  {
+        font-size: 14px;
+    }
 }
 
 .messageContainer {
@@ -43,6 +54,13 @@
     padding: 5px;
     border-left: 3px solid #549cc1;
     margin: 15px;
+}
+@media screen and (max-width: 900px){
+    .messageContainer  {
+        min-height: 15px;
+        border-left: 2px solid #549cc1;
+        font-size: 12px;
+    }
 }
 
 .likesContainer {
@@ -52,6 +70,12 @@
     text-align: center;
     border-radius: 40%;
     cursor: pointer;
+}
+@media screen and (max-width: 900px){
+    .likesContainer  {
+        font-size: 12px;
+        min-width: 30px;
+    }
 }
 
 .likesContainer:hover {
