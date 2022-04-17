@@ -19,7 +19,7 @@ type MapStateToPropsType = {
     dialogsPage: InitialStateType
 }
 type MapDispatchToPropsType = {
-    sendMessage: (newMessageBody: string) => void
+    sendMessage: (userID: number | null, newMessageBody: string) => void
 }
 export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType
 

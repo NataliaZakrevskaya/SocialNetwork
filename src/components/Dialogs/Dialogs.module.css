@@ -20,7 +20,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    cursor: pointer;
+    border: 1px solid #42a790;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .dialog:hover {
@@ -41,7 +44,9 @@
 }
 
 .dialogImg {
-    width: 60px;
+    width: 70px;
+    border-radius: 50%;
+    image-orientation: unset;
 }
 
 .dialogsItems {
@@ -50,12 +55,29 @@
     padding: 10px;
 }
 
-.messages {
+.messagesField {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     width: 60%;
     padding: 10px;
+}
+
+.fieldWithoutMessages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.fieldWithoutMessages span{
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: white;
 }
 
 .message {

@@ -1,20 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
-import {AddMessageFormRedux} from "./AddMessageForm/AddMessageFormRedux";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
 
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    const state = props.dialogsPage;
-    const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
-    const messagesElements = state.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>)
+    const [userID, setUserID] = useState<number | null>(null)
 
-    const addNewMessage = (newMessage: string) => {
-        props.sendMessage(newMessage);
+    const state = props.dialogsPage;
+    console.log(userID)
+    let messagesElements;
+    const showMessages = (userId: number) => {
+        setUserID(userId)
+    }
+
+    const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} avatar={d.avatar}
+                                                               showMessages={showMessages}/>);
+
+
+    if (userID !== null) {
+        messagesElements = state.messages[userID].map(m => <Message key={m.id} id={m.id} message={m.message}/>)
+    }
+
+
+    const addNewMessage = (userID: number | null, newMessage: string) => {
+        props.sendMessage(userID, newMessage);
     };
 
     return (
@@ -23,11 +36,11 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 <div className={s.dialogsItems}>
                     {dialogsElements}
                 </div>
-                <div className={s.messages}>
-                    {messagesElements}
+                <div className={userID ? s.messagesField : s.fieldWithoutMessages}>
+                    {userID ? messagesElements : <span>Select a chat to start messaging</span>}
                 </div>
             </div>
-            <AddMessageForm addNewMessage={addNewMessage}/>
+            <AddMessageForm addNewMessage={addNewMessage} userID={userID}/>
         </div>
     )
 }

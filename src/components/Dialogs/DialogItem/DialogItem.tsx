@@ -3,18 +3,19 @@ import s from './../Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import dialogProfileImg from './dilaogProfileImg.png'
 
-type DialogsType = {
-    name?: string
-    id?: number
-}
 
 
 const DialogItem = (props: DialogsType) => {
     let path = "/dialogs/" + props.id;
+
+    const showMessages = () => {
+        props.showMessages(props.id)
+    }
+
     return (
-        <div className={s.dialog + ' ' + s.active}>
+        <div className={s.dialog + ' ' + s.active} onClick={showMessages}>
             <img className={s.dialogImg}
-                 src={dialogProfileImg}
+                 src={props.avatar}
                  alt={"dialogProfilePhoto"}/>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
@@ -22,3 +23,11 @@ const DialogItem = (props: DialogsType) => {
 }
 
 export default DialogItem;
+
+// TYPES
+type DialogsType = {
+    name: string
+    id: number
+    avatar: string
+    showMessages: (userID: number) => void
+}

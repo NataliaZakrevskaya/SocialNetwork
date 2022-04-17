@@ -15,7 +15,7 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
         }
     }
     const addMessage = (messageText: string) => {
-        props.addNewMessage(messageText)
+        props.addNewMessage(props.userID, messageText)
         setMessageText('')
     }
     const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,12 +34,13 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
                 />
             {error && <span className={s.errorSpan}>Min length is 1 symbol</span>}
             </div>
-                <button onClick={validate}>Send</button>
+                <button disabled={!props.userID} onClick={validate}>Send</button>
         </div>
     )
 }
 
 // TYPES
 type AddMessageFormPropsType = {
-    addNewMessage: (newMessage: string) => void
+    userID: number | null
+    addNewMessage: (userID: number | null, newMessage: string) => void
 }
