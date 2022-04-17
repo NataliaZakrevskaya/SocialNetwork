@@ -51,6 +51,7 @@
     font-family: 'Montserrat', sans-serif;
     border-radius: 7px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .unFollowBtn:hover {
@@ -67,6 +68,7 @@
     border: none;
     font-family: 'Montserrat', sans-serif;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .followBtn:hover {

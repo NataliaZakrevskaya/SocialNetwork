@@ -184,6 +184,7 @@
     font-family: 'Montserrat', sans-serif;
     border-radius: 7px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .showContactsButton:hover {

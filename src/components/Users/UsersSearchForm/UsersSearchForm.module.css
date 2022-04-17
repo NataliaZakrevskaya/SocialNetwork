@@ -37,6 +37,7 @@
     border: none;
     font-family: 'Montserrat', sans-serif;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .formContainer button:hover {

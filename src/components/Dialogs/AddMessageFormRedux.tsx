@@ -9,7 +9,6 @@ type DialogFormDataType = {
     newMessageBody: string
 }
 
-//const maxLength50 = maxLengthCreator(50);
 
 export const AddMessageForm: React.FC<InjectedFormProps<DialogFormDataType>> = (props) => {
     const onSubmit = (values: any) => {
