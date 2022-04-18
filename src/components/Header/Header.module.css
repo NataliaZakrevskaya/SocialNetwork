@@ -8,18 +8,37 @@
 
 .header img {
     width: 60px;
-    margin-left: 80px;
+    margin-left: 5%;
     margin-top: 5px;
+}
+@media screen and (max-width: 800px){
+    .header img {
+        width: 40px;
+    }
 }
 
 .logoutBlock {
-    margin-top: 20px;
+    width: 400px;
+    margin-top: 18px;
     float: right;
-    margin-right: 3%;
+    margin-right: 5%;
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+}
+@media screen and (max-width: 800px){
+    .logoutBlock {
+        width: 350px;
+        margin-top: 11px;
+    }
+}
+@media screen and (max-width: 600px){
+    .logoutBlock {
+        width: 300px;
+        margin-top: 11px;
+    }
 }
 
 .logoutBlock span {
@@ -27,34 +46,47 @@
     font-weight: bolder;
     font-size: large;
 }
+@media screen and (max-width: 800px){
+    .logoutBlock span {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 600px){
+    .logoutBlock span {
+        font-size: 14px;
+    }
+}
 
 .logoutBlock button {
-    font-family: 'Montserrat', sans-serif;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #42a790;
-    border-radius: 0.6em;
-    color: #42a790;
-    cursor: pointer;
-    line-height: 1;
-    margin-left: 10px;
-    padding: .4em 1.2em;
-    text-decoration: none;
-    text-align: center;
+    width: 100px;
+    height: 35px;
+    margin-right: 20px;
+    background-color: #42a790;
+    color: white;
     text-transform: uppercase;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-
+    font-weight: bold;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 7px;
+    cursor: pointer;
+}
+@media screen and (max-width: 800px){
+    .logoutBlock button {
+        font-size: 13px;
+        height: 25px;
+        width: 80px;
+    }
+}
+@media screen and (max-width: 800px){
+    .logoutBlock button {
+        font-size: 11px;
+        height: 20px;
+        width: 70px;
+    }
 }
 
 .logoutBlock button:hover {
-    color: #fff;
-    outline: 0;
-    box-shadow: 0 0 40px 40px #42a790 inset;
+    background-color: #3a816e;
 }
 
 .login {

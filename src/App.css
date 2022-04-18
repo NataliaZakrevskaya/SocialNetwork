@@ -19,6 +19,7 @@
         "h h"
         "n n"
         "c c";
+        grid-template-rows: 50px 1fr 1fr;
         grid-template-columns: 10fr;
     }
 }
