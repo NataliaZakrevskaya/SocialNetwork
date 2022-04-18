@@ -8,9 +8,19 @@
     grid-template-areas:
 "h h"
 "n c";
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: 70px 1fr 1fr;
     grid-template-columns: 2fr 10fr;
     /*grid-gap: 10px;*/
+}
+
+@media screen and (max-width: 800px) {
+    .app-wrapper {
+        grid-template-areas:
+        "h h"
+        "n n"
+        "c c";
+        grid-template-columns: 10fr;
+    }
 }
 
 .app-wrapper-content {
