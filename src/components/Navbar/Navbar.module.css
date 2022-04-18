@@ -1,4 +1,4 @@
-.nav {
+.navPage {
     grid-area: n;
     background-color: #f8f7fa;
     padding: 30px;
@@ -7,6 +7,25 @@
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+@media screen and (max-width: 800px){
+    .navPage {
+        background-color: rgba(250, 250, 250, 1);
+        font-size: 20px;
+        padding: 15px;
+    }
+}
+
+.navContainer {
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width: 800px){
+    .navContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 
 .item a {
@@ -24,6 +43,12 @@
     font-size: xx-large;
     font-weight: bolder;
     margin: 5px;
+}
+@media screen and (max-width: 800px){
+    .item a.activeLink {
+        margin: 0;
+        font-size: 20px;
+    }
 }
 
 .withoutAuth{
