@@ -2,16 +2,20 @@ import React from 'react';
 import s from "./Header.module.css"
 import logo from './../../Images/Social network.png'
 import {NavLink} from "react-router-dom";
-
-type HeaderPropsType = {
-    isAuth: boolean
-    login: string | null
-    logout: () => void
-}
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../Redux/redux-store";
+import {logout} from "../../Redux/auth-reducer";
 
 
-const Header = ({login, logout, isAuth}: HeaderPropsType) => {
+const Header = () => {
 
+    const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
+    const login = useSelector<AppStateType, string | null>(state => state.auth.data.login)
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
 
     return <header className={s.header}>
         <img
@@ -20,7 +24,7 @@ const Header = ({login, logout, isAuth}: HeaderPropsType) => {
             isAuth
                 ? (<div className={s.logoutBlock}>
                     <span>{login}</span>
-                    <button onClick={logout}>Log out</button>
+                    <button onClick={logoutHandler}>Log out</button>
                 </div>)
                 : (<NavLink to={'/login'} className={s.login}>Login</NavLink>)
         }

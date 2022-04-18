@@ -2,12 +2,12 @@ import React from 'react'
 import './App.css'
 import Navbar from "./components/Navbar/Navbar";
 import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
-import HeaderContainer from "./components/Header/HeaderContainer";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./Redux/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
 import {Preloader} from "./components/Common/Preloader/Preloader";
 import Loading from "./components/Common/Loader/Loading";
+import Header from "./components/Header/Header";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -36,7 +36,7 @@ class App extends React.Component<AppPropsType> {
         }
         return (
             <main className={"app-wrapper"}>
-                <HeaderContainer/>
+                <Header/>
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
                     <Routes>
