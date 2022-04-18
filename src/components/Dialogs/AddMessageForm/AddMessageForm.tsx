@@ -22,8 +22,9 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
     }
 
     return (
-        <div className={s.addMessageFormContainer}>
-            <div className={s.addMessageForm}>
+        <div className={s.addMessageFormBlock}>
+            <div className={s.addMessageFormContainer}>
+                <div className={s.addMessageForm}>
                 <textarea
                     value={messageText}
                     placeholder={"Enter your message..."}
@@ -33,6 +34,7 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
                     {error && <span className={s.errorSpan}>Min length is 1 symbol</span>}
                 </div>
                 <button disabled={!props.userID} onClick={validate}>Send</button>
+            </div>
         </div>
     )
 }
