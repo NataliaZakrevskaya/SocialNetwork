@@ -18,6 +18,7 @@ const Header = () => {
     }
 
     return <header className={s.header}>
+        <div className={s.headerContainer}>
         <img
             src={logo} alt={"logo"}/>
         {
@@ -28,6 +29,7 @@ const Header = () => {
                 </div>)
                 : (<NavLink to={'/login'} className={s.login}>Login</NavLink>)
         }
+        </div>
     </header>
 }
 

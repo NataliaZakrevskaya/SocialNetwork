@@ -6,37 +6,36 @@
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
+.headerContainer {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header img {
     width: 60px;
-    margin-left: 5%;
     margin-top: 5px;
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 850px){
     .header img {
         width: 40px;
     }
 }
 
 .logoutBlock {
-    width: 400px;
-    margin-top: 18px;
-    float: right;
-    margin-right: 5%;
+    width: 330px;
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 850px){
     .logoutBlock {
-        width: 350px;
-        margin-top: 11px;
-    }
-}
-@media screen and (max-width: 600px){
-    .logoutBlock {
-        width: 300px;
+        width: 290px;
         margin-top: 11px;
     }
 }
@@ -46,21 +45,15 @@
     font-weight: bolder;
     font-size: large;
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 850px){
     .logoutBlock span {
         font-size: 16px;
-    }
-}
-@media screen and (max-width: 600px){
-    .logoutBlock span {
-        font-size: 14px;
     }
 }
 
 .logoutBlock button {
     width: 100px;
     height: 35px;
-    margin-right: 20px;
     background-color: #42a790;
     color: white;
     text-transform: uppercase;
@@ -70,18 +63,11 @@
     border-radius: 7px;
     cursor: pointer;
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 850px){
     .logoutBlock button {
         font-size: 13px;
         height: 25px;
         width: 80px;
-    }
-}
-@media screen and (max-width: 800px){
-    .logoutBlock button {
-        font-size: 11px;
-        height: 20px;
-        width: 70px;
     }
 }
 

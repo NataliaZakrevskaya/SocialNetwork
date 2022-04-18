@@ -46,7 +46,22 @@
 @media screen and (max-width: 850px){
     .avatar {
         top: 75px;
+    }
+}/*
+@media screen and (max-width: 600px){
+    .avatar {
+        right: 31%;
+    }
+}
+@media screen and (max-width: 560px){
+    .avatar {
+        top: 80px;
         right: 33%;
+    }
+}*/
+@media screen and (max-width: 400px){
+    .avatar {
+        right: 31%;
     }
 }
 
@@ -72,7 +87,12 @@
     .avatar img {
         width: 130px;
     }
-}
+}/*
+@media screen and (max-width: 560px){
+    .avatar img {
+        width: 110px;
+    }
+}*/
 
 .avatarEdit {
     position: absolute;
@@ -94,7 +114,12 @@
     .avatarEdit {
         top: 112px;
     }
-}
+}/*
+@media screen and (max-width: 560px){
+    .avatarEdit {
+        top: 97px;
+    }
+}*/
 
 .avatarEdit input {
     display: none;
@@ -177,11 +202,6 @@
         width: 20%;
     }
 }
-@media screen and (max-width: 900px){
-    .statusBlock {
-        width: 20%;
-    }
-}
 
 .status {
     width: 200px;
@@ -193,7 +213,6 @@
     .status {
         width: 100px;
         min-height: 20px;
-        margin-top: 20px;
         margin-left: 5px;
         font-size: 14px;
     }
@@ -201,12 +220,15 @@
 @media screen and (max-width: 900px){
     .status {
         width: 50px;
-        min-height: 20px;
-        margin-top: 20px;
-        margin-left: 5px;
         font-size: 12px;
     }
-}
+}/*
+@media screen and (max-width: 560px){
+    .status {
+        font-size: 10px;
+        margin-top: 10px;
+    }
+}*/
 
 .status span {
     word-wrap: break-word;
@@ -232,7 +254,12 @@
     .lookingJob {
         font-size: 12px;
     }
-}
+}/*
+@media screen and (max-width: 560px){
+    .lookingJob {
+        font-size: 10px;
+    }
+}*/
 
 .statusBlock input {
     border-top: none;
