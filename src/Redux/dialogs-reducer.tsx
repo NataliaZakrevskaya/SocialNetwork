@@ -7,7 +7,7 @@ export enum DialogReducerEnum {
 }
 
 
-let initialState: InitialStateType = {
+let initialState: DialogsInitialStateType = {
     dialogs: [
         {
             id: 1,
@@ -116,7 +116,7 @@ export type MessageType = {
 export type MessagesType = {
     [key: number]: Array<MessageType>
 }
-export type InitialStateType = {
+export type DialogsInitialStateType = {
     dialogs: Array<DialogType>
     messages: MessagesType
 };

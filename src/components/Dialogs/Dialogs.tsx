@@ -2,16 +2,21 @@ import React, {useState} from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {DialogsPropsType} from "./DialogsContainer";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
+import {Navigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../Redux/redux-store";
+import {DialogsInitialStateType, dialogsReducerActions} from "../../Redux/dialogs-reducer";
 
 
-const Dialogs: React.FC<DialogsPropsType> = (props) => {
+const DialogsPage = () => {
+
 
     const [activeUserID, setActiveUserID] = useState<number | null>(null)
+    const dispatch = useDispatch()
+    const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
+    const state = useSelector<AppStateType, DialogsInitialStateType>(state => state.messagesPage)
 
-    const state = props.dialogsPage;
-    console.log(activeUserID)
     let messagesElements;
     const showMessages = (userId: number) => {
         setActiveUserID(userId)
@@ -27,8 +32,14 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
 
     const addNewMessage = (userID: number | null, newMessage: string) => {
-        props.sendMessage(userID, newMessage);
+        if(userID){
+        dispatch(dialogsReducerActions.sendMessage(userID, newMessage));
+        }
     };
+
+    if (!isAuth) {
+        return <Navigate to='/login'/>
+    }
 
     return (
         <div className={s.dialogsPage}>
@@ -45,10 +56,6 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     )
 }
 
-//TYPES
-export type NewMessageFormType = {
-    newMessageBody: string
-}
 
 
-export default Dialogs;
+export default DialogsPage;

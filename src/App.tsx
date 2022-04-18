@@ -9,7 +9,7 @@ import {Preloader} from "./components/Common/Preloader/Preloader";
 import Loading from "./components/Common/Loader/Loading";
 import Header from "./components/Header/Header";
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const DialogsPage = React.lazy(() => import('./components/Dialogs/Dialogs'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
 const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
@@ -42,8 +42,8 @@ class App extends React.Component<AppPropsType> {
                     <Routes>
                         <Route path='/' element={<Navigate to={'/profile'}/>}/>
 
-                        <Route path='/dialogs' element={<DialogsContainer/>}>
-                            <Route path=":userId" element={<DialogsContainer/>}/>
+                        <Route path='/dialogs' element={<DialogsPage/>}>
+                            <Route path=":userId" element={<DialogsPage/>}/>
                         </Route>
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path=":userId" element={<ProfileContainer/>}/>
