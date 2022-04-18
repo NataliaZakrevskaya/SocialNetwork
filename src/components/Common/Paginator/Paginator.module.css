@@ -1,34 +1,41 @@
 .paginator {
-    width: 450px;
-    height: 50px;
+    width: 400px;
+    height: 30px;
     margin: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
+@media screen and (max-width: 450px) {
+    .paginator {
+        width: 300px;
+    }
+}
+
 .paginator button {
-    margin-right: 10px;
-    margin-left: 10px;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    width: 30px;
+    height: 26px;
     background-color: #42a790;
-    border: 2px solid #42a790;
-    border-radius: 0.6em;
-    color: #fff;
-    cursor: pointer;
-    line-height: 1;
-    padding: .3em .3em;
-    text-decoration: none;
-    text-align: center;
+    color: white;
     text-transform: uppercase;
+    font-weight: bold;
+    border: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    border-radius: 7px;
+    cursor: pointer;
+}
+@media screen and (max-width: 450px) {
+    .paginator button{
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.paginator button:hover {
+    background-color: #3a816e;
 }
 
 .paginator span {
@@ -41,6 +48,16 @@
     padding: .1em .3em;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
+}
+@media screen and (max-width: 450px) {
+    .paginator span{
+        font-size: 14px;
+        max-width: 20px;
+        max-height: 20px;
+        padding: 1px;
+        vertical-align: center;
+
+    }
 }
 
 .paginator span:hover {
