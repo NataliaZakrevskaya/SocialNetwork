@@ -1,8 +1,8 @@
 .chatPage{
     background-color: white;
     min-height: 80vh;
-    margin: 20px;
-    width: 95%;
+    width: 98%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -11,8 +11,7 @@
 }
 
 .messagesPart {
-    background-color: #B4EDF8;
-    height: 65vh;
+    background-color:#caecfe;
     padding: 20px;
 }
 
@@ -20,11 +19,11 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-    max-width: 500px;
+    max-width: 80%;
     background-color: #fff;
     border-radius: 5px;
     padding: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
     font-size: small;
 }
