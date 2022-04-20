@@ -5,6 +5,7 @@ import {StatusType} from "../../../api/chat-api";
 import {startMessagesListening, stopMessagesListening} from "../../../Redux/chat-reducer";
 import {Messages} from "./Messages/Messages";
 import {AddChatMessageForm} from "./Messages/AddChatMessageForm";
+import s from "./../ChatPage.module.css"
 
 export const Chat: React.FC = () => {
 
@@ -21,7 +22,7 @@ export const Chat: React.FC = () => {
     }, [])
 
     return (
-        <div>
+        <div className={s.chatPageBlock}>
             {status === 'error' && <div>Some error occurred. Please, refresh the page</div>}
             <>
                 <Messages/>

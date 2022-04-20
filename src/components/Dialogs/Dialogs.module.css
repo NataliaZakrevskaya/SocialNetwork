@@ -1,19 +1,30 @@
 .dialogsPage {
-    background-image: url("https://fullhdoboi.ru/wp-content/uploads/_ph/22/41664680.jpg");
     width: 98%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.dialogsPageBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.dialogs {
+    background-color: #549cc1;
+    display: flex;
+    flex-direction: row;
+    height: 85%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.dialogs {
-    display: flex;
-    flex-direction: row;
-}
-
 
 .dialog {
-    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,12 +35,14 @@
     font-family: 'Montserrat', sans-serif;
     color: #42a790;
 }
+
 @media screen and (max-width: 850px) {
     .dialog {
         flex-direction: column;
         width: 52px;
     }
 }
+
 /*@media screen and (max-width: 365px) {
     .dialog {
         flex-direction: column;
@@ -44,9 +57,10 @@
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-.dialog span{
+.dialog span {
     margin-left: 20px;
 }
+
 /*@media screen and (max-width: 660px) {
     .dialog span {
         margin-left: 10px;
@@ -64,7 +78,7 @@
 }
 
 
-.activeDialog{
+.activeDialog {
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
@@ -76,6 +90,7 @@
     font-family: 'Montserrat', sans-serif;
     color: white;
 }
+
 /*@media screen and (max-width: 660px) {
     .activeDialog {
         padding: 5px;
@@ -89,9 +104,10 @@
     }
 }
 
-.activeDialog span{
+.activeDialog span {
     margin-left: 20px;
 }
+
 /*@media screen and (max-width: 660px) {
     .activeDialog span {
         margin-left: 10px;
@@ -109,6 +125,7 @@
     height: 45px;
     border-radius: 50%;
 }
+
 @media screen and (max-width: 850px) {
     .dialogImg {
         width: 50px;
@@ -119,8 +136,13 @@
 .dialogsItems {
     background-color: rgba(250, 250, 250, 1);
     width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
+    border-top-left-radius: 10px;
 }
+
 /*@media screen and (max-width: 660px) {
     .dialogsItems {
         width: 173px;
@@ -134,6 +156,7 @@
 }
 
 .messagesField {
+    background-image: url("https://fullhdoboi.ru/wp-content/uploads/_ph/22/41664680.jpg");
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -149,7 +172,7 @@
     width: 100%;
 }
 
-.fieldWithoutMessages span{
+.fieldWithoutMessages span {
     padding: 10px;
     border-radius: 15px;
     background-color: rgba(0, 0, 0, .2);
@@ -157,12 +180,14 @@
     font-weight: bolder;
     color: white;
 }
+
 @media screen and (max-width: 1100px) {
     .fieldWithoutMessages span {
         font-size: 10px;
         padding: 5px;
     }
 }
+
 /*@media screen and (max-width: 850px) {
     .fieldWithoutMessages span {
         font-size: 10px;
@@ -171,7 +196,7 @@
 }*/
 
 .message {
-    float:left;
+    float: left;
     display: inline-block;
     background-color: #fff;
     border-radius: 5px;
@@ -181,6 +206,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: small;
 }
+
 @media screen and (max-width: 850px) {
     .message {
         font-size: 10px;
@@ -205,6 +231,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: small;
 }
+
 @media screen and (max-width: 850px) {
     .isAuthMessages {
         font-size: 10px;
@@ -214,15 +241,21 @@
 
 .addMessageFormBlock {
     border-top: 1px solid #c7d2cf;
-    min-height: 90px;
+    height: 15%;
     background-color: rgba(250, 250, 250, 1);
     padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
-@media screen and (max-width: 660px){
-    .addMessageFormBlock{
+
+@media screen and (max-width: 660px) {
+    .addMessageFormBlock {
         min-height: 50px;
     }
 }
@@ -234,17 +267,20 @@
     justify-content: space-between;
     align-items: flex-start;
 }
-@media screen and (max-width: 1107px){
-.addMessageFormContainer{
-    width: 627px;
+
+@media screen and (max-width: 1107px) {
+    .addMessageFormContainer {
+        width: 627px;
+    }
 }
+
+@media screen and (max-width: 897px) {
+    .addMessageFormContainer {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
-@media screen and (max-width: 897px){
-.addMessageFormContainer{
-    width: 100%;
-    justify-content: flex-end;
-}
-}
+
 /*
 @media screen and (max-width: 660px){
 .addMessageFormContainer{
@@ -274,30 +310,34 @@
     padding: 10px;
     width: 700px;
     min-height: 50px;
-    border: 1px solid #d4d6d3 ;
+    border: 1px solid #d4d6d3;
     font-family: 'Montserrat', sans-serif;
     resize: none;
     outline: none;
     border-radius: 5px;
 }
-@media screen and (max-width: 1107px){
-    .textField{
+
+@media screen and (max-width: 1107px) {
+    .textField {
         width: 496px;
     }
 }
-@media screen and (max-width: 897px){
-    .textField{
+
+@media screen and (max-width: 897px) {
+    .textField {
         width: 300px;
         margin-right: 10px;
     }
 }
-@media screen and (max-width: 660px){
-    .textField{
+
+@media screen and (max-width: 660px) {
+    .textField {
         width: 200px;
         font-size: 10px;
         min-height: 30px;
     }
 }
+
 /*@media screen and (max-width: 510px){
     .textField{
         width: 244px;
@@ -321,19 +361,22 @@
     border-radius: 5px;
     border: 1px solid #f96560;
 }
-@media screen and (max-width: 1107px){
-    .errorField{
+
+@media screen and (max-width: 1107px) {
+    .errorField {
         width: 496px;
     }
 }
-@media screen and (max-width: 897px){
-    .errorField{
+
+@media screen and (max-width: 897px) {
+    .errorField {
         width: 300px;
         margin-right: 10px;
     }
 }
-@media screen and (max-width: 660px){
-    .errorField{
+
+@media screen and (max-width: 660px) {
+    .errorField {
         width: 200px;
         font-size: 10px;
         min-height: 30px;
@@ -345,8 +388,9 @@
     font-size: 12px;
     color: red;
 }
-@media screen and (max-width: 1107px){
-    .errorSpan{
+
+@media screen and (max-width: 1107px) {
+    .errorSpan {
         font-size: 10px;
     }
 }
@@ -363,7 +407,8 @@
     border-radius: 7px;
     cursor: pointer;
 }
-@media screen and (max-width: 660px){
+
+@media screen and (max-width: 660px) {
     .addMessageFormContainer button {
         width: 65px;
         height: 30px;

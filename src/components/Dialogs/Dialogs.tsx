@@ -23,17 +23,19 @@ const DialogsPage = () => {
     }
 
     const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} avatar={d.avatar}
-                                                               showMessages={showMessages} activeUserID={activeUserID}/>);
+                                                               showMessages={showMessages}
+                                                               activeUserID={activeUserID}/>);
 
 
     if (activeUserID !== null) {
-        messagesElements = state.messages[activeUserID].map(m => <Message key={m.id} id={m.id} message={m.message} isAuth={m.isAuth}/>)
+        messagesElements = state.messages[activeUserID].map(m => <Message key={m.id} id={m.id} message={m.message}
+                                                                          isAuth={m.isAuth}/>)
     }
 
 
     const addNewMessage = (userID: number | null, newMessage: string) => {
-        if(userID){
-        dispatch(dialogsReducerActions.sendMessage(userID, newMessage));
+        if (userID) {
+            dispatch(dialogsReducerActions.sendMessage(userID, newMessage));
         }
     };
 
@@ -43,19 +45,20 @@ const DialogsPage = () => {
 
     return (
         <div className={s.dialogsPage}>
-            <div className={s.dialogs}>
-                <div className={s.dialogsItems}>
-                    {dialogsElements}
+            <div className={s.dialogsPageBlock}>
+                <div className={s.dialogs}>
+                    <div className={s.dialogsItems}>
+                        {dialogsElements}
+                    </div>
+                    <div className={`${activeUserID ? s.messagesField : s.fieldWithoutMessages}`}>
+                        {activeUserID ? messagesElements : <span>Select a chat to start messaging</span>}
+                    </div>
                 </div>
-                <div className={`${activeUserID ? s.messagesField : s.fieldWithoutMessages}`}>
-                    {activeUserID ? messagesElements : <span>Select a chat to start messaging</span>}
-                </div>
+                <AddMessageForm addNewMessage={addNewMessage} userID={activeUserID}/>
             </div>
-            <AddMessageForm addNewMessage={addNewMessage} userID={activeUserID}/>
         </div>
     )
 }
-
 
 
 export default DialogsPage;
