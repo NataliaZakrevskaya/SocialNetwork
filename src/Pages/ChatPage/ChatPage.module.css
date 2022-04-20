@@ -12,7 +12,7 @@
 
 .messagesPart {
     background-color:#caecfe;
-    padding: 20px;
+    padding: 10px;
 }
 
 .message {
@@ -22,10 +22,15 @@
     max-width: 80%;
     background-color: #fff;
     border-radius: 5px;
-    padding: 15px;
+    padding: 10px;
     margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
     font-size: small;
+}
+@media screen and (max-width: 550px){
+    .message {
+        font-size: 10px;
+    }
 }
 
 
@@ -39,7 +44,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 
@@ -48,6 +52,13 @@
     border-radius: 50%;
     margin-right: 10px;
 }
+@media screen and (max-width: 550px){
+    .userInfoContainer img {
+        width: 30px;
+        margin-right: 5px;
+    }
+}
+
 .userInfoContainer span{
     font-weight: bolder;
 }
@@ -58,7 +69,7 @@
 
 .addChatMessageForm {
     border-top: 1px solid #c7d2cf;
-    height: 110px;
+    min-height: 110px;
     background-color: rgba(250, 250, 250, 1);
     padding: 10px;
     display: flex;
@@ -68,7 +79,7 @@
 
 .textField {
     padding: 10px;
-    width: 98%;
+    width: 96%;
     min-height: 50px;
     border: 1px solid #d4d6d3 ;
     font-family: 'Montserrat', sans-serif;
@@ -77,24 +88,34 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
+@media screen and (max-width: 550px){
+    .textField {
+        width: 94%;
+        min-height: 40px;
+        font-size: 10px;
+    }
+}
 
 .addChatMessageForm button {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    width: 100px;
+    height: 35px;
     background-color: #42a790;
-    border: 2px solid #42a790;
-    border-radius: 0.6em;
-    color: #fff;
-    cursor: pointer;
-    line-height: 1;
-    padding: .4em 1.2em;
-    text-decoration: none;
-    text-align: center;
+    color: white;
     text-transform: uppercase;
+    font-weight: bold;
+    border: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    border-radius: 7px;
+    cursor: pointer;
+}
+@media screen and (max-width: 550px){
+    .addChatMessageForm button {
+        width: 70px;
+        height: 30px;
+        font-size: 10px;
+    }
+}
+
+.addChatMessageForm button:hover {
+    background-color: #3a816e;
 }
