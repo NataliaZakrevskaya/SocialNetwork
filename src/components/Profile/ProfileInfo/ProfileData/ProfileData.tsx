@@ -16,11 +16,11 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsTy
     let contacts = []
 
     return (
-        <div className={s.profileInfo}>
+        <div className={s.profileInfoData}>
 
             <hr className={style.hr}/>
             {isOwner
-                && <div>
+                && <div className={s.editButtonContainer}>
                     <button className={s.editButton} onClick={goToEditMode}>✎</button>
                 </div>}
             <div className={s.majorInfo}>

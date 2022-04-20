@@ -1,10 +1,9 @@
 .profilePageBlock {
-    width: 50%;
-    min-height: 90vh;
-    margin: 0 auto;
+    width: 80%;
+    margin: 0 auto 10px;
     border-radius: 10px;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 700px){
     .profilePageBlock {
         width: 90%;
     }
