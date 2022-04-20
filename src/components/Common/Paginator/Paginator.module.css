@@ -1,17 +1,10 @@
 .paginator {
-    width: 400px;
     height: 30px;
     margin: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-@media screen and (max-width: 450px) {
-    .paginator {
-        width: 300px;
-    }
 }
 
 .paginator button {

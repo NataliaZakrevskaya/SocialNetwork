@@ -1,9 +1,10 @@
 import React from "react";
-import preloader from "../../../Images/Fidget-spinner.gif";
+import preloader from "../../../Images/preloader.svg";
+import s from "./Preloader.module.css"
 
-export const Preloader = (props: any) => {
+export const Preloader = () => {
     return (
-        <div style={{backgroundColor: "white"}}>
+        <div className={s.preloader}>
             <img src={preloader}/>
         </div>
     )

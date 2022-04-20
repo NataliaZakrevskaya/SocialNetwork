@@ -9,7 +9,7 @@ import {Navigate} from "react-router-dom";
 
 const UsersPage: React.FC<UsersPropsType> = (props) => {
 
-const isFetching = useSelector(getIsFetching)
+/*const isFetching = useSelector(getIsFetching)*/
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
 
     if (!isAuth) {
@@ -17,7 +17,7 @@ const isFetching = useSelector(getIsFetching)
     }
     return (
             <>
-                {isFetching ? <Preloader/> : null}
+                {/*{isFetching ? <Preloader/> : null}*/}
                 <Users/>
             </>
         )

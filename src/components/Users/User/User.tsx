@@ -33,7 +33,6 @@ export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsTy
                             className={s.followBtn}
                             disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
-                                debugger
                                 follow(user.id)
                             }}>Follow</button>
                 }

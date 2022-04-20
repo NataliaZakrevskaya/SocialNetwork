@@ -191,7 +191,7 @@
 .profileInfo {
     position: relative;
     width: 95%;
-    margin-left: 10px;
+    margin: 0 auto;
 }
 
 .statusBlock {
@@ -222,13 +222,7 @@
         width: 50px;
         font-size: 12px;
     }
-}/*
-@media screen and (max-width: 560px){
-    .status {
-        font-size: 10px;
-        margin-top: 10px;
-    }
-}*/
+}
 
 .status span {
     word-wrap: break-word;

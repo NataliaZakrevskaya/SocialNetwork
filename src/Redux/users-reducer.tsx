@@ -105,10 +105,6 @@ export const requestUsers = (page: number, pageSize: number, filter: FilterType)
     dispatch(usersReducerActions.setUsers(data.items));
     dispatch(usersReducerActions.setTotalUsersCount(data.totalCount));
 }
-export const requestFriends = (page: number, pageSize: number, filter: FilterType): ThunkType => async (dispatch) => {
-    let data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend)
-    dispatch(usersReducerActions.setUsers(data.items));
-}
 const followUnfollowFlow = async (dispatch: Dispatch<UsersReducerActionType>, apiMethod: (userId: number) => Promise<FollowingResponseType>, userId: number, actionCreator: (userId: number) => UsersReducerActionType) => {
     dispatch(usersReducerActions.toggleFollowingProgress(true, userId))
     let response = await apiMethod(userId);

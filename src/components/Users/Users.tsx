@@ -6,7 +6,7 @@ import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm/UsersSearchForm";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getFollowingInProgress,
+    getFollowingInProgress, getIsFetching,
     getPage,
     getPageSize,
     getTotalUsersCount,
@@ -14,6 +14,7 @@ import {
     getUsersFilter
 } from "../../Redux/Selectors/users-selectors";
 import {useNavigate, useSearchParams} from "react-router-dom";
+import {Preloader} from "../Common/Preloader/Preloader";
 
 
 export const Users: FC<UsersPropsType> = React.memo((props) => {
@@ -26,7 +27,7 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
     const parsedTerm = searchParams.get('term')
     const parsedFriend = searchParams.get('friend')
 
-
+    const isFetching = useSelector(getIsFetching)
     const pageSize = useSelector(getPageSize)
     const users = useSelector(getUsers)
     const totalUsersCount = useSelector(getTotalUsersCount)
@@ -42,7 +43,6 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
         dispatch(requestUsers(1, pageSize, filter))
     }
     const onFollow = (userID: number) => {
-        debugger
         dispatch(follow(userID))
     }
     const onUnfollow = (userID: number) => {
@@ -87,17 +87,20 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
 
             <UsersSearchForm onFilterChanged={onFilterChanged}/>
 
-
-            <div className={s.usersContainer}>
-                <div className={s.users}>
-                    {users.map(u => <User user={u}
-                                          unfollow={onUnfollow}
-                                          follow={onFollow}
-                                          followingInProgress={followingInProgress}
-                                          key={u.id}/>
-                    )}
-                </div>
-            </div>
+            {isFetching ? <Preloader/>
+                :
+                (<div className={s.usersContainer}>
+                        <div className={s.users}>
+                            {users.map(u => <User user={u}
+                                                  unfollow={onUnfollow}
+                                                  follow={onFollow}
+                                                  followingInProgress={followingInProgress}
+                                                  key={u.id}/>
+                            )}
+                        </div>
+                    </div>
+                )
+            }
             <Paginator
                 totalItemsCount={totalUsersCount}
                 pageSize={pageSize}

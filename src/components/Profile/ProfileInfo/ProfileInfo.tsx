@@ -1,6 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from "./ProfileInfo.module.css";
-import {Preloader} from "../../Common/Preloader/Preloader";
 import {ProfileType} from "../../../Redux/profile-reducer";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
@@ -21,9 +20,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
     const [editMode, setEditMode] = useState<boolean>(false)
 
-    if (!profile) {
-        return <Preloader/>
-    }
+
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length) {
@@ -60,7 +57,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     isOwner={isOwner}
                     updateStatus={updateStatus}
                 />
-                {profile.lookingForAJob ? <span className={s.lookingJob}>Looking for a job!</span> : ''}
+                {profile?.lookingForAJob ? <span className={s.lookingJob}>Looking for a job!</span> : ''}
                 {editMode
                     ? <ProfileDataForm
                         initialValues={profile}

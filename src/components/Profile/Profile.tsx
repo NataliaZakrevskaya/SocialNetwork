@@ -3,6 +3,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfileType} from "../../Redux/profile-reducer";
 import s from "./Profile.module.css"
 import MyPosts from "./MyPosts.ts/MyPosts";
+import {Preloader} from "../Common/Preloader/Preloader";
 
 type ProfileComponentPropsType = {
     isOwner: boolean
@@ -14,6 +15,9 @@ type ProfileComponentPropsType = {
 }
 
 const Profile = (props: ProfileComponentPropsType) => {
+
+
+
     return (
         <div className={s.profilePageBlock}>
             <ProfileInfo

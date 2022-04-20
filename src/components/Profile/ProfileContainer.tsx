@@ -13,6 +13,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {InjectedProps, withRouter2} from "../../HOC/withRouter";
 import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
+import {Preloader} from "../Common/Preloader/Preloader";
 
 
 type MapStateToPropsType = {
@@ -55,6 +56,9 @@ class ProfileAPIContainer extends React.Component<OwnPropsType> {
     }
 
     render() {
+        if (!this.props.profile) {
+            return <Preloader/>
+        }
         return (
             <Profile
                 isOwner={!this.props.userId}
