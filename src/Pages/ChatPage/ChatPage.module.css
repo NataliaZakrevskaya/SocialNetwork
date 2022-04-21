@@ -105,8 +105,8 @@
 }
 
 .textField {
-    padding: 10px;
-    width: 96%;
+    padding: 1%;
+    width: 97%;
     min-height: 50px;
     border: 1px solid #d4d6d3 ;
     font-family: 'Montserrat', sans-serif;
@@ -117,8 +117,37 @@
 }
 @media screen and (max-width: 550px){
     .textField {
-        width: 94%;
         min-height: 40px;
+        font-size: 10px;
+    }
+}
+
+.errorField {
+    padding: 1%;
+    width: 97%;
+    min-height: 50px;
+    border: 1px solid #f96560;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 550px){
+    .textField {
+        min-height: 40px;
+        font-size: 10px;
+    }
+}
+
+.errorSpan {
+    font-size: 12px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1107px) {
+    .errorSpan {
         font-size: 10px;
     }
 }

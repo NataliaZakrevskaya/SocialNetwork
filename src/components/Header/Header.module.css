@@ -28,7 +28,6 @@
 
 .logoutBlock {
     width: 330px;
-    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -60,7 +59,6 @@
     text-transform: uppercase;
     font-weight: bold;
     border: none;
-    font-family: 'Montserrat', sans-serif;
     border-radius: 7px;
     cursor: pointer;
 }
@@ -77,10 +75,9 @@
 }
 
 .login {
-    margin-top: 15px;
+    margin-top: 9px;
     float: right;
     margin-right: 3%;
-    font-family: 'Montserrat', sans-serif;
     color: white;
     border-radius: 5px;
     font-weight: bolder;
@@ -90,4 +87,12 @@
     height: 30px;
     text-align: center;
     padding-top: 7px;
+}
+@media screen and (max-width: 850px){
+    .login {
+        font-size: 12px;
+        height: 25px;
+        width: 60px;
+        padding-top: 9px;
+    }
 }

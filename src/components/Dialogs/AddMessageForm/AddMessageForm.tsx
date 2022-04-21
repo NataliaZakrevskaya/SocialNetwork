@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useState, KeyboardEvent} from "react";
 import s from "../Dialogs.module.css";
 
 
@@ -7,9 +7,13 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
     const [messageText, setMessageText] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
 
+    const onEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if(e.code === 'Enter') validate()
+
+    }
     const validate = () => {
         {
-            messageText.length > 0 ? addMessage(messageText) : setError(true)
+            messageText.trim().length > 0 ? addMessage(messageText) : setError(true)
         }
     }
     const addMessage = (messageText: string) => {
@@ -30,10 +34,11 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
                     placeholder={"Enter your message..."}
                     className={!error ? s.textField : s.errorField}
                     onChange={onChangeHandler}
+                    onKeyPress={onEnter}
                 />
                     {error && <span className={s.errorSpan}>Min length is 1 symbol</span>}
                 </div>
-                <button disabled={!props.userID} onClick={validate}>Send</button>
+                <button disabled={!props.userID} onClick={validate} >Send</button>
             </div>
         </div>
     )

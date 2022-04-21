@@ -9,10 +9,10 @@ export const Messages: React.FC = () => {
 
     const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages)
     const messagesAnchorRef = useRef<HTMLDivElement>(null)
-    const [isAutoScroll, setIsAutoScroll] = useState<boolean>(false)
+    const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true)
     const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const element = e.currentTarget
-        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300) {
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 400) {
             !isAutoScroll && setIsAutoScroll(true)
         } else {
             isAutoScroll && setIsAutoScroll(false)
@@ -26,7 +26,7 @@ export const Messages: React.FC = () => {
     }, [messages])
 
     return (
-        <div className={s.messagesPart} style={{height: '350px', overflowY: 'auto'}} onScroll={scrollHandler}>
+        <div className={s.messagesPart} style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
             {messages.map((m, index) => <ChatMessage key={m.id} message={m}/>)}
             <div ref={messagesAnchorRef}></div>
         </div>
