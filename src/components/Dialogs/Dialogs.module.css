@@ -1,13 +1,19 @@
 .dialogsPage {
-    width: 98%;
-    height: 100%;
-    margin: 0 auto;
+    width: 80%;
+    margin: 0 auto 20px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+@media screen and (max-width: 700px){
+    .dialogsPage {
+        width: 90%;
+    }
 }
 
 .dialogsPageBlock {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
 }
 
@@ -31,6 +37,7 @@
     cursor: pointer;
     border: 1px solid #42a790;
     border-radius: 5px;
+    margin-bottom: 10px;
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
     color: #42a790;
@@ -43,14 +50,6 @@
     }
 }
 
-/*@media screen and (max-width: 365px) {
-    .dialog {
-        flex-direction: column;
-        width: 52px;
-    }
-}*/
-
-
 .dialog:hover {
     -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -60,13 +59,6 @@
 .dialog span {
     margin-left: 20px;
 }
-
-/*@media screen and (max-width: 660px) {
-    .dialog span {
-        margin-left: 10px;
-        font-size: 12px;
-    }
-}*/
 @media screen and (max-width: 850px) {
     .dialog span {
         margin-left: 0;
@@ -76,7 +68,6 @@
 .dialog a:hover {
     color: #65636a
 }
-
 
 .activeDialog {
     margin-bottom: 10px;
@@ -91,12 +82,6 @@
     color: white;
 }
 
-/*@media screen and (max-width: 660px) {
-    .activeDialog {
-        padding: 5px;
-        width: 120px;
-    }
-}*/
 @media screen and (max-width: 850px) {
     .activeDialog {
         flex-direction: column;
@@ -108,12 +93,6 @@
     margin-left: 20px;
 }
 
-/*@media screen and (max-width: 660px) {
-    .activeDialog span {
-        margin-left: 10px;
-        font-size: 12px;
-    }
-}*/
 @media screen and (max-width: 850px) {
     .activeDialog span {
         margin-left: 0;
@@ -139,15 +118,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     border-top-left-radius: 10px;
 }
 
-/*@media screen and (max-width: 660px) {
-    .dialogsItems {
-        width: 173px;
-    }
-}*/
 @media screen and (max-width: 850px) {
     .dialogsItems {
         width: 91px;
@@ -188,12 +162,6 @@
     }
 }
 
-/*@media screen and (max-width: 850px) {
-    .fieldWithoutMessages span {
-        font-size: 10px;
-        padding: 5px;
-    }
-}*/
 
 .message {
     float: left;
@@ -282,24 +250,6 @@
     }
 }
 
-/*
-@media screen and (max-width: 660px){
-.addMessageFormContainer{
-    width: 484px;
-}
-}
-@media screen and (max-width: 510px){
-.addMessageFormContainer{
-    width: 336px;
-}
-}
-@media screen and (max-width: 365px){
-.addMessageFormContainer{
-    width: 337px;
-}
-}
-*/
-
 .addMessageForm {
     display: flex;
     flex-direction: column;
@@ -339,17 +289,6 @@
     }
 }
 
-/*@media screen and (max-width: 510px){
-    .textField{
-        width: 244px;
-    }
-}
-@media screen and (max-width: 365px){
-    .textField{
-        width: 241px;
-        min-height: 24px;
-    }
-}*/
 
 .errorField {
     padding: 10px;

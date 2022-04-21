@@ -31,36 +31,37 @@
     background-color: currentColor;
     border: 0;
     opacity: .25;
-
 }
 
 .addPostFormBlock {
+    margin: 0 auto;
+    width: 90%;
     height: 110px;
-    padding-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
     .addPostFormBlock {
         height: 100px;
         padding-left: 1px;
         align-items: center;
     }
 }
+@media screen and (max-width: 900px){
+    .addPostFormBlock {
+        width: 80%;
+    }
+}
 
 .fieldContainer {
     width: 100%;
 }
-@media screen and (max-width: 900px){
-    .fieldContainer {
-        width: 90%;
-    }
-}
+
 
 .textField {
-    padding: 10px;
-    width: 94%;
+    padding: 1%;
+    width: 98%;
     min-height: 50px;
     border: 1px solid #d4d6d3 ;
     font-family: 'Montserrat', sans-serif;
@@ -68,7 +69,7 @@
     outline: none;
     border-radius: 5px;
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
     .textField  {
         min-height: 40px;
         font-size: 10px;
@@ -105,7 +106,6 @@
 .addPostFormBlock button {
     width: 100px;
     height: 35px;
-    margin-right: 20px;
     margin-top: 10px;
     background-color: #42a790;
     color: white;
@@ -116,12 +116,11 @@
     border-radius: 7px;
     cursor: pointer;
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
     .addPostFormBlock button  {
         width: 70px;
         height: 30px;
         font-size: 10px;
-        margin-right: 0;
     }
 }
 

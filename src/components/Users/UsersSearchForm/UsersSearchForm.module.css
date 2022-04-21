@@ -8,6 +8,7 @@
 
 @media screen and (max-width: 557px) {
     .formContainer {
+        width: 70%;
         height: 130px;
         flex-direction: column;
         align-items: center;
@@ -24,13 +25,6 @@
     font-family: 'Montserrat', sans-serif;
     outline: none;
 }
-
-/*@media screen and (max-width: 557px){
-    .searchInput {
-        width: 150px;
-        height: 35px;
-    }
-}*/
 
 .select {
     cursor: pointer;
