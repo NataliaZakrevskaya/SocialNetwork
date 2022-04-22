@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from "react";
-import s from "../MyPosts.module.css"
+import s from "../MyPosts.module.scss"
 
 
 export const AddPostForm = (props: AddPostFormType) => {
@@ -9,7 +9,7 @@ export const AddPostForm = (props: AddPostFormType) => {
 
     const validate = () => {
         {
-            postText.length > 1 ? addPost(postText) : setError(true)
+            postText.trim().length > 1 ? addPost(postText) : setError(true)
         }
     }
 
@@ -31,15 +31,12 @@ const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
                     className={!error ? s.textField : s.errorField }
                     onChange={onChangeHandler}
                 />
-            {error && <span className={s.errorSpan}>Min length is 2 symbols</span>}
+            {error && <span>Min length is 2 symbols</span>}
             </div>
-            <div>
                 <button onClick={validate}>Add post</button>
-            </div>
         </div>
     )
 }
-
 
 
 // TYPES

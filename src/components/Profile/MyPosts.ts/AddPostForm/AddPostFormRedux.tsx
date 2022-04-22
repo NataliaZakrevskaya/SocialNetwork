@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {InjectedFormProps} from "redux-form/lib/reduxForm";
 import {minLengthCreator, required} from "../../../../Utils/Validators/Validators";
 import {Textarea} from "../../../Common/components/FormsControls/FormsControls";
-import s from "../MyPosts.module.css"
+import s from "../MyPosts.module.scss"
 
 const minLength5 = minLengthCreator(5);
 

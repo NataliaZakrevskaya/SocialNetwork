@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {AddPostFormRedux, AddPostFormType} from "./AddPostForm/AddPostFormRedux";
 import {AppStateType} from "../../../Redux/redux-store";
 import {ProfileInitialStateType, profileReducerActions} from "../../../Redux/Reducers/profile-reducer";
 import {AddPostForm} from "./AddPostForm/AddPostForm";
+import commonStyle from "./../Profile.module.scss";
+import s from "./MyPosts.module.scss";
 
 const MyPosts = React.memo(() => {
 
@@ -23,7 +23,7 @@ const MyPosts = React.memo(() => {
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
-            <hr className={s.hr}/>
+            <hr className={commonStyle.hr}/>
             <AddPostForm addNewPost={addNewPost}/>
             <div className={s.posts}>
                 {postsElements}
