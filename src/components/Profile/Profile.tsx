@@ -1,9 +1,8 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfileType} from "../../Redux/Reducers/profile-reducer";
-import s from "./Profile.module.css"
+import s from "./Profile.module.scss"
 import MyPosts from "./MyPosts.ts/MyPosts";
-import {Preloader} from "../Common/components/Preloader/Preloader";
 
 type ProfileComponentPropsType = {
     isOwner: boolean
@@ -19,7 +18,7 @@ const Profile = (props: ProfileComponentPropsType) => {
 
 
     return (
-        <div className={s.profilePageBlock}>
+        <div className={s.profilePage}>
             <ProfileInfo
                 isOwner={props.isOwner}
                 profile={props.profile}

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
-import s from "../ProfileInfo.module.css"
+import s from "../ProfileInfo.module.scss"
 
 export const ProfileStatus = (props: ProfileStatusType) => {
 

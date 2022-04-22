@@ -1,12 +1,12 @@
 import React from "react";
-import s from "../../ProfileInfo.module.css";
+import s from "../../ProfileInfo.module.scss";
 
 
 export const Contact = ({contactTitle, contactValue}: ContactPropsType) => {
     return (
         <div className={s.contact}>
             <b>{contactTitle}: </b>
-            <a href={contactValue} className={s.link} target="_blank">{contactValue}</a>
+            <a href={contactValue}  target="_blank">{contactValue}</a>
         </div>
     )
 }

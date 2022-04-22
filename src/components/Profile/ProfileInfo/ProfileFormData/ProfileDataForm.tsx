@@ -3,15 +3,11 @@ import {InjectedFormProps, reduxForm} from "redux-form";
 import {Preloader} from "../../../Common/components/Preloader/Preloader";
 import {ProfileType} from "../../../../Redux/Reducers/profile-reducer";
 import {createField, Input, Textarea} from "../../../Common/components/FormsControls/FormsControls";
-import s from "./ProfileDataForm.module.css";
-import style from "../../../Common/components/FormsControls/FormsControls.module.css"
+import commonStyle from "../../../Common/components/FormsControls/FormsControls.module.css"
+import s from "./ProfileDataForm.module.scss";
 
 
-const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({
-                                                                                                                            handleSubmit,
-                                                                                                                            profile,
-                                                                                                                            error
-                                                                                                                        }) => {
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile, error}) => {
 
     if (!profile) {
         return <Preloader/>
@@ -22,30 +18,27 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPr
 
             {
                 error &&
-                <div className={style.formSummaryError}>{error}</div>
+                <div className={commonStyle.formSummaryError}>{error}</div>
             }
 
             <b>Full name </b> {createField("Full name", "fullName", [], Input)}
             <b>My professional skills </b>
             {createField("My professional skills", "lookingForAJobDescription", [], Textarea)}
             <b>Looking for a job </b> {createField("", "lookingForAJob", [], Input, {type: "checkbox"})}
-
-            <div>
+            <>
                 <h3>Contacts </h3> {Object.keys(profile.contacts)
                 .map(key => {
                     return (
                         <div key={key}>
-                            <b className={s.contactName}>{key}</b>
+                            <b>{key}</b>
                             {createField(key, "contacts." + key, [], Input)}
                         </div>
 
                     )
 
                 })}
-            </div>
-            <div>
+            </>
                 <button>save</button>
-            </div>
         </form>
     )
 }

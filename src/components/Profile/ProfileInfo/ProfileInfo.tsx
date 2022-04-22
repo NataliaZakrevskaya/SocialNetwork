@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
-import s from "./ProfileInfo.module.css";
+import s from "./ProfileInfo.module.scss";
 import {ProfileType} from "../../../Redux/Reducers/profile-reducer";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
@@ -38,7 +38,8 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             <div className={s.imagesBlock}>
                 <img className={s.backgroundImg}
                      src={"https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}
-                     alt={"img"}/>
+                     alt={"backgroundImg"}
+                />
                 <div className={s.avatar}>
                     <img
                         src={profile && profile.photos.large !== null ? profile.photos.large : profileImage}
@@ -46,7 +47,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     {isOwner && <div className={s.avatarEdit}>
                         <input type={"file"} onChange={onMainPhotoSelected} id="imageUpload"
                                accept=".png, .jpg, .jpeg"/>
-                        <label htmlFor="imageUpload"></label>
+                        <label htmlFor="imageUpload"/>
                     </div>}
                 </div>
             </div>
