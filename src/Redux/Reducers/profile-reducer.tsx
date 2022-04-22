@@ -1,7 +1,7 @@
 import {FormAction, stopSubmit} from "redux-form";
-import {AppThunkType, InferActionsTypes} from "./redux-store";
-import {profileAPI} from "../api/profile-api";
-import {ResultCodesEnum} from "../api/Api";
+import {AppThunkType, InferActionsTypes} from "../redux-store";
+import {profileAPI} from "../../API/profile-api";
+import {ResultCodesEnum} from "../../API/Api";
 
 //CONSTANTS
 export enum profileReducerEnum {

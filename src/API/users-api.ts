@@ -1,5 +1,5 @@
 import {instance} from "./Api";
-import {UsersType} from "../Redux/users-reducer";
+import {UsersType} from "../Redux/Reducers/users-reducer";
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 10, term: string = '', friend: null | boolean = null) {

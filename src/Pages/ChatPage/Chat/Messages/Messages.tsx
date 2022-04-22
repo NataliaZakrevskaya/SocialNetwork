@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../../Redux/redux-store";
-import {ChatMessageType} from "../../../../Redux/chat-reducer";
+import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
 import {ChatMessage} from "./ChatMessage";
 import s from "./../../ChatPage.module.css";
 

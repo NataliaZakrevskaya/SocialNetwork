@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import s from "./Post.module.css"
-import {PostsType, ProfileType} from "../../../../Redux/profile-reducer";
+import {PostsType, ProfileType} from "../../../../Redux/Reducers/profile-reducer";
 import {AppStateType} from "../../../../Redux/redux-store";
 import profileImage from "../../../../Images/flat-face-icon-23.png";
 

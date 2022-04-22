@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../Redux/redux-store";
-import {StatusType} from "../../../api/chat-api";
-import {startMessagesListening, stopMessagesListening} from "../../../Redux/chat-reducer";
+import {StatusType} from "../../../API/chat-api";
+import {startMessagesListening, stopMessagesListening} from "../../../Redux/Reducers/chat-reducer";
 import {Messages} from "./Messages/Messages";
 import {AddChatMessageForm} from "./Messages/AddChatMessageForm";
 import s from "./../ChatPage.module.css"

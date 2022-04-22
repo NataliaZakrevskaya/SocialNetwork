@@ -6,7 +6,7 @@ import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
 import {Navigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {DialogsInitialStateType, dialogsReducerActions} from "../../Redux/dialogs-reducer";
+import {DialogsInitialStateType, dialogsReducerActions} from "../../Redux/Reducers/dialogs-reducer";
 
 
 const DialogsPage = () => {

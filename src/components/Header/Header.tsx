@@ -4,7 +4,7 @@ import logo from './../../Images/Social network.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {logout} from "../../Redux/auth-reducer";
+import {logout} from "../../Redux/Reducers/auth-reducer";
 
 
 const Header = () => {

@@ -4,7 +4,7 @@ import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {AddPostFormRedux, AddPostFormType} from "./AddPostForm/AddPostFormRedux";
 import {AppStateType} from "../../../Redux/redux-store";
-import {ProfileInitialStateType, profileReducerActions} from "../../../Redux/profile-reducer";
+import {ProfileInitialStateType, profileReducerActions} from "../../../Redux/Reducers/profile-reducer";
 import {AddPostForm} from "./AddPostForm/AddPostForm";
 
 const MyPosts = React.memo(() => {

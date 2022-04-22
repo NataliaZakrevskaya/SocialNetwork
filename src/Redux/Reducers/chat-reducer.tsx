@@ -1,7 +1,7 @@
-import {AppThunkType, InferActionsTypes} from "./redux-store";
+import {AppThunkType, InferActionsTypes} from "../redux-store";
 import {Dispatch} from "redux";
 import {v1} from "uuid"
-import {chatAPI, ChatMessageApiType, StatusType} from "../api/chat-api";
+import {chatAPI, ChatMessageApiType, StatusType} from "../../API/chat-api";
 
 
 // CONSTANTS

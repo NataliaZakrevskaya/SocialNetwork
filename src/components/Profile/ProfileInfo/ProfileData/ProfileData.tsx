@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Preloader} from "../../../Common/Preloader/Preloader";
 import s from "../ProfileInfo.module.css";
 import style from "../../MyPosts.ts/MyPosts.module.css";
-import {ContactsType, ProfileType} from "../../../../Redux/profile-reducer";
+import {ContactsType, ProfileType} from "../../../../Redux/Reducers/profile-reducer";
 import {Contact} from "../ProfileFormData/Contact/Contact";
 
 export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => {

@@ -7,7 +7,7 @@ import {
     savePhoto,
     saveProfile,
     updateStatus
-} from "../../Redux/profile-reducer";
+} from "../../Redux/Reducers/profile-reducer";
 import {AppStateType} from "../../Redux/redux-store";
 import {compose} from "redux";
 import {connect} from "react-redux";

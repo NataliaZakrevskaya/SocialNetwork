@@ -1,4 +1,4 @@
-import {InferActionsTypes} from "./redux-store";
+import {InferActionsTypes} from "../redux-store";
 import {v1} from "uuid";
 
 //CONSTANTS

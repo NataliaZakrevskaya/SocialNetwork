@@ -1,11 +1,11 @@
 import React from 'react'
-import './App.css'
-import Navbar from "./components/Navbar/Navbar";
 import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {connect, Provider} from "react-redux";
-import {initializeApp} from "./Redux/app-reducer";
+
+import './App.css'
+import Navbar from "./components/Navbar/Navbar";
+import {initializeApp} from "./Redux/Reducers/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
-import {Preloader} from "./components/Common/Preloader/Preloader";
 import Loading from "./components/Common/Loader/Loading";
 import Header from "./components/Header/Header";
 
@@ -31,9 +31,6 @@ class App extends React.Component<AppPropsType> {
 
 
     render() {
-        /*if (!this.props.initialized) {
-            return <Preloader/>
-        }*/
         return (
             <main className={"app-wrapper"}>
                 <Header/>
@@ -48,7 +45,6 @@ class App extends React.Component<AppPropsType> {
                         <Route path='/profile' element={<ProfileContainer/>}>
                             <Route path=":userId" element={<ProfileContainer/>}/>
                         </Route>
-
                         <Route path='/users' element={<UsersPage/>}/>
                         <Route path='/login' element={<LoginPage/>}/>
                         <Route path='/chat' element={<ChatPage/>}/>
@@ -79,7 +75,6 @@ export const MainApp = () => {
 }
 
 // TYPES
-
 type MapStateToPropsType = {
     initialized: boolean
 }

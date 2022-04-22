@@ -1,5 +1,5 @@
 import React from "react";
-import {ChatMessageType} from "../../../../Redux/chat-reducer";
+import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
 import s from "./../../ChatPage.module.css";
 import userDefaultPhoto from "./../../../../Images/flat-face-icon-23.png"
 import {NavLink} from "react-router-dom";

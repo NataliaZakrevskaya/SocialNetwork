@@ -17,10 +17,7 @@
     }
 }
 
-
-
 .app-wrapper-content {
     grid-area: c;
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
 }

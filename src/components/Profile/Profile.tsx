@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ProfileType} from "../../Redux/profile-reducer";
+import {ProfileType} from "../../Redux/Reducers/profile-reducer";
 import s from "./Profile.module.css"
 import MyPosts from "./MyPosts.ts/MyPosts";
 import {Preloader} from "../Common/Preloader/Preloader";

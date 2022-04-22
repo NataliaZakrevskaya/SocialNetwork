@@ -3,7 +3,7 @@ import {reduxForm} from "redux-form";
 import {Navigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {login} from "../../Redux/auth-reducer";
+import {login} from "../../Redux/Reducers/auth-reducer";
 import {LoginForm, LoginFormPropsType} from "./LoginForm";
 import s from "./loginPage.module.css"
 

@@ -1,4 +1,4 @@
-import usersReducer, {InitialStateType, usersReducerActions, UsersType} from "../Redux/users-reducer";
+import usersReducer, {InitialStateType, usersReducerActions, UsersType} from "../Reducers/users-reducer";
 
 let startState: InitialStateType;
 

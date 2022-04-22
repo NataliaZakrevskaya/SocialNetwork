@@ -1,4 +1,4 @@
-import {PhotosType, ProfileType} from "../Redux/profile-reducer";
+import {PhotosType, ProfileType} from "../Redux/Reducers/profile-reducer";
 import {instance} from "./Api";
 
 export const profileAPI = {

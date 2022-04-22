@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react'
-import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux/users-reducer";
+import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux/Reducers/users-reducer";
 import {Paginator} from "../Common/Paginator/Paginator";
 import {User} from "./User/User";
 import s from "./Users.module.css"

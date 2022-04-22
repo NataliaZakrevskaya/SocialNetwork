@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../../Redux/redux-store";
-import {StatusType} from "../../../../api/chat-api";
-import {sendMessage} from "../../../../Redux/chat-reducer";
+import {StatusType} from "../../../../API/chat-api";
+import {sendMessage} from "../../../../Redux/Reducers/chat-reducer";
 import s from "../../ChatPage.module.css";
 
 export const AddChatMessageForm: React.FC = () => {

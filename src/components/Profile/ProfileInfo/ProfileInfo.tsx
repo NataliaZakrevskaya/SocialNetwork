@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from "./ProfileInfo.module.css";
-import {ProfileType} from "../../../Redux/profile-reducer";
+import {ProfileType} from "../../../Redux/Reducers/profile-reducer";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
 import profileImage from "./../../../Images/flat-face-icon-23.png"
