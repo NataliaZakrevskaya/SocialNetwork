@@ -2,9 +2,9 @@ import React from "react";
 import {InjectedFormProps} from "redux-form";
 import {createField, Input} from "../Common/components/FormsControls/FormsControls";
 import {required} from "../../Utils/Validators/Validators";
+import {FormDataType} from "./LoginPage";
 import s from "../Common/components/FormsControls/FormsControls.module.css";
 import style from "./loginPage.module.scss";
-import {FormDataType} from "./LoginPage";
 
 export type LoginFormPropsType = {
     captchaUrl: string | null
@@ -14,6 +14,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsT
                                                                                                                   error,
                                                                                                                   captchaUrl
                                                                                                               }) => {
+
     return (
         <form onSubmit={handleSubmit} className={style.loginBlock}>
 
@@ -22,7 +23,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsT
             {createField("Email", "email", [required], Input, {type: "text"}, "")}
             {createField("Password", "password", [required], Input, {type: "password"}, "")}
             <div className={style.checkbox}>
-                {createField (null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me")}
+                {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "Remember me")}
             </div>
 
             {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'}/>}
