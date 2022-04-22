@@ -1,49 +1,50 @@
 import React from 'react'
-import s from "./User.module.css";
-import userPhoto from "../../../Images/flat-face-icon-23.png";
 import {NavLink} from "react-router-dom";
+import userPhoto from "../../../Images/flat-face-icon-23.png";
 import {UsersType} from "../../../Redux/Reducers/users-reducer";
+import s from "./User.module.scss";
 
 export const User = ({user, followingInProgress, unfollow, follow}: UsersPropsType) => {
 
     return (
-
         <div className={s.user}>
-
             <div className={s.userInfo}>
                 <NavLink to={'/profile/' + user.id}>
-                    <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto}
-                         alt={"userPhoto"}/>
+                    <img
+                        src={user.photos.small !== null ? user.photos.small : userPhoto}
+                        alt={"userPhoto"}
+                    />
                 </NavLink>
                 <span className={s.userName}>{user.name}</span>
-            <span className={s.userStatus}>{user.status}</span>
+                <span className={s.userStatus}>{user.status}</span>
             </div>
-
-            <div>
+            <>
                 {
                     user.followed
-                        ? <button
+                        ? (<button
                             className={s.unFollowBtn}
                             disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 unfollow(user.id)
-                            }}>unFollow</button>
+                            }}>
+                            unfollow
+                        </button>)
 
-                        : <button
+                        : (<button
                             className={s.followBtn}
                             disabled={followingInProgress.some(id => id === user.id)}
                             onClick={() => {
                                 follow(user.id)
-                            }}>Follow</button>
+                            }}>
+                            follow
+                        </button>)
                 }
-            </div>
-
-
+            </>
         </div>
     )
 }
 
-//Types
+// TYPES
 type UsersPropsType = {
     user: UsersType
     unfollow: (userID: number) => void

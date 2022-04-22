@@ -1,14 +1,13 @@
-import {Field, Form, Formik} from "formik";
 import React from "react";
-import {FilterType} from "../../../Redux/Reducers/users-reducer";
 import {useSelector} from "react-redux";
+import {Field, Form, Formik} from "formik";
+import {FilterType} from "../../../Redux/Reducers/users-reducer";
 import {AppStateType} from "../../../Redux/redux-store";
 import {getUsersFilter} from "../../../Redux/Selectors/users-selectors";
-import s from "./UsersSearchForm.module.css"
+import s from "./UsersSearchForm.module.scss";
 
-const usersSearchFormValidate = (values: FormType) => {
-    const errors = {};
-    return errors;
+const usersSearchFormValidate = () => {
+    return {};
 }
 
 export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
@@ -25,7 +24,7 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     }
 
     return (
-        <div>
+        <>
             <Formik
                 enableReinitialize
                 initialValues={{term: filter.term, friend: String(filter.friend) as FriendFormType}}
@@ -46,7 +45,7 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
                     </Form>
                 )}
             </Formik>
-        </div>
+        </>
     )
 })
 

@@ -1,10 +1,10 @@
-import React, {FC, useEffect} from 'react'
-import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux/Reducers/users-reducer";
+import React, {FC, useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {FilterType, follow, requestUsers, unfollow} from "../../Redux/Reducers/users-reducer";
 import {Paginator} from "../Common/components/Paginator/Paginator";
 import {User} from "./User/User";
-import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm/UsersSearchForm";
-import {useDispatch, useSelector} from "react-redux";
 import {
     getFollowingInProgress, getIsFetching,
     getPage,
@@ -13,11 +13,11 @@ import {
     getUsers,
     getUsersFilter
 } from "../../Redux/Selectors/users-selectors";
-import {useNavigate, useSearchParams} from "react-router-dom";
 import {Preloader} from "../Common/components/Preloader/Preloader";
+import s from "./Users.module.scss";
 
 
-export const Users: FC<UsersPropsType> = React.memo((props) => {
+export const Users: FC = React.memo(() => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -66,7 +66,6 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
                 actualFilter = {...actualFilter, friend: false}
                 break
         }
-
         dispatch(requestUsers(actualPage, pageSize, actualFilter))
     }, [])
 
@@ -82,20 +81,18 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
 
 
     return (
-
         <div className={s.usersPage}>
-
             <UsersSearchForm onFilterChanged={onFilterChanged}/>
-
-            {isFetching ? <Preloader/>
-                :
-                (<div className={s.usersContainer}>
+            {isFetching
+                ? (<Preloader/>)
+                : (<div className={s.usersContainer}>
                         <div className={s.users}>
                             {users.map(u => <User user={u}
                                                   unfollow={onUnfollow}
                                                   follow={onFollow}
                                                   followingInProgress={followingInProgress}
-                                                  key={u.id}/>
+                                                  key={u.id}
+                                />
                             )}
                         </div>
                     </div>
@@ -113,8 +110,7 @@ export const Users: FC<UsersPropsType> = React.memo((props) => {
 })
 
 
-//Types
-type UsersPropsType = {}
+// TYPES
 type queryParamsType = {
     term: string
     page: string
