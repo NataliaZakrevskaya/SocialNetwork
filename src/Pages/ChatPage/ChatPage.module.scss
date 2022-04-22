@@ -1,0 +1,135 @@
+@import "src/components/Common/Styles/Sass/Variables";
+@import "src/components/Common/Styles/Sass/Mixins";
+
+.chatPage {
+  width: 80%;
+  margin: 0 auto 20px;
+  @include boxShadow();
+  @media screen and (max-width: 700px) {
+    width: 90%;
+  }
+
+  .chatPageBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 10px;
+
+
+    .messagesPart {
+      background-color: #549cc1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      height: 85%;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      @include boxShadow();
+
+      .message {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        max-width: 80%;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: small;
+        @media screen and (max-width: 550px) {
+          font-size: 10px;
+        }
+
+        .userInfoContainer {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & a img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            @media screen and (max-width: 550px) {
+              width: 30px;
+              margin-right: 5px;
+            }
+          }
+
+          & span {
+            font-weight: bolder;
+          }
+        }
+
+        .messageText {
+          margin-left: 50px;
+          @media screen and (max-width: 550px) {
+            margin-left: 36px;
+          }
+        }
+      }
+
+      .message:hover {
+        @include boxShadow();
+      }
+    }
+
+
+    .addChatMessageForm {
+      border-top: 1px solid #c7d2cf;
+      height: 20%;
+      background-color: rgba(250, 250, 250, 1);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      @include boxShadow();
+
+
+      .textField {
+        padding: 1%;
+        width: 97%;
+        min-height: 50px;
+        border: 1px solid #d4d6d3;
+        font-family: 'Montserrat', sans-serif;
+        resize: none;
+        outline: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        @media screen and (max-width: 550px) {
+          min-height: 40px;
+          font-size: 10px;
+        }
+      }
+
+      .errorField {
+        border: 1px solid #f96560;
+      }
+
+      .errorSpan {
+        font-size: 12px;
+        color: red;
+        margin-bottom: 10px;
+        @media screen and (max-width: 1107px) {
+          font-size: 10px;
+        }
+      }
+
+
+      & button {
+        @include button(100px, 35px);
+        @media screen and (max-width: 550px) {
+          width: 70px;
+          height: 30px;
+          font-size: 10px;
+        }
+      }
+
+      & button:hover {
+        background-color: #3a816e;
+      }
+    }
+  }
+}

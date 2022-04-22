@@ -1,6 +1,6 @@
 import React from "react";
 import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
-import s from "./../../ChatPage.module.css";
+import s from "../../ChatPage.module.scss";
 import userDefaultPhoto from "./../../../../Images/flat-face-icon-23.png"
 import {NavLink} from "react-router-dom";
 
@@ -15,7 +15,6 @@ export const ChatMessage: React.FC<{ message: ChatMessageType }> = React.memo(({
                 />
                 </NavLink>
                 <span>{message.userName}</span>
-
             </div>
             <span className={s.messageText}>{message.message}</span>
         </div>

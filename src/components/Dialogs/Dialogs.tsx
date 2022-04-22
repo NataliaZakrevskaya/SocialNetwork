@@ -1,21 +1,21 @@
-import React, {useState} from 'react'
-import s from './Dialogs.module.css'
+import React, {useState} from 'react';
+import {Navigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
-import {Navigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {DialogsInitialStateType, dialogsReducerActions} from "../../Redux/Reducers/dialogs-reducer";
+import s from './Dialogs.module.scss';
 
 
 const DialogsPage = () => {
 
 
     const [activeUserID, setActiveUserID] = useState<number | null>(null)
-    const dispatch = useDispatch()
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
     const state = useSelector<AppStateType, DialogsInitialStateType>(state => state.messagesPage)
+    const dispatch = useDispatch()
 
     let messagesElements;
     const showMessages = (userId: number) => {
@@ -23,8 +23,8 @@ const DialogsPage = () => {
     }
 
     const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} avatar={d.avatar}
-                                                               showMessages={showMessages}
-                                                               activeUserID={activeUserID}/>);
+                    showMessages={showMessages}
+                    activeUserID={activeUserID}/>);
 
 
     if (activeUserID !== null) {
@@ -50,7 +50,7 @@ const DialogsPage = () => {
                     <div className={s.dialogsItems}>
                         {dialogsElements}
                     </div>
-                    <div className={`${activeUserID ? s.messagesField : s.fieldWithoutMessages}`}>
+                    <div className={activeUserID ? s.messagesField : s.fieldWithoutMessages}>
                         {activeUserID ? messagesElements : <span>Select a chat to start messaging</span>}
                     </div>
                 </div>

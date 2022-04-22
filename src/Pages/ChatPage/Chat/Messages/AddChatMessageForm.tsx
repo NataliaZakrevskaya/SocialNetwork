@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../../Redux/redux-store";
 import {StatusType} from "../../../../API/chat-api";
 import {sendMessage} from "../../../../Redux/Reducers/chat-reducer";
-import s from "../../ChatPage.module.css";
+import s from "../../ChatPage.module.scss";
 
 export const AddChatMessageForm: React.FC = () => {
     const [message, setMessage] = useState<string>('')
@@ -33,7 +33,7 @@ export const AddChatMessageForm: React.FC = () => {
         <div className={s.addChatMessageForm}>
                 <textarea onChange={onChangeHandler}
                           value={message}
-                          className={!error ? s.textField : s.errorField}
+                          className={!error ? s.textField : `${s.textField} ${s.errorField}`}
                           placeholder={'Write your message...'}
                           onKeyPress={onEnter}
                 />
@@ -42,7 +42,6 @@ export const AddChatMessageForm: React.FC = () => {
                     disabled={status !== 'ready'}
                     onClick={validate}
                 >Send</button>
-
         </div>
     )
 }

@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {AppStateType} from "../../../../Redux/redux-store";
 import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
 import {ChatMessage} from "./ChatMessage";
-import s from "./../../ChatPage.module.css";
+import s from "../../ChatPage.module.scss";
 
 export const Messages: React.FC = () => {
 
@@ -28,7 +28,7 @@ export const Messages: React.FC = () => {
     return (
         <div className={s.messagesPart} style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
             {messages.map((m, index) => <ChatMessage key={m.id} message={m}/>)}
-            <div ref={messagesAnchorRef}></div>
+            <div ref={messagesAnchorRef}/>
         </div>
     )
 }

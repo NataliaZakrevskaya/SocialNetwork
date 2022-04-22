@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from "react";
-import s from "../Dialogs.module.css";
+import s from "../Dialogs.module.scss";
 
 
 export const AddMessageForm = (props: AddMessageFormPropsType) => {
@@ -32,7 +32,7 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
                 <textarea
                     value={messageText}
                     placeholder={"Enter your message..."}
-                    className={!error ? s.textField : s.errorField}
+                    className={!error ? s.textField : `${s.textField} ${s.errorField}`}
                     onChange={onChangeHandler}
                     onKeyPress={onEnter}
                 />

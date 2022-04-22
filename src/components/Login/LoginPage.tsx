@@ -5,10 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {login} from "../../Redux/Reducers/auth-reducer";
 import {LoginForm, LoginFormPropsType} from "./LoginForm";
-import s from "./loginPage.module.css"
+import s from "./loginPage.module.scss"
 
 
-const LoginPage: React.FC<LoginPropsType> = (props) => {
+const LoginPage: React.FC = () => {
 
     const captchaUrl = useSelector<AppStateType, string | null>(state => state.auth.captchaUrl)
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
@@ -38,7 +38,6 @@ const LoginReduxForm = reduxForm<FormDataType, LoginFormPropsType>({form: "Login
 export default LoginPage
 
 // TYPES
-type LoginPropsType = {}
 export type FormDataType = {
     email: string
     password: string

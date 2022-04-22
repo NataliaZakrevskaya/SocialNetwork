@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './../Dialogs.module.css'
+import s from '../Dialogs.module.scss'
 import {NavLink} from "react-router-dom";
 import dialogProfileImg from './dilaogProfileImg.png'
 
@@ -12,7 +12,7 @@ const DialogItem = (props: DialogsType) => {
     }
 
     return (
-        <div className={props.id !== props.activeUserID ? s.dialog : s.activeDialog} onClick={showMessages}>
+        <div className={props.id !== props.activeUserID ? s.dialog : `${s.dialog} ${s.activeDialog}`} onClick={showMessages}>
             <img className={s.dialogImg}
                  src={props.avatar}
                  alt={"dialogProfilePhoto"}/>

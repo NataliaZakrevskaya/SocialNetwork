@@ -5,7 +5,7 @@ import {StatusType} from "../../../API/chat-api";
 import {startMessagesListening, stopMessagesListening} from "../../../Redux/Reducers/chat-reducer";
 import {Messages} from "./Messages/Messages";
 import {AddChatMessageForm} from "./Messages/AddChatMessageForm";
-import s from "./../ChatPage.module.css"
+import s from "../ChatPage.module.scss"
 
 export const Chat: React.FC = () => {
 

@@ -3,7 +3,7 @@ import {InjectedFormProps} from "redux-form";
 import {createField, Input} from "../Common/components/FormsControls/FormsControls";
 import {required} from "../../Utils/Validators/Validators";
 import s from "../Common/components/FormsControls/FormsControls.module.css";
-import style from "./loginPage.module.css";
+import style from "./loginPage.module.scss";
 import {FormDataType} from "./LoginPage";
 
 export type LoginFormPropsType = {

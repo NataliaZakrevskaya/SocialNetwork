@@ -1,6 +1,6 @@
 import React from "react";
 import {Chat} from "./Chat/Chat";
-import s from "./ChatPage.module.css";
+import s from "./ChatPage.module.scss";
 import {Navigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
