@@ -27,7 +27,7 @@ export const Messages: React.FC = () => {
 
     return (
         <div className={s.messagesPart} style={{height: '400px', overflowY: 'auto'}} onScroll={scrollHandler}>
-            {messages.map((m, index) => <ChatMessage key={m.id} message={m}/>)}
+            {messages.map((m) => <ChatMessage key={m.id} message={m}/>)}
             <div ref={messagesAnchorRef}/>
         </div>
     )

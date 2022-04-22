@@ -1,7 +1,6 @@
 import React from 'react';
 import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {connect, Provider} from "react-redux";
-
 import './App.scss';
 import Navbar from "./components/Navbar/Navbar";
 import {initializeApp} from "./Redux/Reducers/app-reducer";
@@ -52,7 +51,7 @@ class App extends React.Component<AppPropsType> {
                     </Routes>
                 </div>
             </main>
-        );
+        )
     }
 }
 

@@ -1,7 +1,5 @@
 import React from 'react'
 import s from '../Dialogs.module.scss'
-import {NavLink} from "react-router-dom";
-import dialogProfileImg from './dilaogProfileImg.png'
 
 
 

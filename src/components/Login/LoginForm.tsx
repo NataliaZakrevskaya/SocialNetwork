@@ -9,11 +9,7 @@ import style from "./loginPage.module.scss";
 export type LoginFormPropsType = {
     captchaUrl: string | null
 }
-export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsType> & LoginFormPropsType> = ({
-                                                                                                                  handleSubmit,
-                                                                                                                  error,
-                                                                                                                  captchaUrl
-                                                                                                              }) => {
+export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsType> & LoginFormPropsType> = ({handleSubmit,error,captchaUrl}) => {
 
     return (
         <form onSubmit={handleSubmit} className={style.loginBlock}>

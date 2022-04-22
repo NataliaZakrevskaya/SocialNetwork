@@ -1,8 +1,9 @@
+import {Dispatch} from "redux";
 import {updateObjectInArray} from "../../Utils/object-helpers";
 import {AppThunkType, InferActionsTypes} from "../redux-store";
 import {FollowingResponseType, usersAPI} from "../../API/users-api";
 import {ResultCodesEnum} from "../../API/Api";
-import {Dispatch} from "redux";
+
 
 //CONSTANTS
 export enum UserReducerEnum {
@@ -15,7 +16,6 @@ export enum UserReducerEnum {
     TOGGLE_IS_FETCHING = 'USERS/TOGGLE-IS-FETCHING',
     TOGGLE_FOLLOWING_PROGRESS = 'USERS/TOGGLE-FOLLOWING-PROGRESS',
 }
-
 
 let initialState = {
     users: [] as UsersType[],
@@ -73,11 +73,13 @@ export const usersReducerActions = {
         return {type: UserReducerEnum.UNFOLLOW, userID} as const
     },
     setUsers: (users: Array<UsersType>) => {
-        return {type: UserReducerEnum.SET_USERS, users
+        return {
+            type: UserReducerEnum.SET_USERS, users
         } as const
     },
     setFilter: (filter: FilterType) => {
-        return {type: UserReducerEnum.SET_FILTER, payload: {filter}
+        return {
+            type: UserReducerEnum.SET_FILTER, payload: {filter}
         } as const
     },
     setCurrentPage: (currentPage: number) => {
@@ -93,7 +95,6 @@ export const usersReducerActions = {
         return {type: UserReducerEnum.TOGGLE_FOLLOWING_PROGRESS, isFetching, userID} as const
     },
 }
-
 
 //THUNKS
 export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => async (dispatch) => {
@@ -120,6 +121,7 @@ export const unfollow = (userId: number): ThunkType => async (dispatch) => {
     await followUnfollowFlow(dispatch, usersAPI.unfollow.bind(usersAPI), userId, usersReducerActions.unfollowSuccess)
 }
 
+export default usersReducer;
 
 //TYPES
 export type UsersType = {
@@ -134,5 +136,3 @@ export type InitialStateType = typeof initialState
 export type FilterType = typeof initialState.filter
 type UsersReducerActionType = InferActionsTypes<typeof usersReducerActions>
 type ThunkType = AppThunkType<UsersReducerActionType>
-
-export default usersReducer;

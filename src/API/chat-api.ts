@@ -71,7 +71,7 @@ export const chatAPI = {
     },
 }
 
-//TYPES
+// TYPES
 type EventsNameType = 'messages-received' | 'status-changed'
 type MessagesReceivedSubscriberType = (messages: ChatMessageApiType[]) => void
 type StatusChangedSubscriberType = (status: StatusType) => void

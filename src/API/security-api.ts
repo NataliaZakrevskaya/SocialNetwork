@@ -7,7 +7,7 @@ export const securityAPI = {
     }
 }
 
-//TYPES
+// TYPES
 type captchaType = {
     url: string
 }

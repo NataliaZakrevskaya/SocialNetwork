@@ -6,6 +6,7 @@ import {sendMessage} from "../../../../Redux/Reducers/chat-reducer";
 import s from "../../ChatPage.module.scss";
 
 export const AddChatMessageForm: React.FC = () => {
+
     const [message, setMessage] = useState<string>('')
     const [error, setError] = useState<boolean | null>(null)
     const dispatch = useDispatch()
@@ -13,13 +14,9 @@ export const AddChatMessageForm: React.FC = () => {
 
     const onEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if(e.code === 'Enter') validate()
+    }
+    const validate = () => {message.trim().length > 0 ? sendMessageHandler(message) : setError(true)}
 
-    }
-    const validate = () => {
-        {
-            message.trim().length > 0 ? sendMessageHandler(message) : setError(true)
-        }
-    }
     const sendMessageHandler = (message: string) => {
         dispatch(sendMessage(message))
         setMessage('')

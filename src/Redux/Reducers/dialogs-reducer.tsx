@@ -1,17 +1,17 @@
-import {InferActionsTypes} from "../redux-store";
 import {v1} from "uuid";
+import {InferActionsTypes} from "../redux-store";
+
 
 //CONSTANTS
 export enum DialogReducerEnum {
     SEND_MESSAGE = 'DIALOGS/SEND-MESSAGE'
 }
 
-
 let initialState: DialogsInitialStateType = {
     dialogs: [
         {
             id: 1,
-            name: "Dimych",
+            name: "Alex",
             avatar: 'https://imageio.forbes.com/specials-images/imageserve/5f64397931669e167fc57eaf/960x0.jpg?fit=bounds&format=jpg&width=960'
         },
         {
@@ -19,7 +19,7 @@ let initialState: DialogsInitialStateType = {
             name: "Andrey",
             avatar: 'https://img.freepik.com/free-photo/attractive-mixed-race-male-with-positive-smile-shows-white-teeth-keeps-hands-stomach-being-high-spirit-wears-white-shirt-rejoices-positive-moments-life-people-emotions-concept_273609-15527.jpg?size=626&ext=jpg'
         },
-        {id: 3, name: "Sveta", avatar: 'https://assets.bizjournals.com/static/img/potm/marketing/team-success-img.jpg'},
+        {id: 3, name: "Sara", avatar: 'https://assets.bizjournals.com/static/img/potm/marketing/team-success-img.jpg'},
         {id: 4, name: "Sasha", avatar: 'https://i.insider.com/5cf1200a11e2052506753045?width=700'},
         {
             id: 5,
@@ -71,8 +71,6 @@ let initialState: DialogsInitialStateType = {
     },
 }
 
-
-
 const dialogsReducer = (state = initialState, action: DialogsReducerActionType) => {
     switch (action.type) {
         case DialogReducerEnum.SEND_MESSAGE:
@@ -87,8 +85,6 @@ const dialogsReducer = (state = initialState, action: DialogsReducerActionType) 
     }
 }
 
-
-
 //ACTIONS
 export const dialogsReducerActions = {
     sendMessage: (userID: number, newMessageBody: string) => {
@@ -100,26 +96,24 @@ export const dialogsReducerActions = {
     }
 }
 
-
+export default dialogsReducer;
 
 //TYPES
 export type DialogType = {
     id: number
     name: string
     avatar: string
-};
+}
 export type MessageType = {
     id: string
     message: string
     isAuth: boolean
-};
+}
 export type MessagesType = {
     [key: number]: Array<MessageType>
 }
 export type DialogsInitialStateType = {
     dialogs: Array<DialogType>
     messages: MessagesType
-};
+}
 type DialogsReducerActionType = InferActionsTypes<typeof dialogsReducerActions>
-
-export default dialogsReducer;

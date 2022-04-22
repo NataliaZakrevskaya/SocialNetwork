@@ -11,8 +11,6 @@ export enum profileReducerEnum {
     UPDATE_PHOTO = 'PROFILE/UPDATE-PHOTO',
 }
 
-
-
 const initialState = {
     posts: [
         {id: 1, message: "Hello, how are you?", likesCount: 0},
@@ -77,8 +75,6 @@ export const profileReducerActions = {
     },
 }
 
-
-
 //THUNKS
 export const getProfile = (userId: string): ThunkType => async (dispatch) => {
     let response = await profileAPI.getProfile(userId)
@@ -111,6 +107,8 @@ export const saveProfile = (profileData: ProfileType): ThunkType => async (dispa
     }
 }
 
+export default profileReducer;
+
 //TYPES
 export type PhotosType = {
     small: string
@@ -142,5 +140,3 @@ export type ContactsType = {
 export type ProfileInitialStateType = typeof initialState;
 type ProfileReducerActionType = InferActionsTypes<typeof profileReducerActions>
 type ThunkType = AppThunkType<ProfileReducerActionType | FormAction>
-
-export default profileReducer;

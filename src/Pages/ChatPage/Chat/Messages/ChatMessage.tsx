@@ -1,8 +1,9 @@
 import React from "react";
-import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
-import s from "../../ChatPage.module.scss";
-import userDefaultPhoto from "./../../../../Images/flat-face-icon-23.png"
 import {NavLink} from "react-router-dom";
+import {ChatMessageType} from "../../../../Redux/Reducers/chat-reducer";
+import userDefaultPhoto from "./../../../../Images/flat-face-icon-23.png";
+import s from "../../ChatPage.module.scss";
+
 
 export const ChatMessage: React.FC<{ message: ChatMessageType }> = React.memo(({message}) => {
     return (
@@ -11,7 +12,7 @@ export const ChatMessage: React.FC<{ message: ChatMessageType }> = React.memo(({
                 <NavLink to={'/profile/' + message.userId}>
                 <img
                     src={message.photo !== null ? message.photo : userDefaultPhoto}
-                    alt={'user image'}
+                    alt={'userImage'}
                 />
                 </NavLink>
                 <span>{message.userName}</span>

@@ -11,11 +11,7 @@ export const AddMessageForm = (props: AddMessageFormPropsType) => {
         if(e.code === 'Enter') validate()
 
     }
-    const validate = () => {
-        {
-            messageText.trim().length > 0 ? addMessage(messageText) : setError(true)
-        }
-    }
+    const validate = () => messageText.trim().length > 0 ? addMessage(messageText) : setError(true)
     const addMessage = (messageText: string) => {
         props.addNewMessage(props.userID, messageText)
         setMessageText('')

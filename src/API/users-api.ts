@@ -16,7 +16,7 @@ export const usersAPI = {
     }
 }
 
-//TYPES
+// TYPES
 type GetUsersResponseType = {
     items: Array<UsersType>
     error: null | string

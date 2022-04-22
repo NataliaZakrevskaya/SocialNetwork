@@ -54,15 +54,14 @@ export const authReducerActions = {
     },
 }
 
-
 //THUNKS
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): ThunkType => async (dispatch) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
     if (response.data.resultCode === ResultCodesEnum.Success) {
-        dispatch(getAuthUserData())
+        await dispatch(getAuthUserData())
     } else {
         if(response.data.resultCode === ResultCodesEnum.CaptchaIsRequired) {
-            dispatch(getCaptchaUrl())
+            await dispatch(getCaptchaUrl())
         }
         const message = response.data.messages.length > 0
             ? response.data.messages[0]
@@ -89,8 +88,6 @@ export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const captchaUrl = captchaData.url
     dispatch(authReducerActions.getCaptchaUrlSuccess(captchaUrl));
 }
-
-
 
 //TYPES
 type DataType = {

@@ -7,11 +7,7 @@ export const AddPostForm = (props: AddPostFormType) => {
     const [postText, setPostText] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
 
-    const validate = () => {
-        {
-            postText.trim().length > 1 ? addPost(postText) : setError(true)
-        }
-    }
+    const validate = () => {postText.trim().length > 1 ? addPost(postText) : setError(true)}
 
  const addPost = (postText: string) => {
      props.addNewPost(postText)
