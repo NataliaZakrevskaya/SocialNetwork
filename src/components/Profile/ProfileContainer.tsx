@@ -13,7 +13,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {InjectedProps, withRouter2} from "../../HOC/withRouter";
 import {WithAuthRedirect} from "../../HOC/WithAuthRedirect";
-import {Preloader} from "../Common/Preloader/Preloader";
+import {Preloader} from "../Common/components/Preloader/Preloader";
 
 
 type MapStateToPropsType = {

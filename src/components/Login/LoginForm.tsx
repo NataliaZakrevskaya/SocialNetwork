@@ -1,8 +1,8 @@
 import React from "react";
 import {InjectedFormProps} from "redux-form";
-import {createField, Input} from "../Common/FormsControls/FormsControls";
+import {createField, Input} from "../Common/components/FormsControls/FormsControls";
 import {required} from "../../Utils/Validators/Validators";
-import s from "../Common/FormsControls/FormsControls.module.css";
+import s from "../Common/components/FormsControls/FormsControls.module.css";
 import style from "./loginPage.module.css";
 import {FormDataType} from "./LoginPage";
 

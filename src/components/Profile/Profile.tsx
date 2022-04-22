@@ -3,7 +3,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ProfileType} from "../../Redux/Reducers/profile-reducer";
 import s from "./Profile.module.css"
 import MyPosts from "./MyPosts.ts/MyPosts";
-import {Preloader} from "../Common/Preloader/Preloader";
+import {Preloader} from "../Common/components/Preloader/Preloader";
 
 type ProfileComponentPropsType = {
     isOwner: boolean

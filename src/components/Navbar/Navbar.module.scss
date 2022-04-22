@@ -1,0 +1,52 @@
+@import "src/components/Common/Styles/Sass/Variables";
+@import "src/components/Common/Styles/Sass/Mixins";
+
+.navPage {
+  grid-area: n;
+  width: 80%;
+  min-height: 80px;
+  margin: 0 auto 10px;
+  background-color: white;
+  display: flex;
+  border-radius: 10px;
+  font-size: xx-large;
+  @include boxShadow();
+  @media screen and (max-width: 700px) {
+    min-height: 50px;
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .navContainer {
+    @include flex(row, space-around, center);
+    width: 100%;
+
+
+    & a {
+      color: #79787b;
+      text-decoration: none;
+    }
+
+    & a:hover {
+      color: #272729;
+      font-weight: bolder;
+      transition: 0.4s;
+    }
+
+    .activeLink {
+      color: $mainColor;
+      font-weight: bolder;
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+

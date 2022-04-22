@@ -1,8 +1,9 @@
+@import "./components/Common/Styles/Sass/Mixins.scss";
+
 .app-wrapper {
+    @include size(100%, 100vh);
     margin: 0 auto;
     display: grid;
-    width: 100%;
-    height: 100vh;
 
     grid-template-areas:
         "h h"

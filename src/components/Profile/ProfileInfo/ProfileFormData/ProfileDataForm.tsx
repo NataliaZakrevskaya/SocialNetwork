@@ -1,10 +1,10 @@
 import React from "react";
 import {InjectedFormProps, reduxForm} from "redux-form";
-import {Preloader} from "../../../Common/Preloader/Preloader";
+import {Preloader} from "../../../Common/components/Preloader/Preloader";
 import {ProfileType} from "../../../../Redux/Reducers/profile-reducer";
-import {createField, Input, Textarea} from "../../../Common/FormsControls/FormsControls";
+import {createField, Input, Textarea} from "../../../Common/components/FormsControls/FormsControls";
 import s from "./ProfileDataForm.module.css";
-import style from "./../../../Common/FormsControls/FormsControls.module.css"
+import style from "../../../Common/components/FormsControls/FormsControls.module.css"
 
 
 const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({

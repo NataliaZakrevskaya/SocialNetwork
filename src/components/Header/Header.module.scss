@@ -1,0 +1,76 @@
+@import "src/components/Common/Styles/Sass/Mixins";
+@import "src/components/Common/Styles/Sass/Variables";
+
+.header {
+  grid-area: h;
+  background-color: white;
+  margin-bottom: 10px;
+  @include boxShadow();
+
+  .headerContainer {
+    @include flex(row, space-between, center);
+    margin: 0 auto;
+    width: 80%;
+    @media screen and (max-width: 700px) {
+      width: 90%;
+    }
+
+    & img {
+      width: 60px;
+      margin-top: 5px;
+      @media screen and (max-width: 850px) {
+        width: 40px;
+      }
+    }
+
+    .logoutBlock {
+      @include flex(row, space-between, center);
+      width: 330px;
+      @media screen and (max-width: 850px) {
+        width: 265px;
+        margin-top: 11px;
+      }
+
+      & span {
+        text-transform: uppercase;
+        font-weight: bolder;
+        @media screen and (max-width: 850px) {
+          font-size: 14px;
+        }
+      }
+
+      & button {
+        @include button(100px, 35px);
+        @media screen and (max-width: 850px) {
+          @include size(80px, 25px);
+          font-size: 13px;
+        }
+      }
+
+      & button:hover {
+        background-color: $mainColor;
+      }
+    }
+
+    .login {
+      @include size(70px, 30px);
+      margin-top: 9px;
+      float: right;
+      margin-right: 3%;
+      color: white;
+      border-radius: 5px;
+      font-weight: bolder;
+      text-decoration: none;
+      background-color: $mainColor;
+      text-align: center;
+      padding-top: 7px;
+      @media screen and (max-width: 850px) {
+        @include size(60px, 25px);
+        font-size: 12px;
+        padding-top: 9px;
+      }
+    }
+
+  }
+}
+

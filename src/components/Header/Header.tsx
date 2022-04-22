@@ -1,10 +1,11 @@
 import React from 'react';
-import s from "./Header.module.css"
-import logo from './../../Images/Social network.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+
+import logo from './../../Images/Social network.png';
 import {AppStateType} from "../../Redux/redux-store";
 import {logout} from "../../Redux/Reducers/auth-reducer";
+import s from "./Header.module.scss";
 
 
 const Header = () => {
@@ -19,16 +20,15 @@ const Header = () => {
 
     return <header className={s.header}>
         <div className={s.headerContainer}>
-        <img
-            src={logo} alt={"logo"}/>
-        {
-            isAuth
-                ? (<div className={s.logoutBlock}>
-                    <span>{login}</span>
-                    <button onClick={logoutHandler}>Log out</button>
-                </div>)
-                : (<NavLink to={'/login'} className={s.login}>Login</NavLink>)
-        }
+            <img src={logo} alt={"logo"}/>
+            {
+                isAuth
+                    ? (<div className={s.logoutBlock}>
+                        <span>{login}</span>
+                        <button onClick={logoutHandler}>Log out</button>
+                    </div>)
+                    : (<NavLink to={'/login'} className={s.login}>Log in</NavLink>)
+            }
         </div>
     </header>
 }

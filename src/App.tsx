@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {connect, Provider} from "react-redux";
 
-import './App.css'
+import './App.scss';
 import Navbar from "./components/Navbar/Navbar";
 import {initializeApp} from "./Redux/Reducers/app-reducer";
 import store, {AppStateType} from "./Redux/redux-store";
-import Loading from "./components/Common/Loader/Loading";
+import Loading from "./components/Common/components/Loader/Loading";
 import Header from "./components/Header/Header";
 
 const DialogsPage = React.lazy(() => import('./components/Dialogs/Dialogs'));

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Preloader} from "../../../Common/Preloader/Preloader";
+import {Preloader} from "../../../Common/components/Preloader/Preloader";
 import s from "../ProfileInfo.module.css";
 import style from "../../MyPosts.ts/MyPosts.module.css";
 import {ContactsType, ProfileType} from "../../../../Redux/Reducers/profile-reducer";

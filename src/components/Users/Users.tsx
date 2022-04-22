@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from 'react'
 import {FilterType, follow, requestUsers, unfollow, UsersType} from "../../Redux/Reducers/users-reducer";
-import {Paginator} from "../Common/Paginator/Paginator";
+import {Paginator} from "../Common/components/Paginator/Paginator";
 import {User} from "./User/User";
 import s from "./Users.module.css"
 import {UsersSearchForm} from "./UsersSearchForm/UsersSearchForm";
@@ -14,7 +14,7 @@ import {
     getUsersFilter
 } from "../../Redux/Selectors/users-selectors";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {Preloader} from "../Common/Preloader/Preloader";
+import {Preloader} from "../Common/components/Preloader/Preloader";
 
 
 export const Users: FC<UsersPropsType> = React.memo((props) => {

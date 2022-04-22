@@ -1,0 +1,30 @@
+@import "./Variables";
+
+@mixin flex ($flexDirection, $justifyContent, $alignItems) {
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+@mixin size ($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin boxShadow (){
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+@mixin button ($width, $height){
+  width: $width;
+  height: $height;
+  background-color: $mainColor;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
