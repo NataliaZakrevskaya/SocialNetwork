@@ -1,6 +1,6 @@
 @import "./components/Common/Styles/Sass/Mixins.scss";
 
-.app-wrapper {
+.appWrapper {
     @include size(100%, 100vh);
     margin: 0 auto;
     display: grid;
@@ -11,14 +11,12 @@
         "c c";
     grid-template-rows: 80px 1fr 10fr;
     grid-template-columns: 12fr;
-}
-@media screen and (max-width: 850px){
-    .app-wrapper{
-    grid-template-rows: 65px 1fr 10fr;
+    @media screen and (max-width: 850px){
+            grid-template-rows: 65px 1fr 10fr;
     }
 }
 
-.app-wrapper-content {
+.appWrapperContent {
     grid-area: c;
     width: 100%;
 }

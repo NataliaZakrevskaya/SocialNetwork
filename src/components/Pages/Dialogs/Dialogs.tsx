@@ -4,8 +4,9 @@ import {useDispatch, useSelector} from "react-redux";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
-import {AppStateType} from "../../Redux/redux-store";
-import {DialogsInitialStateType, dialogsReducerActions} from "../../Redux/Reducers/dialogs-reducer";
+import {AppStateType} from "../../../Redux/redux-store";
+import {DialogsInitialStateType, dialogsReducerActions} from "../../../Redux/Reducers/dialogs-reducer";
+//@ts-ignore
 import s from './Dialogs.module.scss';
 
 

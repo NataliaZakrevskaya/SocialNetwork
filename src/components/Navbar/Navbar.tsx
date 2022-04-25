@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import {AppStateType} from "../../Redux/redux-store";
+//@ts-ignore
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {

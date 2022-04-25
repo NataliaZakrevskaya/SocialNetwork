@@ -1,5 +1,5 @@
 import {PhotosType, ProfileType} from "../Redux/Reducers/profile-reducer";
-import {instance} from "./Api";
+import {instance} from "./api";
 
 export const profileAPI = {
     getProfile(userId: string) {

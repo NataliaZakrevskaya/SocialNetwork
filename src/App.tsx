@@ -1,20 +1,16 @@
 import React from 'react';
-import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
-import {connect, Provider} from "react-redux";
-import './App.scss';
-import Navbar from "./components/Navbar/Navbar";
-import {initializeApp} from "./Redux/Reducers/app-reducer";
-import store, {AppStateType} from "./Redux/redux-store";
-import Loading from "./components/Common/components/Loader/Loading";
-import Header from "./components/Header/Header";
+import {Navigate, Route, Routes} from 'react-router-dom';
+import Header from "./Components/Header/Header";
+import Navbar from "./Components/Navbar/Navbar";
+//@ts-ignore
+import style from "./App.scss"
+import {AppMapDispatchToPropsType, AppMapStateToPropsType} from "./MainApp";
 
-const DialogsPage = React.lazy(() => import('./components/Dialogs/Dialogs'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
-const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
-const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
-const ChatPage = React.lazy(() => import('./Pages/ChatPage/ChatPage'));
-
-
+const DialogsPage = React.lazy(() => import('./Components/Pages/Dialogs/Dialogs'));
+const ProfileContainer = React.lazy(() => import('./Components/Pages/Profile/ProfileContainer'));
+const UsersPage = React.lazy(() => import('./Components/Pages/Users/UsersPage'));
+const LoginPage = React.lazy(() => import('./Components/Pages/Login/LoginPage'));
+const ChatPage = React.lazy(() => import('./Components/Pages/Chat/ChatPage'));
 
 class App extends React.Component<AppPropsType> {
     catchAllUnhandledErrors = (promiseRejectionEvent: any) => {
@@ -28,13 +24,12 @@ class App extends React.Component<AppPropsType> {
         window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
-
     render() {
         return (
-            <main className={"app-wrapper"}>
+            <main className={style.appWrapper}>
                 <Header/>
                 <Navbar/>
-                <div className={"app-wrapper-content"}>
+                <div className={style.appWrapperContent}>
                     <Routes>
                         <Route path='/' element={<Navigate to={'/profile'}/>}/>
 
@@ -55,29 +50,7 @@ class App extends React.Component<AppPropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
-    initialized: state.app.initialized
-});
 
-const AppContainer = connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, {initializeApp})(App);
+export default App;
 
-export const MainApp = () => {
-    return (
-        <React.Suspense fallback={<Loading/>}>
-            <HashRouter>
-                <Provider store={store}>
-                    <AppContainer/>
-                </Provider>
-            </HashRouter>
-        </React.Suspense>
-    )
-}
-
-// TYPES
-type MapStateToPropsType = {
-    initialized: boolean
-}
-type MapDispatchToPropsType = {
-    initializeApp: () => void
-}
-type AppPropsType = MapStateToPropsType & MapDispatchToPropsType
+type AppPropsType = AppMapStateToPropsType & AppMapDispatchToPropsType

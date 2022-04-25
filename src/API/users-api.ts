@@ -1,4 +1,4 @@
-import {instance} from "./Api";
+import {instance} from "./api";
 import {UsersType} from "../Redux/Reducers/users-reducer";
 
 export const usersAPI = {

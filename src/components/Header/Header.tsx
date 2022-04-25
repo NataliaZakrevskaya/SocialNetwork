@@ -1,9 +1,11 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import logo from './../../Images/Social network.png';
+//@ts-ignore
+import logo from '../../Images/Social network.png';
 import {AppStateType} from "../../Redux/redux-store";
 import {logout} from "../../Redux/Reducers/auth-reducer";
+//@ts-ignore
 import s from "./Header.module.scss";
 
 
