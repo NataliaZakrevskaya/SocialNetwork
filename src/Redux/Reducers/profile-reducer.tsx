@@ -1,6 +1,6 @@
 import {FormAction, stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "../redux-store";
-import {profileAPI} from "../../API/profile-api";
+import {profileAPI} from "../../API/profileAPI";
 import {ResultCodesEnum} from "../../API/api";
 
 //CONSTANTS

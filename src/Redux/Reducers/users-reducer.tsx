@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {updateObjectInArray} from "../../Utils/object-helpers";
 import {AppThunkType, InferActionsTypes} from "../redux-store";
-import {FollowingResponseType, usersAPI} from "../../API/users-api";
+import {FollowingResponseType, usersAPI} from "../../API/usersAPI";
 import {ResultCodesEnum} from "../../API/api";
 
 

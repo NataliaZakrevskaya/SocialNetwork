@@ -1,7 +1,7 @@
 import {FormAction, stopSubmit} from "redux-form";
 import {AppThunkType, InferActionsTypes} from "../redux-store";
-import {authAPI} from "../../API/auth-api";
-import {securityAPI} from "../../API/security-api";
+import {authAPI} from "../../API/authAPI";
+import {securityAPI} from "../../API/securityAPI";
 import {ResultCodesEnum} from "../../API/api";
 
 // CONSTANTS

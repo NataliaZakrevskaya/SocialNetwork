@@ -1,26 +1,25 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
-
 import {AppStateType} from "../../Redux/redux-store";
-//@ts-ignore
-import s from "./Navbar.module.scss";
+import style from "./Navbar.module.scss";
+import {CHAT, DIALOGS, PROFILE, USERS} from "../../constants";
 
 const Navbar = () => {
 
     const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
 
     return (
-        <nav className={isAuth ? s.navPage : ''}>
+        <nav className={isAuth ? style.navPage : ''}>
             {isAuth &&
-                <div className={s.navContainer}>
-                    <NavLink className={(navData) => navData.isActive ? s.activeLink : ""}
-                             to="/profile">Profile</NavLink>
-                    <NavLink className={(navData) => navData.isActive ? s.activeLink : ""}
-                             to="/users">Users</NavLink>
-                    <NavLink className={(navData) => navData.isActive ? s.activeLink : ""}
-                             to="/dialogs">Messages</NavLink>
-                    <NavLink className={(navData) => navData.isActive ? s.activeLink : ""} to="/chat">Chat</NavLink>
+                <div className={style.navContainer}>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ""}
+                             to={PROFILE}>Profile</NavLink>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ""}
+                             to={USERS}>Users</NavLink>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ""}
+                             to={DIALOGS}>Messages</NavLink>
+                    <NavLink className={(navData) => navData.isActive ? style.activeLink : ""} to={CHAT}>Chat</NavLink>
                 </div>}
         </nav>
     )

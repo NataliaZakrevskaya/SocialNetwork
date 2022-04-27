@@ -1,0 +1,335 @@
+@import "../../../Common/Styles/Sass/Mixins";
+@import "../../../Common/Styles/Sass/Variables";
+
+.profileInfoBlock {
+  width: 100%;
+  background-color: white;
+  padding-bottom: 10px;
+  border-radius: $blockBorderRadius;
+  margin-bottom: 20px;
+  @include boxShadow();
+
+  .imagesBlock {
+    width: 100%;
+
+    & img {
+      @include size(100%, 200px);
+      border-radius: $blockBorderRadius;
+      @media screen and (max-width: 850px) {
+        height: 150px;
+      }
+    }
+
+    .avatar {
+      position: relative;
+      width: 250px;
+      margin: 0 auto;
+      top: -120px;
+      @media screen and (max-width: 1000px) {
+        width: 170px;
+        top: -90px;
+      }
+      @media screen and (max-width: 850px) {
+        width: 150px;
+      }
+
+      & img {
+        position: absolute;
+        right: 25px;
+        z-index: 1;
+        border: 5px solid white;
+        width: 200px;
+        border-radius: 50%;
+        @include boxShadow();
+        @media screen and (max-width: 1000px) {
+          @include size(170px, 170px);
+          right: 10px;
+        }
+        @media screen and (max-width: 850px) {
+          @include size(130px, 130px);
+        }
+      }
+
+      .avatarEdit {
+        position: absolute;
+        right: 15%;
+        z-index: 1;
+        top: 165px;
+        @media screen and (max-width: 1000px) {
+          top: 130px;
+        }
+        @media screen and (max-width: 850px) {
+          top: 112px;
+        }
+
+        & input {
+          display: none;
+        }
+
+        & label {
+          display: inline-block;
+          @include size(34px, 34px);
+          border-radius: 50%;
+          background: white;
+          border: 1px solid transparent;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+          cursor: pointer;
+          font-weight: normal;
+          transition: all .2s ease-in-out;
+          @media screen and (max-width: 1000px) {
+            @include size(27px, 27px);
+          }
+          @media screen and (max-width: 850px) {
+            @include size(25px, 25px);
+          }
+        }
+
+        & label:hover {
+          background: #f1f1f1;
+          border-color: #d6d6d6;
+        }
+
+        & label:after {
+          content: "✎";
+          font-size: 20px;
+          color: #757575;
+          position: absolute;
+          top: 4px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: auto;
+          @media screen and (max-width: 1000px) {
+            font-size: 17px;
+          }
+          @media screen and (max-width: 850px) {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .profileInfo {
+    position: relative;
+    width: 63%;
+    margin: 20px auto;
+    @media screen and (max-width: 1000px) {
+      margin: 30px auto;
+    }
+    @media screen and (max-width: 850px) {
+      width: 80%;
+    }
+
+    .statusBlock {
+      width: 30%;
+
+      .status {
+        width: 100%;
+        min-height: 70px;
+        @media screen and (max-width: 1000px) {
+          min-height: 20px;
+          font-size: 14px;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 11px;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 9px;
+        }
+
+        & span {
+          word-wrap: break-word;
+          cursor: default;
+        }
+
+        .ownerStatus:hover {
+          background-color: #f1f3ef;
+          cursor: pointer;
+        }
+      }
+
+      & input {
+        width: 100%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid #42a790;
+        outline: none;
+
+        @media screen and (max-width: 1000px) {
+          min-height: 20px;
+          font-size: 14px;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 11px;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 9px;
+        }
+      }
+    }
+
+    .lookingJob {
+      position: absolute;
+      right: 10px;
+      color: $mainColor;
+
+      @media screen and (max-width: 1000px) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: 850px) {
+        font-size: 11px;
+      }
+      @media screen and (max-width: 450px) {
+        font-size: 9px;
+      }
+    }
+
+
+    .profileInfoData {
+      width: 100%;
+
+
+      .editButtonContainer {
+        @include size(40px, 40px);
+        float: right;
+        position: relative;
+
+        .editButton {
+          @include size(40px, 40px);
+          position: absolute;
+          right: 0;
+          top: 0;
+          color: #757575;
+          margin-bottom: 0;
+          border-radius: 100%;
+          background: white;
+          border: 1px solid transparent;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+          cursor: pointer;
+          font-weight: normal;
+          font-size: 20px;
+          transition: all .2s ease-in-out;
+          @media screen and (max-width: 1000px) {
+            @include size(27px, 27px);
+            font-size: 17px;
+          }
+          @media screen and (max-width: 850px) {
+            @include size(25px, 25px);
+            font-size: 15px;
+          }
+        }
+
+        .editButton:hover {
+          background: #f1f1f1;
+          border-color: #d6d6d6;
+        }
+
+        .editButton:after {
+          font-size: 20px;
+          color: #757575;
+          position: absolute;
+          top: 4px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: auto;
+        }
+      }
+
+      .majorInfo {
+        @include flex(column, center, center);
+        margin-bottom: 10px;
+        margin-left: 40px;
+        @media screen and (max-width: 1000px) {
+          margin-left: 27px;
+        }
+        @media screen and (max-width: 850px) {
+          margin-left: 25px;
+        }
+
+        .fullName {
+          font-size: xx-large;
+          margin-bottom: 10px;
+          font-weight: bolder;
+          @media screen and (max-width: 1000px) {
+            font-size: 25px;
+          }
+          @media screen and (max-width: 850px) {
+            font-size: 20px;
+          }
+          @media screen and (max-width: 450px) {
+            font-size: 15px;
+          }
+        }
+
+        .skills {
+          margin-bottom: 10px;
+          @media screen and (max-width: 1000px) {
+            font-size: 16px;
+          }
+          @media screen and (max-width: 850px) {
+            font-size: 15px;
+          }
+          @media screen and (max-width: 450px) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      & button {
+        @include button(100%, 35px);
+        margin-bottom: 10px;
+
+        @media screen and (max-width: 1000px) {
+          height: 30px;
+          font-size: 13px;
+        }
+        @media screen and (max-width: 850px) {
+          font-size: 11px;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 9px;
+          height: 25px;
+        }
+      }
+
+      & button:hover {
+        background-color: #3a816e;
+      }
+
+      .contacts {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+        @include flex(column, center, flex-start);
+
+        .contact {
+          margin-bottom: 5px;
+          @media screen and (max-width: 1000px) {
+            font-size: 13px;
+          }
+          @media screen and (max-width: 850px) {
+            font-size: 11px;
+          }
+          @media screen and (max-width: 450px) {
+            font-size: 9px;
+          }
+
+          & a {
+            text-decoration: none;
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,16 +1,16 @@
 import React from 'react';
-import styles from "./Loading.module.css"
+import style from "./Loading.module.css"
 
 const Loading = () => {
 
-    return (
-        <div className={styles.preloader}>
-            <div className={styles.preloader__row}>
-                <div className={styles.preloader__item}/>
-                <div className={styles.preloader__item}/>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className={style.preloader}>
+      <div className={style.preloader__row}>
+        <div className={style.preloader__item}/>
+        <div className={style.preloader__item}/>
+      </div>
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

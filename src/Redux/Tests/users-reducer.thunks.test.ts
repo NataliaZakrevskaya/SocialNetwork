@@ -1,5 +1,5 @@
 import {follow, unfollow, usersReducerActions} from "../Reducers/users-reducer";
-import {FollowingResponseType, usersAPI} from "../../API/users-api";
+import {FollowingResponseType, usersAPI} from "../../API/usersAPI";
 import {ResultCodesEnum} from "../../API/api";
 
 jest.mock('../API/users-API')
