@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import {AppStateType} from "../../../../../Redux/redux-store";
+import {AppStateType} from "../../../../../Redux/reduxStore";
 import {MapStateToPropsType} from "./types";
 import {LOGIN} from "../../../../../constants";
 

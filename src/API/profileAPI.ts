@@ -1,4 +1,4 @@
-import { ProfileType} from "../Redux/Reducers/profile-reducer";
+import { ProfileType} from "../Redux/Reducers/profileReducer/profileReducer";
 import {instance} from "./apiConfig";
 import {PHOTO, PROFILE, STATUS} from "./constants";
 import {GetProfileResponseType, ProfileAPIResponseType, SavePhotoResponseType} from "./types";

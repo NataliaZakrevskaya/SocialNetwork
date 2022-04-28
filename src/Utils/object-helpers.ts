@@ -1,12 +1,10 @@
-export const updateObjectInArray = (items: any[], itemId: number, objectPropName: string, newObjectProps: newObjectPropsType) => {
-    return items.map(u => {
-        if (u[objectPropName] === itemId) {
-            return {...u, ...newObjectProps}
-        }
-        return u;
-    })
-}
+import {newObjectPropsType} from "./types";
 
-type newObjectPropsType = {
-    followed: boolean
+export const updateObjectInArray = (items: any[], itemId: number, objectPropName: string, newObjectProps: newObjectPropsType) => {
+  return items.map(u => {
+    if (u[objectPropName] === itemId) {
+      return {...u, ...newObjectProps}
+    }
+    return u;
+  })
 }

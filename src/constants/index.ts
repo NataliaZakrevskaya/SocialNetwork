@@ -3,4 +3,7 @@ export const PROFILE = '/profile';
 export const USERS = '/users';
 export const DIALOGS = '/dialogs';
 export const CHAT = '/chat';
+export const EMPTY_URL = '/';
+export const UNDEFINED_URL = '*';
+export const USER_ID = ':userId';
 export const WRITE_MESSAGE = 'Write your message...';

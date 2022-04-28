@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {AppStateType} from "../../Redux/redux-store";
-import {logout} from "../../Redux/Reducers/auth-reducer";
+import {AppStateType} from "../../Redux/reduxStore";
+import {logout} from "../../Redux/Reducers/authReducer/authReducer";
 import {logo} from './../../Images/Social network.png';
 import style from "./Header.module.scss";
 import {LOGIN} from "../../constants";

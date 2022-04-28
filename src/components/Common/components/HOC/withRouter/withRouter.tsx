@@ -1,7 +1,7 @@
 import {useLocation, useParams} from "react-router-dom";
 import React from "react";
 
-export const withRouter2 = <T extends object>(WrappedComponent: React.ComponentType<T>) => (props: T) => {
+export const withRouter = <T extends object>(WrappedComponent: React.ComponentType<T>) => (props: T) => {
   const params = useParams<'userId'>();
   const location = useLocation();
 

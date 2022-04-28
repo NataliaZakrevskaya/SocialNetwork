@@ -1,0 +1,3 @@
+export enum AppReducerEnum {
+  INITIALIZED_SUCCESS = 'APP/INITIALIZED-SUCCESS'
+}

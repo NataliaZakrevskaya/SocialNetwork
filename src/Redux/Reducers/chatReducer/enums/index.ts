@@ -1,0 +1,4 @@
+export enum ChatReducerEnum {
+  MESSAGES_RECEIVED = 'MESSAGES-RECEIVED',
+  STATUS_CHANGED = 'STATUS_CHANGED',
+}

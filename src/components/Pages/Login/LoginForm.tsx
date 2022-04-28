@@ -1,11 +1,10 @@
 import React from "react";
 import {InjectedFormProps} from "redux-form";
 import {required} from "../../../Utils/Validators/Validators";
-import {FormDataType} from "./LoginPage";
 import commonStyle from "../../Common/Components/FormsControls/FormsControls.module.css";
 import style from "./loginPage.module.scss";
 import {createField, Input} from "../../Common/Components/FormsControls/FormsControls";
-import {LoginFormPropsType} from "../types";
+import {FormDataType, LoginFormPropsType} from "../types";
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType, LoginFormPropsType> & LoginFormPropsType> =
   ({handleSubmit, error, captchaUrl}) => {
