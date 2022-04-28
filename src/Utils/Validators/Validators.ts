@@ -1,9 +1,9 @@
-export const required = (value: string | number) => {
-  if (value) {
+export const required = ( value: string | number ) => {
+  if ( value ) {
     return undefined;
   }
-  return "Field is required";
-}
+  return 'Field is required';
+};
 /*
 export const maxLengthCreator = (maxLength: number) => (value: any) => {
   if (value.length > maxLength) {

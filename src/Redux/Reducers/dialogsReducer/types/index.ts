@@ -1,5 +1,5 @@
-import {dialogsReducerActions} from "../dialogsReducer";
-import {InferActionsTypes} from "../../../types";
+import { dialogsReducerActions } from '../dialogsReducer';
+import { InferActionsTypes } from '../../../types';
 
 export type DialogType = {
   id: number
@@ -12,7 +12,7 @@ export type MessageType = {
   isAuth: boolean
 }
 export type MessagesType = {
-  [key: number]: Array<MessageType>
+  [ key: number ]: Array<MessageType>
 }
 export type DialogsInitialStateType = {
   dialogs: Array<DialogType>

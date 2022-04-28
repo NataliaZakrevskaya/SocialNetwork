@@ -1,4 +1,4 @@
-import {AppMapDispatchToPropsType, AppMapStateToPropsType} from "../MainApp";
+import { AppMapDispatchToPropsType, AppMapStateToPropsType } from '../MainApp';
 
 export type Nullable<T> = T | null;
 

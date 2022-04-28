@@ -1,5 +1,5 @@
-import {initialState, usersReducerActions} from "../usersReducer";
-import {InferActionsTypes} from "../../../types";
+import { initialState, usersReducerActions } from '../usersReducer';
+import { InferActionsTypes } from '../../../types';
 
 export type UsersType = {
   id: number

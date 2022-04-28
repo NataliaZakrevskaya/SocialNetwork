@@ -1,22 +1,22 @@
 @import "./components/Common/Styles/Sass/Mixins.scss";
 
 .appWrapper {
-    @include size(100%, 100vh);
-    margin: 0 auto;
-    display: grid;
+  @include size(100%, 100vh);
+  margin: 0 auto;
+  display: grid;
 
-    grid-template-areas:
+  grid-template-areas:
         "h h"
         "n n"
         "c c";
-    grid-template-rows: 80px 1fr 10fr;
-    grid-template-columns: 12fr;
-    @media screen and (max-width: 850px){
-            grid-template-rows: 65px 1fr 10fr;
-    }
+  grid-template-rows: 80px 1fr 10fr;
+  grid-template-columns: 12fr;
+  @media screen and (max-width: 850px) {
+    grid-template-rows: 65px 1fr 10fr;
+  }
 }
 
 .appWrapperContent {
-    grid-area: c;
-    width: 100%;
+  grid-area: c;
+  width: 100%;
 }

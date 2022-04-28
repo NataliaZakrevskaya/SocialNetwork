@@ -1,6 +1,6 @@
-import {AppStateType} from "../../types";
-import {DialogsInitialStateType} from "../../Reducers/dialogsReducer/types";
+import { AppStateType } from '../../types';
+import { DialogsInitialStateType } from '../../Reducers/dialogsReducer/types';
 
-export const getDialogState = (state: AppStateType): DialogsInitialStateType => {
-  return state.messagesPage
-}
+export const getDialogState = ( state: AppStateType ): DialogsInitialStateType => {
+  return state.messagesPage;
+};

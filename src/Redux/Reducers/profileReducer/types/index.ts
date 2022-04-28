@@ -1,5 +1,5 @@
-import {initialState, profileReducerActions} from "../profileReducer";
-import {InferActionsTypes} from "../../../types";
+import { initialState, profileReducerActions } from '../profileReducer';
+import { InferActionsTypes } from '../../../types';
 
 export type PhotosType = {
   small: string

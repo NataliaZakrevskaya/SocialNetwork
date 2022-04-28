@@ -1,5 +1,5 @@
-import {authReducerActions} from "../authReducer";
-import {InferActionsTypes} from "../../../types";
+import { authReducerActions } from '../authReducer';
+import { InferActionsTypes } from '../../../types';
 
 export type AuthDataType = {
   id: string,
