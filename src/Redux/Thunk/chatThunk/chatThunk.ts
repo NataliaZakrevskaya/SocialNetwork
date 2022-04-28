@@ -1,4 +1,4 @@
-import {chatAPI, ChatMessageApiType, StatusType} from "../../../API/chat-api";
+import {chatAPI, ChatMessageApiType, StatusType} from "../../../API/chatAPI";
 import {Dispatch} from "redux";
 import {chatReducerActions} from "../../Reducers/chatReducer/chatReducer";
 import {ChatThunkType} from "./types";

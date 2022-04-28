@@ -1,5 +1,5 @@
 import {v1} from "uuid"
-import {ChatMessageApiType, StatusType} from "../../../API/chat-api";
+import {ChatMessageApiType, StatusType} from "../../../API/chatAPI";
 import {ChatReducerEnum} from "./enums";
 import {ChatInitialStateType, ChatMessageType, ChatReducerActionType} from "./types";
 

@@ -1,6 +1,6 @@
-import {ProfileType} from "../../../Redux/Reducers/profileReducer/profileReducer";
 import {InjectedProps} from "../../Common/Components/HOC/withRouter/types";
-import {FilterType, UsersType} from "../../../Redux/Reducers/usersReducer/usersReducer";
+import {ProfileType} from "../../../Redux/Reducers/profileReducer/types";
+import {FilterType, UsersType} from "../../../Redux/Reducers/usersReducer/types";
 
 export type AddMessageFormPropsType = {
   userID: number | null

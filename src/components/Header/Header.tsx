@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {logo} from './../../Images/Social network.png';
 import style from "./Header.module.scss";
+import logo from './../../Images/logo.png'
 import {LOGIN} from "../../constants";
 import {logout} from "../../Redux/Thunk/authThunk/authThunk";
 import {getIsAuth, getLogin} from "../../Redux/Selectors/authSelectors/authSelectors";

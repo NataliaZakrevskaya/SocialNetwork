@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, memo, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {Paginator} from "../../Common/Components/Paginator/Paginator";
@@ -18,7 +18,7 @@ import {follow, requestUsers, unfollow} from "../../../Redux/Thunk/usersThunk/us
 import {FilterType} from "../../../Redux/Reducers/usersReducer/types";
 
 
-export const Users: FC = React.memo(() => {
+export const Users: FC = memo(() => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()

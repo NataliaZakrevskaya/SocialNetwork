@@ -1,5 +1,5 @@
-import {InferActionsTypes} from "../../../reduxStore";
 import {initialState, usersReducerActions} from "../usersReducer";
+import {InferActionsTypes} from "../../../types";
 
 export type UsersType = {
   id: number

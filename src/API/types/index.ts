@@ -1,5 +1,5 @@
-import {PhotosType} from "../../Redux/Reducers/profileReducer/profileReducer";
-import {UsersType} from "../../Redux/Reducers/usersReducer/usersReducer";
+import {PhotosType} from "../../Redux/Reducers/profileReducer/types";
+import {UsersType} from "../../Redux/Reducers/usersReducer/types";
 
 export type AuthApiResponseType<T> = {
   data: T

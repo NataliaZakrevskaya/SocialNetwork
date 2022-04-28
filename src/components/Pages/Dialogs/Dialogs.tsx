@@ -4,19 +4,20 @@ import {useDispatch, useSelector} from "react-redux";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {AddMessageForm} from "./AddMessageForm/AddMessageForm";
-import {AppStateType} from "../../../Redux/reduxStore";
-import {DialogsInitialStateType, dialogsReducerActions} from "../../../Redux/Reducers/dialogsReducer/dialogsReducer";
+import {dialogsReducerActions} from "../../../Redux/Reducers/dialogsReducer/dialogsReducer";
 import style from './Dialogs.module.scss';
 import {Nullable} from "../../../types";
 import {LOGIN} from "../../../constants";
+import {getIsAuth} from "../../../Redux/Selectors/authSelectors/authSelectors";
+import {getDialogState} from "../../../Redux/Selectors/dialogsSelectors/dialogsSelectors";
 
 const DialogsPage = () => {
   let messagesElements;
 
   const [activeUserID, setActiveUserID] = useState<Nullable<number>>(null);
 
-  const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth);
-  const state = useSelector<AppStateType, DialogsInitialStateType>(state => state.messagesPage);
+  const isAuth = useSelector(getIsAuth);
+  const state = useSelector(getDialogState);
 
   const dispatch = useDispatch();
 

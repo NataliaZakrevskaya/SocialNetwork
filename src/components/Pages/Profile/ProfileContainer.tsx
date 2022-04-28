@@ -1,19 +1,19 @@
 import React, {ComponentType} from 'react';
 import Profile from "./Profile";
-import {
-  getProfile,
-  getStatus,
-  savePhoto,
-  saveProfile,
-  updateStatus
-} from "../../../Redux/Reducers/profileReducer/profileReducer";
-import {AppStateType} from "../../../Redux/reduxStore";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "../../Common/Components/HOC/withRouter/withRouter";
 import {WithAuthRedirect} from "../../Common/Components/HOC/withAuthRedirect/WithAuthRedirect";
 import {Preloader} from "../../Common/Components/Preloader/Preloader";
 import {ProfileAPIContainerMapStateToPropsType, ProfileAPIContainerOwnPropsType} from "../types";
+import {AppStateType} from "../../../Redux/types";
+import {
+  getProfile,
+  getStatus,
+  savePhoto,
+  saveProfile,
+  updateStatus
+} from "../../../Redux/Thunk/profileThunk/profileThunk";
 
 class ProfileAPIContainer extends React.Component<ProfileAPIContainerOwnPropsType> {
 

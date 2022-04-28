@@ -1,5 +1,5 @@
 import {AppStateType} from "../../types";
-import {StatusType} from "../../../API/chat-api";
+import {StatusType} from "../../../API/chatAPI";
 import {ChatMessageType} from "../../Reducers/chatReducer/types";
 
 export const getStatus = (state: AppStateType): StatusType => {

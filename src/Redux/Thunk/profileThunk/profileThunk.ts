@@ -26,11 +26,11 @@ export const savePhoto = (newPhoto: File): ProfileThunkType => async (dispatch: 
     dispatch(profileReducerActions.updatePhoto(response.data.data.photos));
   }
 }
-export const saveProfile = (profileData: ProfileType): ProfileThunkType => async (dispatch: Dispatch, getState: any) => {
+export const saveProfile = (profileData: ProfileType): ProfileThunkType => async (dispatch, getState: any) => {
   const userId = getState().auth.data.id
   const response = await profileAPI.saveProfile(profileData)
   if (response.data.resultCode === ResultCodesEnum.Success) {
-    await dispatch(getProfile(userId));
+    dispatch(getProfile(userId));
   } else {
     dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));
     return Promise.reject(response.data.messages[0])

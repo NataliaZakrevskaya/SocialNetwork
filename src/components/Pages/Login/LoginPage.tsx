@@ -2,17 +2,17 @@ import React from 'react';
 import {reduxForm} from "redux-form";
 import {Navigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {AppStateType} from "../../../Redux/reduxStore";
-import {login} from "../../../Redux/Reducers/authReducer/authReducer";
 import {LoginForm} from "./LoginForm";
 import style from "./loginPage.module.scss";
 import {PROFILE} from "../../../constants";
 import {FormDataType, LoginFormPropsType} from "../types";
+import {getCaptchaUrl, getIsAuth} from "../../../Redux/Selectors/authSelectors/authSelectors";
+import {login} from "../../../Redux/Thunk/authThunk/authThunk";
 
 const LoginPage: React.FC = () => {
 
-  const captchaUrl = useSelector<AppStateType, string | null>(state => state.auth.captchaUrl)
-  const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
+  const captchaUrl = useSelector(getCaptchaUrl);
+  const isAuth = useSelector(getIsAuth);
 
   const dispatch = useDispatch()
 

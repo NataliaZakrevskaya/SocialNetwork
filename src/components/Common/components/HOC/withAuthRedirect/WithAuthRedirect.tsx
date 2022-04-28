@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import {AppStateType} from "../../../../../Redux/reduxStore";
 import {MapStateToPropsType} from "./types";
 import {LOGIN} from "../../../../../constants";
+import {AppStateType} from "../../../../../Redux/types";
 
 const mapStateToPropsForRedirect = (state: AppStateType): MapStateToPropsType => {
   return {

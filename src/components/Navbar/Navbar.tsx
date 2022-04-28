@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {AppStateType} from "../../Redux/reduxStore";
 import style from "./Navbar.module.scss";
 import {CHAT, DIALOGS, PROFILE, USERS} from "../../constants";
+import {getIsAuth} from "../../Redux/Selectors/authSelectors/authSelectors";
 
 const Navbar = () => {
 
-  const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth)
+  const isAuth = useSelector(getIsAuth);
 
   return (
     <nav className={isAuth ? style.navPage : ''}>

@@ -1,11 +1,11 @@
 import React, {ChangeEvent, useState} from 'react';
 import style from "./ProfileInfo.module.scss";
-import {ProfileType} from "../../../../Redux/Reducers/profileReducer/profileReducer";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import ProfileDataForm from './ProfileFormData/ProfileDataForm';
 import profileImage from "../../../../Images/flat-face-icon-23.png"
 import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileInfoPropsType} from "../../types";
+import {ProfileType} from "../../../../Redux/Reducers/profileReducer/types";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}: ProfileInfoPropsType) => {
 

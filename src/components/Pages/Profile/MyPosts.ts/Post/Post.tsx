@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import style from "./Post.module.scss"
-import {PostsType, ProfileType} from "../../../../../Redux/Reducers/profileReducer/profileReducer";
-import {AppStateType} from "../../../../../Redux/reduxStore";
 import profileImage from "../../../../../Images/flat-face-icon-23.png";
+import {getProfile} from "../../../../../Redux/Selectors/profileSelectors/profileSelectors";
+import {PostsType} from "../../../../../Redux/Reducers/profileReducer/types";
 
 const Post = (props: PostsType) => {
 
   const [likesCount, setLikesCount] = useState<number>(props.likesCount)
   const [isLiked, setIsLiked] = useState<boolean>(false)
 
-  const profile = useSelector<AppStateType, ProfileType>(state => state.profilePage.profile)
+  const profile = useSelector(getProfile);
 
   const like = () => {
     !isLiked ? setLikesCount(likesCount + 1) : setLikesCount(likesCount - 1)

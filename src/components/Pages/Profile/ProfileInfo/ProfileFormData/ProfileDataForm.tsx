@@ -1,11 +1,11 @@
 import React from "react";
 import {InjectedFormProps, reduxForm} from "redux-form";
 import {Preloader} from "../../../../Common/Components/Preloader/Preloader";
-import {ProfileType} from "../../../../../Redux/Reducers/profileReducer/profileReducer";
 import {createField, Input, Textarea} from "../../../../Common/Components/FormsControls/FormsControls";
 import commonStyle from "../../../../Common/Components/FormsControls/FormsControls.module.css"
 import style from "./ProfileDataForm.module.scss";
 import {ProfileDataFormPropsType} from "../../../types";
+import {ProfileType} from "../../../../../Redux/Reducers/profileReducer/types";
 
 const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormPropsType> & ProfileDataFormPropsType> = ({handleSubmit, profile, error}) => {
 

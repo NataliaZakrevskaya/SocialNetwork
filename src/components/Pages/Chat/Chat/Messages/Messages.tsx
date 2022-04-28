@@ -2,12 +2,11 @@ import React, {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {ChatMessage} from "./ChatMessage";
 import style from "../../ChatPage.module.scss";
-import {AppStateType} from "../../../../../Redux/types";
-import {ChatMessageType} from "../../../../../Redux/Reducers/chatReducer/types";
+import {getMessages} from "../../../../../Redux/Selectors/chatSelectors/chatSelectors";
 
 export const Messages: React.FC = () => {
 
-  const messages = useSelector<AppStateType, ChatMessageType[]>(state => state.chat.messages);
+  const messages = useSelector(getMessages);
 
   const messagesAnchorRef = useRef<HTMLDivElement>(null);
 

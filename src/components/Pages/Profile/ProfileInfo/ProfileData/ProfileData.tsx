@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {Preloader} from "../../../../Common/Components/Preloader/Preloader";
-import {ContactsType} from "../../../../../Redux/Reducers/profileReducer/profileReducer";
 import {Contact} from "../ProfileFormData/Contact/Contact";
 import commonStyle from "../../Profile.module.scss"
 import style from "../ProfileInfo.module.scss";
 import {ProfileDataPropsType} from "../../../types";
+import {ContactsType} from "../../../../../Redux/Reducers/profileReducer/types";
 
 export const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataPropsType) => {
   let contacts = []

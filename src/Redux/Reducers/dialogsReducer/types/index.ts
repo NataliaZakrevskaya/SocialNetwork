@@ -1,5 +1,5 @@
-import {InferActionsTypes} from "../../../reduxStore";
 import {dialogsReducerActions} from "../dialogsReducer";
+import {InferActionsTypes} from "../../../types";
 
 export type DialogType = {
   id: number

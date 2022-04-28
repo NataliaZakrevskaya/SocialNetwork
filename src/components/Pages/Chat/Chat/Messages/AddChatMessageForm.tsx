@@ -1,18 +1,17 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {StatusType} from "../../../../../API/chat-api";
 import style from "../../ChatPage.module.scss";
 import {Nullable} from "../../../../../types";
 import {WRITE_MESSAGE} from "../../../../../constants";
-import {AppStateType} from "../../../../../Redux/types";
 import {sendMessage} from "../../../../../Redux/Thunk/chatThunk/chatThunk";
+import {getStatus} from "../../../../../Redux/Selectors/chatSelectors/chatSelectors";
 
 export const AddChatMessageForm: React.FC = () => {
 
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<Nullable<boolean>>(null);
   const dispatch = useDispatch();
-  const status = useSelector<AppStateType, StatusType>(state => state.chat.status);
+  const status = useSelector(getStatus);
 
   const validate = () => {
     message.trim().length > 0 ? sendMessageText(message) : setError(true)

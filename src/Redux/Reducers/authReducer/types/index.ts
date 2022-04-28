@@ -1,5 +1,5 @@
-import {InferActionsTypes} from "../../../reduxStore";
 import {authReducerActions} from "../authReducer";
+import {InferActionsTypes} from "../../../types";
 
 export type AuthDataType = {
   id: string,
