@@ -1,7 +1,6 @@
 import React, {FC, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {FilterType, follow, requestUsers, unfollow} from "../../../Redux/Reducers/usersReducer/usersReducer";
 import {Paginator} from "../../Common/Components/Paginator/Paginator";
 import {User} from "./User/User";
 import {UsersSearchForm} from "./UsersSearchForm/UsersSearchForm";
@@ -9,13 +8,14 @@ import {
   getFollowingInProgress, getIsFetching,
   getPage,
   getPageSize,
-  getTotalUsersCount,
-  getUsers,
+  getTotalUsersCount, getUsers,
   getUsersFilter
-} from "../../../Redux/Selectors/usersSelectors";
+} from "../../../Redux/Selectors/usersSelectors/usersSelectors";
 import {Preloader} from "../../Common/Components/Preloader/Preloader";
 import style from "./Users.module.scss";
 import {queryParamsType} from "../types";
+import {follow, requestUsers, unfollow} from "../../../Redux/Thunk/usersThunk/usersThunk";
+import {FilterType} from "../../../Redux/Reducers/usersReducer/types";
 
 
 export const Users: FC = React.memo(() => {
@@ -88,11 +88,11 @@ export const Users: FC = React.memo(() => {
         ? (<Preloader/>)
         : (<div className={style.usersContainer}>
             <div className={style.users}>
-              {users.map(u => <User user={u}
+              {users.map(user => <User user={user}
                                     unfollow={onUnfollow}
                                     follow={onFollow}
                                     followingInProgress={followingInProgress}
-                                    key={u.id}
+                                    key={user.id}
                 />
               )}
             </div>

@@ -1,5 +1,5 @@
-import {getAuthUserData} from "../../Reducers/authReducer/authReducer";
 import {AppReducersActions} from "../../Reducers/appReducer/appReducer";
+import {getAuthUserData} from "../authThunk/authThunk";
 
 export const initializeApp = () => (dispatch: any) => {
   let promise = dispatch(getAuthUserData())

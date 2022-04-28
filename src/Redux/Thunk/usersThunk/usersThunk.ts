@@ -6,7 +6,7 @@ import {ResultCodesEnum} from "../../../enums";
 import {FilterType, UsersReducerActionType} from "../../Reducers/usersReducer/types";
 import {UsersThunkType} from "./types";
 
-export const requestUsers = (page: number, pageSize: number, filter: FilterType): UsersThunkType => async (dispatch) => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): UsersThunkType => async (dispatch: Dispatch) => {
   dispatch(usersReducerActions.toggleIsFetching(true));
   dispatch(usersReducerActions.setCurrentPage(page));
   dispatch(usersReducerActions.setFilter(filter));
@@ -23,9 +23,9 @@ const followUnfollowFlow = async (dispatch: Dispatch<UsersReducerActionType>, ap
   }
   dispatch(usersReducerActions.toggleFollowingProgress(false, userId))
 }
-export const follow = (userId: number): UsersThunkType => async (dispatch) => {
+export const follow = (userId: number): UsersThunkType => async (dispatch: Dispatch) => {
   await followUnfollowFlow(dispatch, usersAPI.follow.bind(usersAPI), userId, usersReducerActions.followSuccess)
 }
-export const unfollow = (userId: number): UsersThunkType => async (dispatch) => {
+export const unfollow = (userId: number): UsersThunkType => async (dispatch: Dispatch) => {
   await followUnfollowFlow(dispatch, usersAPI.unfollow.bind(usersAPI), userId, usersReducerActions.unfollowSuccess)
 }

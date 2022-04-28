@@ -4,8 +4,9 @@ import {stopSubmit} from "redux-form";
 import {securityAPI} from "../../../API/securityAPI";
 import {authReducerActions} from "../../Reducers/authReducer/authReducer";
 import {AuthThunkType} from "./types";
+import {Dispatch} from "redux";
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): AuthThunkType => async (dispatch) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string | null): AuthThunkType => async (dispatch: Dispatch) => {
   const response = await authAPI.login(email, password, rememberMe, captcha)
   if (response.data.resultCode === ResultCodesEnum.Success) {
     await dispatch(getAuthUserData())
@@ -19,13 +20,13 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     dispatch(stopSubmit("login", {_error: message}));
   }
 }
-export const logout = (): AuthThunkType => async (dispatch) => {
+export const logout = (): AuthThunkType => async (dispatch: Dispatch) => {
   let response = await authAPI.logout()
   if (response.data.resultCode === ResultCodesEnum.Success) {
     dispatch(authReducerActions.setAuthUserData('', '', '', false));
   }
 }
-export const getAuthUserData = (): AuthThunkType => async (dispatch) => {
+export const getAuthUserData = (): AuthThunkType => async (dispatch: Dispatch) => {
   const response = await authAPI.me()
   if (response.data.resultCode === ResultCodesEnum.Success) {
     let {id, email, login} = response.data.data;
@@ -33,7 +34,7 @@ export const getAuthUserData = (): AuthThunkType => async (dispatch) => {
 
   }
 }
-export const getCaptchaUrl = (): AuthThunkType => async (dispatch) => {
+export const getCaptchaUrl = (): AuthThunkType => async (dispatch: Dispatch) => {
   const captchaData = await securityAPI.getCaptchaUrl()
   const captchaUrl = captchaData.url
   dispatch(authReducerActions.getCaptchaUrlSuccess(captchaUrl));

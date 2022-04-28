@@ -1,11 +1,10 @@
 import React, {memo} from "react";
 import {useSelector} from "react-redux";
 import {Field, Form, Formik} from "formik";
-import {FilterType} from "../../../../Redux/Reducers/usersReducer/usersReducer";
-import {AppStateType} from "../../../../Redux/reduxStore";
-import {getUsersFilter} from "../../../../Redux/Selectors/usersSelectors";
+import {getUsersFilter} from "../../../../Redux/Selectors/usersSelectors/usersSelectors";
 import style from "./UsersSearchForm.module.scss";
 import {FriendFormType, UsersSearchFormPropsType, UsersSearchFormType} from "../../types";
+import {FilterType} from "../../../../Redux/Reducers/usersReducer/types";
 
 const usersSearchFormValidate = () => {
   return {};
@@ -13,7 +12,7 @@ const usersSearchFormValidate = () => {
 
 export const UsersSearchForm: React.FC<UsersSearchFormPropsType> = memo((props) => {
 
-  const filter = useSelector<AppStateType, FilterType>(getUsersFilter)
+  const filter = useSelector(getUsersFilter);
 
   const submit = (values: UsersSearchFormType, {setSubmitting}: { setSubmitting: (isSubmitting: boolean) => void }) => {
     const filter: FilterType = {

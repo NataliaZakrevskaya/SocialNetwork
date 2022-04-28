@@ -1,16 +1,16 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {AppStateType} from "../../Redux/reduxStore";
-import {logout} from "../../Redux/Reducers/authReducer/authReducer";
 import {logo} from './../../Images/Social network.png';
 import style from "./Header.module.scss";
 import {LOGIN} from "../../constants";
+import {logout} from "../../Redux/Thunk/authThunk/authThunk";
+import {getIsAuth, getLogin} from "../../Redux/Selectors/authSelectors/authSelectors";
 
 const Header = () => {
 
-  const isAuth = useSelector<AppStateType, boolean>(state => state.auth.isAuth);
-  const login = useSelector<AppStateType, string | null>(state => state.auth.data.login);
+  const isAuth = useSelector(getIsAuth);
+  const login = useSelector(getLogin);
   const dispatch = useDispatch();
 
   const onLogoutButtonClick = () => {
