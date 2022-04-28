@@ -1,0 +1,18 @@
+.profilePage {
+    width: 80%;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+    @media screen and (max-width: 700px){
+            width: 90%;
+    }
+}
+
+.hr {
+    display: block;
+    height: 1px;
+    margin: 1.7rem 0;
+    color: #42a790;
+    background-color: currentColor;
+    border: 0;
+    opacity: .25;
+}

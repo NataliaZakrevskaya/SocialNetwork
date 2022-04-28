@@ -1,0 +1,67 @@
+@import "../../../Common/Styles/Sass/Variables";
+@import "../../../Common/Styles/Sass/Mixins";
+
+.user {
+    @include size(250px, 300px);
+    @include flex(column, center, center);
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid #42a790;
+
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 70%;
+
+        & img {
+            width: 80px;
+            border-radius: 50%;
+            margin-top: 30px;
+        }
+
+        .userName {
+            font-weight: bolder;
+            font-size: large;
+            margin-bottom: 10px;
+        }
+
+        .userStatus{
+            text-align: center;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+    }
+
+
+    .unFollowBtn {
+        width: 100px;
+        height: 35px;
+        background-color: darkred;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        border-radius: 7px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .unFollowBtn:hover {
+        background-color: #681014;
+    }
+
+    .followBtn {
+        @include button(100px, 35px);
+    }
+
+    .followBtn:hover {
+        background-color: #3a816e;
+    }
+}
+
+.user:hover {
+    background-color: white;
+}
+
