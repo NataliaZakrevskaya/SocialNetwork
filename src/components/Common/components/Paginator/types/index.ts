@@ -3,5 +3,5 @@ export type PaginatorPropsType = {
   pageSize: number
   currentPage: number
   portionSize: number
-  onPageChanged: (pageNumber: number) => void
+  onPageChanged: ( pageNumber: number ) => void
 }

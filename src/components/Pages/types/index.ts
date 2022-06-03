@@ -1,10 +1,10 @@
-import {InjectedProps} from "../../Common/Components/HOC/withRouter/types";
-import {ProfileType} from "../../../Redux/Reducers/profileReducer/types";
-import {FilterType, UsersType} from "../../../Redux/Reducers/usersReducer/types";
+import { InjectedProps } from '../../Common/Components/HOC/withRouter/types';
+import { ProfileType } from '../../../Redux/Reducers/profileReducer/types';
+import { FilterType, UsersType } from '../../../Redux/Reducers/usersReducer/types';
 
 export type AddMessageFormPropsType = {
   userID: number | null
-  addNewMessage: (userID: number | null, newMessage: string) => void
+  addNewMessage: ( userID: number | null, newMessage: string ) => void
 }
 export type DialogFormDataType = {
   newMessageBody: string
@@ -14,7 +14,7 @@ export type DialogsType = {
   id: number
   avatar: string
   activeUserID: number | null
-  showMessages: (userID: number) => void
+  showMessages: ( userID: number ) => void
 }
 export type MessageType = {
   id: string
@@ -31,7 +31,7 @@ export type FormDataType = {
   captcha: string
 }
 export type AddPostFormType = {
-  addNewPost: (newPostText: string) => void
+  addNewPost: ( newPostText: string ) => void
 }
 export type ProfileDataPropsType = {
   profile: ProfileType
@@ -47,24 +47,24 @@ export type ProfileDataFormPropsType = {
 }
 export type ProfileStatusType = {
   status: string
-  isOwner : boolean
-  updateStatus: (status: string) => void
+  isOwner: boolean
+  updateStatus: ( status: string ) => void
 }
 export type ProfileInfoPropsType = {
   isOwner: boolean
   profile: ProfileType
   status: string
-  updateStatus: (status: string) => void
-  savePhoto: (newPhoto: File) => void
-  saveProfile: (profileData: ProfileType) => void
+  updateStatus: ( status: string ) => void
+  savePhoto: ( newPhoto: File ) => void
+  saveProfile: ( profileData: ProfileType ) => void
 }
 export type ProfileComponentPropsType = {
   isOwner: boolean
   profile: ProfileType
   status: string
-  updateStatus: (status: string) => void
-  savePhoto: (newPhoto: File) => void
-  saveProfile: (profileData: ProfileType) => Promise<any>
+  updateStatus: ( status: string ) => void
+  savePhoto: ( newPhoto: File ) => void
+  saveProfile: ( profileData: ProfileType ) => Promise<any>
 }
 export type ProfileAPIContainerMapStateToPropsType = {
   profile: ProfileType
@@ -73,24 +73,27 @@ export type ProfileAPIContainerMapStateToPropsType = {
   authorizedUserId: string
 }
 export type ProfileAPIContainerMapDispatchToPropsType = {
-  setUserProfile: (profile: ProfileAPIContainerMapStateToPropsType) => void
-  getProfile: (userId: string) => void
-  getStatus: (userId: string) => void
-  updateStatus: (status: string) => void
-  savePhoto: (newPhoto: File) => void
-  saveProfile: (profileData: ProfileType) => Promise<any>
+  setUserProfile: ( profile: ProfileAPIContainerMapStateToPropsType ) => void
+  getProfile: ( userId: string ) => void
+  getStatus: ( userId: string ) => void
+  updateStatus: ( status: string ) => void
+  savePhoto: ( newPhoto: File ) => void
+  saveProfile: ( profileData: ProfileType ) => Promise<any>
 }
 
-export type ProfileAPIContainerOwnPropsType = ProfileAPIContainerMapStateToPropsType & ProfileAPIContainerMapDispatchToPropsType & InjectedProps;
+export type ProfileAPIContainerOwnPropsType =
+  ProfileAPIContainerMapStateToPropsType
+  & ProfileAPIContainerMapDispatchToPropsType
+  & InjectedProps;
 
 export type UsersPropsType = {
   user: UsersType
-  unfollow: (userID: number) => void
-  follow: (userID: number) => void
+  unfollow: ( userID: number ) => void
+  follow: ( userID: number ) => void
   followingInProgress: Array<number>
 }
 export type UsersSearchFormPropsType = {
-  onFilterChanged: (filter: FilterType) => void
+  onFilterChanged: ( filter: FilterType ) => void
 }
 export type FriendFormType = 'true' | 'false' | 'null'
 export type UsersSearchFormType = {

@@ -1,23 +1,24 @@
 @import "./Variables";
 
-@mixin flex ($flexDirection, $justifyContent, $alignItems) {
+@mixin flex($flexDirection, $justifyContent, $alignItems) {
   display: flex;
   flex-direction: $flexDirection;
   justify-content: $justifyContent;
   align-items: $alignItems;
 }
 
-@mixin size ($width, $height){
+@mixin size($width, $height) {
   width: $width;
   height: $height;
 }
 
-@mixin boxShadow (){
+@mixin boxShadow() {
   -webkit-box-shadow: $shadow;
   -moz-box-shadow: $shadow;
   box-shadow: $shadow;
 }
-@mixin button ($width, $height){
+
+@mixin button($width, $height) {
   width: $width;
   height: $height;
   background-color: $mainColor;

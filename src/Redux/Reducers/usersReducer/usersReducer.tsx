@@ -22,7 +22,6 @@ const usersReducer = ( state = initialState, action: UsersReducerActionType ): I
         ...state, users: updateObjectInArray( state.users, action.userID, 'id', { followed: true } ),
       };
     case UserReducerEnum.UNFOLLOW:
-      debugger
       return {
         ...state, users: updateObjectInArray( state.users, action.userID, 'id', { followed: false } ),
       };

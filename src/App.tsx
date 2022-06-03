@@ -35,7 +35,6 @@ class App extends React.Component<AppPropsType> {
         <div className={ style.appWrapperContent }>
           <Routes>
             <Route path={ EMPTY_URL } element={ <Navigate to={ PROFILE }/> }/>
-
             <Route path={ DIALOGS } element={ <DialogsPage/> }>
               <Route path={ USER_ID } element={ <DialogsPage/> }/>
             </Route>
